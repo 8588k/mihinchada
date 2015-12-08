@@ -23,11 +23,11 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
             controller: controller
         });
 
-        adds = new miHinchada.AdMob();
-        adds.showInterstitial();
+        // adds = new miHinchada.AdMob();
+        // adds.showInterstitial();
     };
 
     App.onResume = function() {
-        adds.showInterstitial();
+        // adds.showInterstitial();
     };
 });
