@@ -27,11 +27,6 @@
         <icon density="mdpi" src="www/res/android/logo_48x48.png" />
         <icon density="hdpi" src="www/res/android/logo_72x72.png" />
         <icon density="xhdpi" src="www/res/android/logo_96x96.png" />
-        <preference name="xwalkVersion" value="15+" />
-        <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
-        <preference name="xwalkMode" value="embedded" />
-        <preference name="xwalkMultipleApk" value="true" />
-        <preference name="CrosswalkAnimatable" value="true" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -43,4 +38,9 @@
     <plugin name="fr._46cl.focus" spec="https://github.com/46cl/cordova-android-focus-plugin" />
     <plugin name="cordova-plugin-vibration" spec="^1.2.0" />
     <plugin name="cordova-plugin-crosswalk-webview" spec="^1.4.0" />
+    <preference name="xwalkVersion" value="15+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
+    <preference name="xwalkMultipleApk" value="true" />
+    <preference name="CrosswalkAnimatable" value="true" />
 </widget>
