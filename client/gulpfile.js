@@ -57,7 +57,7 @@ gulp.task('js-build', function() {
         'www/app/admob.module.js',
         'www/app/miHinchada.module.js',
         'www/app/templates/templates.js',
-        // 'www/app/utils/handlebars-helpers.js',
+        'www/app/utils/handlebars-helpers.js',
         'www/app/models/*.js',
         'www/app/collections/*.js',
         'www/app/views/main.layout.view.js',
