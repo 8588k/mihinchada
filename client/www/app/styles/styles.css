@@ -1,0 +1,224 @@
+html,
+body,
+main {
+    height: 100%;
+}
+
+body {
+    background-color: #ccc;
+    font-family: Arial, Helvetica, Sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v7/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v8/2fcrYFNaTjcS6g4U3t-Y5RV6cRhDpPC5P4GCEJpqGoc.woff) format('woff');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Field
+---------------------------------------------------------------*/
+
+.field {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.field-half {
+    background-color: #009900;
+    border: 2px solid #fff;
+    height: 50%;
+    left: 5%;
+    position: absolute;
+    width: 90%;
+}
+
+.field-half-home {
+    border-bottom: 1px solid #fff;
+    top: 0;
+}
+
+.field-half-away {
+    border-top: 1px solid #fff;
+    top: 50%;
+}
+
+
+/* Team
+---------------------------------------------------------------*/
+
+.team {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Player
+---------------------------------------------------------------*/
+
+.players-row {
+    text-align: center;
+}
+
+.player {
+    display: inline-block;
+    margin: 0 1%;
+    text-align: center;
+    width: 18%;
+}
+
+    .player:first-child {
+        margin-left: 0;
+    }
+
+    .player:last-child {
+        margin-right: 0;
+    }
+
+.player-number-container {
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 35%;
+}
+
+
+/*header {
+    background: #5cb85c;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+    height: 50px;
+    overflow: hidden;
+    padding: 4px 10px 10px;
+    text-align: center;
+    width: 100%;
+}
+
+    header h1 {
+        color: #fff;
+        font-size: 22px;
+        margin: 12px 0 0 10px;
+    }
+
+    header i {
+        margin-top: 8px;
+    }
+
+    header a {
+        color: #fff;
+        font-family: Arial, Helvetica, Sans-serif;
+        margin-top: 8px;
+    }*/
+
+
+/* Inputs
+---------------------------------------------------------------*/
+
+/*input[type="number"],
+input[type="text"] {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    height: 35px;
+    font-size: 16px;
+    padding: 0 5px 0 15px;
+
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}*/
+
+
+/* Icons
+---------------------------------------------------------------*/
+
+/*@font-face {
+    font-family: 'vamoyvamo';
+    src: url('../../font/vamoyvamo.eot?48356812');
+    src: url('../../font/vamoyvamo.eot?48356812#iefix') format('embedded-opentype'),
+        url('../../font/vamoyvamo.woff?48356812') format('woff'),
+        url('../../font/vamoyvamo.ttf?48356812') format('truetype'),
+        url('../../font/vamoyvamo.svg?48356812#vamoyvamo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-family: "vamoyvamo";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: .2em;
+    margin-right: .2em;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: none;
+    speak: none;
+    width: 1em;
+}
+
+.icon-remove:before {
+    content: '\e800';
+}*/
+
+
+/* App
+---------------------------------------------------------------*/
+
+/*.app-container {
+    position: relative;
+    min-height: 90%;
+}*/
+
+
+/* Dropdown
+---------------------------------------------------------------*/
+
+/*.dropdown-button {
+    z-index: 10;
+}
+
+.dropdown-content {
+    top: 40px !important;
+}*/
