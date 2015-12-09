@@ -8,4 +8,5 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
             'referee': null
         }
     });
+
 });
