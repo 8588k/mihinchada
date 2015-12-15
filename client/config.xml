@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.miHinchada" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Mi Hinchada</name>
+    <description>
+        Seguí los partidos en vivo como en la cancha, pero desde tu casa.
+    </description>
+    <author email="8588kb@gmail.com">
+        8588kb Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="cordova-plugin-admobpro" spec="~2.9.8" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-targetSdkVersion" value="17" />
+        <preference name="loadUrlTimeoutValue" value="60000" />
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="www/res/android/logo_36x36.png" />
+        <icon density="mdpi" src="www/res/android/logo_48x48.png" />
+        <icon density="hdpi" src="www/res/android/logo_72x72.png" />
+        <icon density="xhdpi" src="www/res/android/logo_96x96.png" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="ios" spec="~3.9.1" />
+    <engine name="android" spec="~4.1.1" />
+    <engine name="browser" spec="~4.0.0" />
+    <plugin name="fr._46cl.focus" spec="https://github.com/46cl/cordova-android-focus-plugin" />
+    <plugin name="cordova-plugin-vibration" spec="^1.2.0" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^1.4.0" />
+    <preference name="xwalkVersion" value="15+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
+    <preference name="xwalkMultipleApk" value="true" />
+    <preference name="CrosswalkAnimatable" value="true" />
+</widget>

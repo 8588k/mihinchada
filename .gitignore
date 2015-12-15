@@ -33,3 +33,7 @@ node_modules
 npm-debug.log
 
 .DS_Store
+
+# Cordova
+platforms
+plugins
