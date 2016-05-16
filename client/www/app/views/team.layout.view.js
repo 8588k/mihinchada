@@ -10,7 +10,9 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             'goalkeeperRegion': '[data-js="goalkeeper"]',
             'defendersRegion': '[data-js="defenders"]',
             'midfieldersRegion': '[data-js="midfielders"]',
-            'forwardsRegion': '[data-js="forwards"]'
+            'forwardsRegion': '[data-js="forwards"]',
+            // substitutes
+            // manager
         },
 
         onShow: function(options) {
