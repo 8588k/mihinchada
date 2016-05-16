@@ -61,6 +61,8 @@ gulp.task('js-build', function() {
         'www/app/models/*.js',
         'www/app/collections/*.js',
         'www/app/views/main.layout.view.js',
+        'www/app/views/header.item.view.js',
+        'www/app/views/tabs.item.view.js',
         'www/app/views/match.layout.view.js',
         'www/app/views/team.layout.view.js',
         'www/app/views/player.item.view.js',
