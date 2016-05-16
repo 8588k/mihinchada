@@ -28059,9 +28059,9 @@ Picker.extend( 'pickadate', DatePicker )
     }, false);
 
 }(window));
-App.module('Vamo', function (Vamo, App, Backbone, Marionette, $, _) {
+App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) {
     
-    Vamo.AdMob = Marionette.Object.extend({
+    miHinchada.AdMob = Marionette.Object.extend({
         ids: {},
 
         lastShow: 0,
@@ -28105,6 +28105,7 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
     Router = Marionette.AppRouter.extend({
         'appRoutes': {
             '': 'index'
+            // settings
         }
     });
 
@@ -28131,22 +28132,15 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
     };
 });
 this["__templates"] = this["__templates"] || {};
-this["__templates"]["_vamo"] = this["__templates"]["_vamo"] || {};
-this["__templates"]["_vamo"]["actions"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<label for=\"personNumber\">Personas:</label><input type=\"number\" value=\"2\" min=\"0\" max=\"99\" id=\"personNumber\" class=\"person-number\" pattern=\"[0-9]{10}\">\n<input type=\"button\" value=\"+\" class=\"add\">\n<input type=\"button\" value=\"-\" class=\"remove\">";
-},"useData":true});
-this["__templates"]["_vamo"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "Vamo & Vamo\n\n<a class='dropdown-button material-icons right' href='#' data-activates='dropdown'>more_vert</a>\n\n<ul id='dropdown' class='dropdown-content'>\n	<li>\n		<a href=\"#\" data-js=\"share\">Compartir</a>\n	</li>\n	<li class=\"divider\"></li>\n	<li>\n		<a href=\"#\" data-js=\"reset\">Borrar</a>\n	</li>\n</ul>";
-},"useData":true});
-this["__templates"]["_vamo"]["total"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<p>Precio total: $ <span>0</span></p>";
-},"useData":true});
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
+this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "Mi Hinchada";
+},"useData":true});
 this["__templates"]["mihinchada"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div data-js=\"content\">Content</div>";
+    return "<header class=\"header\" data-js=\"header\">Header</header>\n<div class=\"tabs-sections\" data-js=\"tabs\">Tabs</div>\n<div class=\"content\" data-js=\"content\">Content</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["match"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"field-half field-half-home\" data-js=\"field-half-home\">\n	<div class=\"left-corner\"></div>\n	<div class=\"left-corner\"></div>\n</div>\n<div class=\"field-half field-half-away\" data-js=\"field-half-away\">\n	<div class=\"left-corner\"></div>\n	<div class=\"left-corner\"></div>\n</div>";
+    return "<div class=\"left-corner-home\"></div>\n<div class=\"right-corner-home\"></div>\n<div class=\"left-corner-away\"></div>\n<div class=\"right-corner-away\"></div>\n<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
@@ -28157,8 +28151,11 @@ this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</div>";
 },"useData":true});
+this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
+},"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div data-js=\"goalkeeper\"></div>\n<div data-js=\"defenders\"></div>\n<div data-js=\"midfielders\"></div>\n<div data-js=\"forwards\"></div>";
+    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n<div class=\"defenders-row\" data-js=\"defenders\"></div>\n<div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n<div class=\"forwards-row\" data-js=\"forwards\"></div>";
 },"useData":true});
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
@@ -28246,34 +28243,123 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
     Views.Main = Marionette.LayoutView.extend({
 
+        className: 'main-layout',
+
         template: __templates.mihinchada.main,
 
         regions: {
+            'headerRegion': '[data-js="header"]',
+            'tabsRegion': '[data-js="tabs"]',
             'contentRegion': '[data-js="content"]'
         },
 
-        events: {},
-
         onShow: function(options) {
-            var that = this,
-                match;
+            var headerItemView,
+                tabsItemView,
+                matchLayoutView;
+
+            headerItemView = new Views.Header();
+            this.headerRegion.show(headerItemView);
+
+            tabsItemView = new Views.Tabs();
+            this.tabsRegion.show(tabsItemView);
 
             matchLayoutView = new Views.Match();
             this.contentRegion.show(matchLayoutView);
         }
     });
 });
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
+    
+    Views.Header = Marionette.ItemView.extend({
+
+        template: __templates.mihinchada.header
+
+        // ui: {
+        //     share: '[data-js="share"]',
+        //     reset: '[data-js="reset"]'
+        // },
+
+        // events: {
+        //     'touchstart @ui.options': 'showOptions',
+        //     'touchstart @ui.share': 'share',
+        //     'touchstart @ui.reset': 'reset'
+        // },
+
+        // onShow: function() {
+            // $('.dropdown-button').dropdown({
+            //     inDuration: 300,
+            //     outDuration: 225,
+            //     constrain_width: false, // Does not change width of dropdown to that of the activator
+            //     hover: false, // Activate on hover
+            //     gutter: 0, // Spacing from edge
+            //     belowOrigin: true, // Displays dropdown below the button
+            //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            // });
+        // },
+
+        // share: function(event){
+        //     App.share();
+        // },
+
+        // reset: function(event){
+        //     Backbone.history.navigate('reset', {trigger:true});
+        // }
+    });
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
+    
+    Views.Tabs = Marionette.ItemView.extend({
+
+        tagName: 'ul',
+
+        template: __templates.mihinchada.tabs,
+
+        // ui: {
+        //     share: '[data-js="share"]',
+        //     reset: '[data-js="reset"]'
+        // },
+
+        // events: {
+        //     'touchstart @ui.options': 'showOptions',
+        //     'touchstart @ui.share': 'share',
+        //     'touchstart @ui.reset': 'reset'
+        // },
+
+        // onShow: function() {
+            // $('.dropdown-button').dropdown({
+            //     inDuration: 300,
+            //     outDuration: 225,
+            //     constrain_width: false, // Does not change width of dropdown to that of the activator
+            //     hover: false, // Activate on hover
+            //     gutter: 0, // Spacing from edge
+            //     belowOrigin: true, // Displays dropdown below the button
+            //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            // });
+        // },
+
+        // share: function(event){
+        //     App.share();
+        // },
+
+        // reset: function(event){
+        //     Backbone.history.navigate('reset', {trigger:true});
+        // }
+    });
+});
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Main = Marionette.LayoutView.extend({
+    Views.Match = Marionette.LayoutView.extend({
 
         className: 'field',
 
         template: __templates.mihinchada.match,
 
         regions: {
+            // result
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
+            // referee
         },
 
         onShow: function(options) {
@@ -28301,7 +28387,9 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             'goalkeeperRegion': '[data-js="goalkeeper"]',
             'defendersRegion': '[data-js="defenders"]',
             'midfieldersRegion': '[data-js="midfielders"]',
-            'forwardsRegion': '[data-js="forwards"]'
+            'forwardsRegion': '[data-js="forwards"]',
+            // substitutes
+            // manager
         },
 
         onShow: function(options) {
