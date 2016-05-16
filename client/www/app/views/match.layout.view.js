@@ -1,14 +1,16 @@
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Main = Marionette.LayoutView.extend({
+    Views.Match = Marionette.LayoutView.extend({
 
         className: 'field',
 
         template: __templates.mihinchada.match,
 
         regions: {
+            // result
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
+            // referee
         },
 
         onShow: function(options) {
