@@ -23,7 +23,9 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                     });
                     that.scoreRegion.show(scoreView);
 
-                    fieldView = new Views.FootballField();
+                    fieldView = new Views.FootballField({
+                        'match': model.get('match')
+                    });
                     that.fieldRegion.show(fieldView);
                 }
             });

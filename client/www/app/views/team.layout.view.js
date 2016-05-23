@@ -4,6 +4,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         template: __templates.mihinchada.team,
 
+        templateHelpers: function() {
+            return this.options.team;
+        },
+
         regions: {
             'goalkeeperRegion': '[data-js="goalkeeper"]',
             'defendersRegion': '[data-js="defenders"]',

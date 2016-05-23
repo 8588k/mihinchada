@@ -28065,7 +28065,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "1",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'goalkeeper',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28075,7 +28075,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "2",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28085,7 +28085,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "3",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28095,7 +28095,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "4",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28105,7 +28105,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "5",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28115,7 +28115,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "6",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28125,7 +28125,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "7",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28135,7 +28135,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "8",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28145,7 +28145,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "9",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28155,7 +28155,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "10",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28165,7 +28165,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "11",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28196,7 +28196,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "1",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'goalkeeper',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28206,7 +28206,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "2",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28216,7 +28216,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "3",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28226,7 +28226,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "4",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28236,7 +28236,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "5",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28246,7 +28246,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "6",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28256,7 +28256,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "7",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28266,7 +28266,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "8",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28276,7 +28276,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "9",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28286,7 +28286,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "10",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28296,7 +28296,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "11",
                         "keywords": [],
-                        "playing_position": null,
+                        "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
                         "rating": null,
@@ -28457,7 +28457,11 @@ this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,"
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
+    var helper;
+
+  return "--"
+    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+    + "--\n\n<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
 },"useData":true});
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
@@ -28833,7 +28837,9 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                     });
                     that.scoreRegion.show(scoreView);
 
-                    fieldView = new Views.FootballField();
+                    fieldView = new Views.FootballField({
+                        'match': model.get('match')
+                    });
                     that.fieldRegion.show(fieldView);
                 }
             });
@@ -28865,13 +28871,18 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         },
 
         onShow: function(options) {
-            var teamHomeView,
+            var that = this,
+                teamHomeView,
                 teamAwayView;
 
-            teamHomeView = new Views.Team();
+            teamHomeView = new Views.Team({
+                'team': that.options.match.team_home
+            });
             this.teamHomeRegion.show(teamHomeView);
 
-            teamAwayView = new Views.Team();
+            teamAwayView = new Views.Team({
+                'team': that.options.match.team_away
+            });
             this.teamAwayRegion.show(teamAwayView);
         }
     });
@@ -28881,6 +28892,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
     Views.Team = Marionette.LayoutView.extend({
 
         template: __templates.mihinchada.team,
+
+        templateHelpers: function() {
+            return this.options.team;
+        },
 
         regions: {
             'goalkeeperRegion': '[data-js="goalkeeper"]',
