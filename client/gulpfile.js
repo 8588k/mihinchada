@@ -65,7 +65,7 @@ gulp.task('js-build', function() {
         'www/app/views/header.layout.view.js',
         // 'www/app/views/tabs.item.view.js',
         'www/app/views/footballField.layout.view.js',
-        // 'www/app/views/team.layout.view.js',
+        'www/app/views/team.layout.view.js',
         'www/app/views/footballScore.item.view.js',
         // 'www/app/views/player.item.view.js',
         // 'www/app/views/players.collection.view.js',
@@ -99,7 +99,7 @@ gulp.task('fonts-build', function() {
         .pipe(gulp.dest('www/build/font')).on('error', errorHandler);
 });
 
-gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build', 'fonts-build']);
+gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build']);
 
 gulp.task('build', ['default']);
 

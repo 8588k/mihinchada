@@ -28130,13 +28130,13 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
 this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "FOOTBALLFIELD\n\n";
+    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<header data-js=\"score-region\">Score Region</header>\n<div data-js=\"field-region\">Field Region</div>";
+    return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n<div class=\"field-container\" data-js=\"field-region\">Field Region</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "FOOTBALLSCORE";
+    return "<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_river.png\" width=\"50\" height=\"50\">\n</div>\n\n<div class=\"score\">\n    <div class=\"score-result\">\n        <span class=\"score-home\">1</span>\n        -\n        <span class=\"score-away\">1</span>\n    </div>\n    <div class=\"score-info\">\n        <span class=\"score-time\">15:47</span>\n        <span class=\"score-period\">ST</span>\n    </div>\n</div>\n\n<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_boca.png\" width=\"50\" height=\"50\">\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "HEADER";
@@ -28154,7 +28154,7 @@ this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,"
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n<div class=\"defenders-row\" data-js=\"defenders\"></div>\n<div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n<div class=\"forwards-row\" data-js=\"forwards\"></div>";
+    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
 },"useData":true});
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
@@ -28281,21 +28281,106 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         regions: {
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
+            // substitutes
+            // managers
             // referee
         },
 
         onShow: function(options) {
-            console.log("field!");
-            // var that = this,
-            //     teamHomeCollectionView,
-            //     teamAwayCollectionView;
+            var teamHomeView,
+                teamAwayView;
 
-            // teamHomeCollectionView = new Views.Team();
-            // this.teamHomeRegion.show(teamHomeCollectionView);
+            teamHomeView = new Views.Team();
+            this.teamHomeRegion.show(teamHomeView);
 
-            // teamAwayCollectionView = new Views.Team();
-            // this.teamAwayRegion.show(teamAwayCollectionView);
+            teamAwayView = new Views.Team();
+            this.teamAwayRegion.show(teamAwayView);
         }
+    });
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
+
+    Views.Team = Marionette.LayoutView.extend({
+
+        template: __templates.mihinchada.team,
+
+        regions: {
+            'goalkeeperRegion': '[data-js="goalkeeper"]',
+            'defendersRegion': '[data-js="defenders"]',
+            'midfieldersRegion': '[data-js="midfielders"]',
+            'forwardsRegion': '[data-js="forwards"]',
+            // substitutes
+            // manager
+        },
+
+        onShow: function(options) {
+            // var that = this,
+            //     player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
+            //     teamCollection,
+            //     goalkeepersCollection,
+            //     goalkeepersCollectionView,
+            //     defendersCollection,
+            //     defendersCollectionView,
+            //     midfieldersCollection,
+            //     midfieldersCollectionView,
+            //     forwardsCollection,
+            //     forwardsCollectionView;
+
+            // player = new App.miHinchada.Models.Player({ 'name': 'Nombre1', 'lastName': 'Apellido1', 'shirtNumber': '1', 'playingPosition': 'goalkeeper' });
+            // player2 = new App.miHinchada.Models.Player({ 'name': 'Nombre2', 'lastName': 'Apellido2', 'shirtNumber': '2', 'playingPosition': 'defender' });
+            // player3 = new App.miHinchada.Models.Player({ 'name': 'Nombre3', 'lastName': 'Apellido3', 'shirtNumber': '3', 'playingPosition': 'defender' });
+            // player4 = new App.miHinchada.Models.Player({ 'name': 'Nombre4', 'lastName': 'Apellido4', 'shirtNumber': '4', 'playingPosition': 'defender' });
+            // player5 = new App.miHinchada.Models.Player({ 'name': 'Nombre5', 'lastName': 'Apellido5', 'shirtNumber': '5', 'playingPosition': 'defender' });
+            // player6 = new App.miHinchada.Models.Player({ 'name': 'Nombre6', 'lastName': 'Apellido6', 'shirtNumber': '6', 'playingPosition': 'midfielder' });
+            // player7 = new App.miHinchada.Models.Player({ 'name': 'Nombre7', 'lastName': 'Apellido7', 'shirtNumber': '7', 'playingPosition': 'midfielder' });
+            // player8 = new App.miHinchada.Models.Player({ 'name': 'Nombre8', 'lastName': 'Apellido8', 'shirtNumber': '8', 'playingPosition': 'midfielder' });
+            // player9 = new App.miHinchada.Models.Player({ 'name': 'Nombre9', 'lastName': 'Apellido9', 'shirtNumber': '9', 'playingPosition': 'midfielder' });
+            // player10 = new App.miHinchada.Models.Player({ 'name': 'Nombre10', 'lastName': 'Apellido10', 'shirtNumber': '10', 'playingPosition': 'forward' });
+            // player11 = new App.miHinchada.Models.Player({ 'name': 'Nombre11', 'lastName': 'Apellido11', 'shirtNumber': '11', 'playingPosition': 'forward' });
+
+            // teamCollection = new App.miHinchada.Collections.Team([player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11]);
+
+            // // clono la colección para poder filtrar después
+            // goalkeepersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'goalkeeper');
+            // defendersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'defender');
+            // midfieldersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'midfielder');
+            // forwardsCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'forward');
+
+            // window.teamCollection = teamCollection;
+            // window.goalkeepersCollection = goalkeepersCollection;
+            // window.defendersCollection = defendersCollection;
+            // window.midfieldersCollection = midfieldersCollection;
+            // window.forwardsCollection = forwardsCollection;
+            // window.metodo = this.getPlayersCollectionByPlayingPosition;
+
+            // goalkeepersCollectionView = new Views.Players({
+            //     collection: goalkeepersCollection
+            // });
+            // this.goalkeeperRegion.show(goalkeepersCollectionView);
+
+            // defendersCollectionView = new Views.Players({
+            //     collection: defendersCollection
+            // });
+            // this.defendersRegion.show(defendersCollectionView);
+
+            // midfieldersCollectionView = new Views.Players({
+            //     collection: midfieldersCollection
+            // });
+            // this.midfieldersRegion.show(midfieldersCollectionView);
+
+            // forwardsCollectionView = new Views.Players({
+            //     collection: forwardsCollection
+            // });
+            // this.forwardsRegion.show(forwardsCollectionView);
+        }
+
+        // getPlayersCollectionByPlayingPosition: function(collection, playingPosition) {
+        //     var clonedCollection = collection.clone();
+        //     clonedCollection.reset(clonedCollection.filter(function(model) {
+        //         return model.get('playingPosition') === playingPosition;
+        //     }));
+        //     return clonedCollection;
+        // }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
@@ -28304,9 +28389,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         template: __templates.mihinchada.footballScore,
 
-        onShow: function() {
-            console.log("score!");
-        }
+        onShow: function() {}
 
     });
 });

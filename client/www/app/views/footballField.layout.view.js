@@ -7,20 +7,20 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         regions: {
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
+            // substitutes
+            // managers
             // referee
         },
 
         onShow: function(options) {
-            console.log("field!");
-            // var that = this,
-            //     teamHomeCollectionView,
-            //     teamAwayCollectionView;
+            var teamHomeView,
+                teamAwayView;
 
-            // teamHomeCollectionView = new Views.Team();
-            // this.teamHomeRegion.show(teamHomeCollectionView);
+            teamHomeView = new Views.Team();
+            this.teamHomeRegion.show(teamHomeView);
 
-            // teamAwayCollectionView = new Views.Team();
-            // this.teamAwayRegion.show(teamAwayCollectionView);
+            teamAwayView = new Views.Team();
+            this.teamAwayRegion.show(teamAwayView);
         }
     });
 });

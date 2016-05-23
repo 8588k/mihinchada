@@ -4,9 +4,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         template: __templates.mihinchada.footballScore,
 
-        onShow: function() {
-            console.log("score!");
-        }
+        onShow: function() {}
 
     });
 });
