@@ -10,15 +10,23 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         },
 
         onShow: function(options) {
-            console.log("match!");
-            var scoreView,
-                fieldView;
+            var that = this,
+                scoreView,
+                fieldView,
+                matchModel;
 
-            scoreView = new Views.FootballScore();
-            this.scoreRegion.show(scoreView);
+            matchModel = new App.miHinchada.Models.Match();
+            matchModel.fetch({
+                'success': function(model, response, options) {
+                    scoreView = new Views.FootballScore({
+                        'match': model.get('match')
+                    });
+                    that.scoreRegion.show(scoreView);
 
-            fieldView = new Views.FootballField();
-            this.fieldRegion.show(fieldView);
+                    fieldView = new Views.FootballField();
+                    that.fieldRegion.show(fieldView);
+                }
+            });
         }
     });
 });

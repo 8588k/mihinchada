@@ -52,6 +52,9 @@ gulp.task('js-build', function() {
         'node_modules/backbone/backbone.js',
         'node_modules/backbone.marionette/lib/backbone.marionette.js',
         'node_modules/fastclick/lib/fastclick.js',
+        'node_modules/jquery-mockjax/dist/jquery.mockjax.min.js',
+        // mocks
+        'www/app/mocks/mock.js',
         // app
         'www/app/app.js',
         'www/app/admob.module.js',
