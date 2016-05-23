@@ -1,13 +1,16 @@
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
+this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "FOOTBALLFIELD\n\n";
+},"useData":true});
+this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<header data-js=\"score-region\">Score Region</header>\n<div data-js=\"field-region\">Field Region</div>";
+},"useData":true});
+this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "FOOTBALLSCORE";
+},"useData":true});
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "Mi Hinchada";
-},"useData":true});
-this["__templates"]["mihinchada"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<header class=\"header\" data-js=\"header\">Header</header>\n<div class=\"tabs-sections\" data-js=\"tabs\">Tabs</div>\n<div class=\"content\" data-js=\"content\">Content</div>";
-},"useData":true});
-this["__templates"]["mihinchada"]["match"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"left-corner-home\"></div>\n<div class=\"right-corner-home\"></div>\n<div class=\"left-corner-away\"></div>\n<div class=\"right-corner-away\"></div>\n<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>";
+    return "HEADER";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;

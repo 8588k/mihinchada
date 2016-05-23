@@ -1,4 +1,14 @@
-html,
+/* HEADER
+---------------------------------------------------------------*/
+
+.header-container {
+    border: 1px solid red;
+    height: 40px;
+}
+
+
+
+/*html,
 body,
 main {
     height: 100%;
@@ -41,20 +51,20 @@ body {
   direction: ltr;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-}
+}*/
 
 
 /* Main
 ---------------------------------------------------------------*/
 
-.main-layout {
+/*.main-layout {
     height: 100vh;
-}
+}*/
 
 /* Field
 ---------------------------------------------------------------*/
 
-.field {
+/*.field {
     height: 90%;
     width: 90%;
 }
@@ -113,13 +123,13 @@ body {
     right: 10%;
     border-left: 2px solid #fff;
     border-top: 2px solid #fff;
-}
+}*/
 
 
 /* Team
 ---------------------------------------------------------------*/
 
-.team {
+/*.team {
     height: 100%;
 }
 
@@ -128,13 +138,13 @@ body {
 .midfielders-row,
 .forwards-row {
     height: 25%;
-}
+}*/
 
 
 /* Player
 ---------------------------------------------------------------*/
 
-.players-row {
+/*.players-row {
     height: 100%;
     margin: 0;
     text-align: center;
@@ -165,13 +175,13 @@ body {
 
 .player-name {
     height: 50%;
-}
+}*/
 
 
 /* Header
 ---------------------------------------------------------------*/
 
-header {
+/*header {
     background: #5cb85c;
     color: #fff;
     font-family: 'Pacifico', cursive;
@@ -196,13 +206,13 @@ header {
         color: #fff;
         font-family: Arial, Helvetica, Sans-serif;
         margin-top: 8px;
-    }
+    }*/
 
 
 /* Tabs
 ---------------------------------------------------------------*/
 
-.tabs-sections {
+/*.tabs-sections {
     height: 5%;
 }
 
@@ -218,17 +228,17 @@ header {
         color: #fff;
         display: inline-block;
         padding-right: 1%;
-    }
+    }*/
 
 
 /* Content
 ---------------------------------------------------------------*/
 
-.content {
+/*.content {
     height: 87%;
     position: absolute;
     width: 100%;
-}
+}*/
 
 
 /* Inputs

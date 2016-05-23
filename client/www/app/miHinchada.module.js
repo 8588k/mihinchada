@@ -6,15 +6,20 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
     Router = Marionette.AppRouter.extend({
         'appRoutes': {
             '': 'index'
+            // TODO: Agregar rutas
         }
     });
 
     controller = {
         index: function() {
-            var mainLayoutView;
+            var headerView,
+                mainView;
 
-            mainLayoutView = new miHinchada.Views.Main();
-            App.mainRegion.show(mainLayoutView);
+            headerView = new miHinchada.Views.Header();
+            App.headerRegion.show(headerView);
+
+            mainView = new miHinchada.Views.FootballMatch();
+            App.mainRegion.show(mainView);
         }
     };
 
@@ -22,12 +27,5 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
         new Router({
             controller: controller
         });
-
-        // adds = new miHinchada.AdMob();
-        // adds.showInterstitial();
-    };
-
-    App.onResume = function() {
-        // adds.showInterstitial();
     };
 });

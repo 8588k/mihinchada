@@ -28040,7 +28040,8 @@ Picker.extend( 'pickadate', DatePicker )
     App.Events = _.extend({}, Backbone.Events);
 
     App.addRegions({
-        'mainRegion': '#app'
+        'headerRegion': '[data-js="header-region"]',
+        'mainRegion': '[data-js="main-region"]'
     });
 
     App.on('start', function() {
@@ -28049,14 +28050,12 @@ Picker.extend( 'pickadate', DatePicker )
 
     win.App = App;
 
-    document.addEventListener("deviceready", function() {
+    // document.addEventListener("deviceready", function() {
+    $(function() {
         App.start();
         FastClick.attach(document.body);
-    }, false);
-
-    document.addEventListener("resume", function() {
-        App.onResume();
-    }, false);
+    });
+    // }, false);
 
 }(window));
 App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) {
@@ -28105,16 +28104,20 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
     Router = Marionette.AppRouter.extend({
         'appRoutes': {
             '': 'index'
-            // settings
+            // TODO: Agregar rutas
         }
     });
 
     controller = {
         index: function() {
-            var mainLayoutView;
+            var headerView,
+                mainView;
 
-            mainLayoutView = new miHinchada.Views.Main();
-            App.mainRegion.show(mainLayoutView);
+            headerView = new miHinchada.Views.Header();
+            App.headerRegion.show(headerView);
+
+            mainView = new miHinchada.Views.FootballMatch();
+            App.mainRegion.show(mainView);
         }
     };
 
@@ -28122,25 +28125,21 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
         new Router({
             controller: controller
         });
-
-        // adds = new miHinchada.AdMob();
-        // adds.showInterstitial();
-    };
-
-    App.onResume = function() {
-        // adds.showInterstitial();
     };
 });
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
+this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "FOOTBALLFIELD\n\n";
+},"useData":true});
+this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<header data-js=\"score-region\">Score Region</header>\n<div data-js=\"field-region\">Field Region</div>";
+},"useData":true});
+this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "FOOTBALLSCORE";
+},"useData":true});
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "Mi Hinchada";
-},"useData":true});
-this["__templates"]["mihinchada"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<header class=\"header\" data-js=\"header\">Header</header>\n<div class=\"tabs-sections\" data-js=\"tabs\">Tabs</div>\n<div class=\"content\" data-js=\"content\">Content</div>";
-},"useData":true});
-this["__templates"]["mihinchada"]["match"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"left-corner-home\"></div>\n<div class=\"right-corner-home\"></div>\n<div class=\"left-corner-away\"></div>\n<div class=\"right-corner-away\"></div>\n<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>";
+    return "HEADER";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
@@ -28241,278 +28240,73 @@ App.module('miHinchada.Collections', function (Collections, App, Backbone, Mario
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Main = Marionette.LayoutView.extend({
+    Views.FootballMatch = Marionette.LayoutView.extend({
 
-        className: 'main-layout',
-
-        template: __templates.mihinchada.main,
+        template: __templates.mihinchada.footballMatch,
 
         regions: {
-            'headerRegion': '[data-js="header"]',
-            'tabsRegion': '[data-js="tabs"]',
-            'contentRegion': '[data-js="content"]'
+            'scoreRegion': '[data-js="score-region"]',
+            'fieldRegion': '[data-js="field-region"]'
         },
 
         onShow: function(options) {
-            var headerItemView,
-                tabsItemView,
-                matchLayoutView;
+            console.log("match!");
+            var scoreView,
+                fieldView;
 
-            headerItemView = new Views.Header();
-            this.headerRegion.show(headerItemView);
+            scoreView = new Views.FootballScore();
+            this.scoreRegion.show(scoreView);
 
-            tabsItemView = new Views.Tabs();
-            this.tabsRegion.show(tabsItemView);
-
-            matchLayoutView = new Views.Match();
-            this.contentRegion.show(matchLayoutView);
+            fieldView = new Views.FootballField();
+            this.fieldRegion.show(fieldView);
         }
-    });
-});
-App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
-    
-    Views.Header = Marionette.ItemView.extend({
-
-        template: __templates.mihinchada.header
-
-        // ui: {
-        //     share: '[data-js="share"]',
-        //     reset: '[data-js="reset"]'
-        // },
-
-        // events: {
-        //     'touchstart @ui.options': 'showOptions',
-        //     'touchstart @ui.share': 'share',
-        //     'touchstart @ui.reset': 'reset'
-        // },
-
-        // onShow: function() {
-            // $('.dropdown-button').dropdown({
-            //     inDuration: 300,
-            //     outDuration: 225,
-            //     constrain_width: false, // Does not change width of dropdown to that of the activator
-            //     hover: false, // Activate on hover
-            //     gutter: 0, // Spacing from edge
-            //     belowOrigin: true, // Displays dropdown below the button
-            //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
-            // });
-        // },
-
-        // share: function(event){
-        //     App.share();
-        // },
-
-        // reset: function(event){
-        //     Backbone.history.navigate('reset', {trigger:true});
-        // }
-    });
-});
-App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
-    
-    Views.Tabs = Marionette.ItemView.extend({
-
-        tagName: 'ul',
-
-        template: __templates.mihinchada.tabs,
-
-        // ui: {
-        //     share: '[data-js="share"]',
-        //     reset: '[data-js="reset"]'
-        // },
-
-        // events: {
-        //     'touchstart @ui.options': 'showOptions',
-        //     'touchstart @ui.share': 'share',
-        //     'touchstart @ui.reset': 'reset'
-        // },
-
-        // onShow: function() {
-            // $('.dropdown-button').dropdown({
-            //     inDuration: 300,
-            //     outDuration: 225,
-            //     constrain_width: false, // Does not change width of dropdown to that of the activator
-            //     hover: false, // Activate on hover
-            //     gutter: 0, // Spacing from edge
-            //     belowOrigin: true, // Displays dropdown below the button
-            //     alignment: 'left' // Displays dropdown with edge aligned to the left of button
-            // });
-        // },
-
-        // share: function(event){
-        //     App.share();
-        // },
-
-        // reset: function(event){
-        //     Backbone.history.navigate('reset', {trigger:true});
-        // }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Match = Marionette.LayoutView.extend({
+    Views.Header = Marionette.LayoutView.extend({
 
-        className: 'field',
+        template: __templates.mihinchada.header,
 
-        template: __templates.mihinchada.match,
+        onShow: function(options) {}
+    });
+
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
+
+    Views.FootballField = Marionette.LayoutView.extend({
+
+        template: __templates.mihinchada.footballField,
 
         regions: {
-            // result
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
             // referee
         },
 
         onShow: function(options) {
-            var that = this,
-                teamHomeCollectionView,
-                teamAwayCollectionView;
+            console.log("field!");
+            // var that = this,
+            //     teamHomeCollectionView,
+            //     teamAwayCollectionView;
 
-            teamHomeCollectionView = new Views.Team();
-            this.teamHomeRegion.show(teamHomeCollectionView);
+            // teamHomeCollectionView = new Views.Team();
+            // this.teamHomeRegion.show(teamHomeCollectionView);
 
-            teamAwayCollectionView = new Views.Team();
-            this.teamAwayRegion.show(teamAwayCollectionView);
-        }
-    });
-});
-App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
-
-    Views.Team = Marionette.LayoutView.extend({
-
-        className: 'team',
-
-        template: __templates.mihinchada.team,
-
-        regions: {
-            'goalkeeperRegion': '[data-js="goalkeeper"]',
-            'defendersRegion': '[data-js="defenders"]',
-            'midfieldersRegion': '[data-js="midfielders"]',
-            'forwardsRegion': '[data-js="forwards"]',
-            // substitutes
-            // manager
-        },
-
-        onShow: function(options) {
-            var that = this,
-                player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-                teamCollection,
-                goalkeepersCollection,
-                goalkeepersCollectionView,
-                defendersCollection,
-                defendersCollectionView,
-                midfieldersCollection,
-                midfieldersCollectionView,
-                forwardsCollection,
-                forwardsCollectionView;
-
-            player = new App.miHinchada.Models.Player({ 'name': 'Nombre1', 'lastName': 'Apellido1', 'shirtNumber': '1', 'playingPosition': 'goalkeeper' });
-            player2 = new App.miHinchada.Models.Player({ 'name': 'Nombre2', 'lastName': 'Apellido2', 'shirtNumber': '2', 'playingPosition': 'defender' });
-            player3 = new App.miHinchada.Models.Player({ 'name': 'Nombre3', 'lastName': 'Apellido3', 'shirtNumber': '3', 'playingPosition': 'defender' });
-            player4 = new App.miHinchada.Models.Player({ 'name': 'Nombre4', 'lastName': 'Apellido4', 'shirtNumber': '4', 'playingPosition': 'defender' });
-            player5 = new App.miHinchada.Models.Player({ 'name': 'Nombre5', 'lastName': 'Apellido5', 'shirtNumber': '5', 'playingPosition': 'defender' });
-            player6 = new App.miHinchada.Models.Player({ 'name': 'Nombre6', 'lastName': 'Apellido6', 'shirtNumber': '6', 'playingPosition': 'midfielder' });
-            player7 = new App.miHinchada.Models.Player({ 'name': 'Nombre7', 'lastName': 'Apellido7', 'shirtNumber': '7', 'playingPosition': 'midfielder' });
-            player8 = new App.miHinchada.Models.Player({ 'name': 'Nombre8', 'lastName': 'Apellido8', 'shirtNumber': '8', 'playingPosition': 'midfielder' });
-            player9 = new App.miHinchada.Models.Player({ 'name': 'Nombre9', 'lastName': 'Apellido9', 'shirtNumber': '9', 'playingPosition': 'midfielder' });
-            player10 = new App.miHinchada.Models.Player({ 'name': 'Nombre10', 'lastName': 'Apellido10', 'shirtNumber': '10', 'playingPosition': 'forward' });
-            player11 = new App.miHinchada.Models.Player({ 'name': 'Nombre11', 'lastName': 'Apellido11', 'shirtNumber': '11', 'playingPosition': 'forward' });
-
-            teamCollection = new App.miHinchada.Collections.Team([player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11]);
-
-            // clono la colección para poder filtrar después
-            goalkeepersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'goalkeeper');
-            defendersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'defender');
-            midfieldersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'midfielder');
-            forwardsCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'forward');
-
-            window.teamCollection = teamCollection;
-            window.goalkeepersCollection = goalkeepersCollection;
-            window.defendersCollection = defendersCollection;
-            window.midfieldersCollection = midfieldersCollection;
-            window.forwardsCollection = forwardsCollection;
-            window.metodo = this.getPlayersCollectionByPlayingPosition;
-
-            goalkeepersCollectionView = new Views.Players({
-                collection: goalkeepersCollection
-            });
-            this.goalkeeperRegion.show(goalkeepersCollectionView);
-
-            defendersCollectionView = new Views.Players({
-                collection: defendersCollection
-            });
-            this.defendersRegion.show(defendersCollectionView);
-
-            midfieldersCollectionView = new Views.Players({
-                collection: midfieldersCollection
-            });
-            this.midfieldersRegion.show(midfieldersCollectionView);
-
-            forwardsCollectionView = new Views.Players({
-                collection: forwardsCollection
-            });
-            this.forwardsRegion.show(forwardsCollectionView);
-        },
-
-        getPlayersCollectionByPlayingPosition: function(collection, playingPosition) {
-            var clonedCollection = collection.clone();
-            clonedCollection.reset(clonedCollection.filter(function(model) {
-                return model.get('playingPosition') === playingPosition;
-            }));
-            return clonedCollection;
+            // teamAwayCollectionView = new Views.Team();
+            // this.teamAwayRegion.show(teamAwayCollectionView);
         }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
     
-    Views.Player = Marionette.ItemView.extend({
+    Views.FootballScore = Marionette.ItemView.extend({
 
-        tagName: 'li',
+        template: __templates.mihinchada.footballScore,
 
-        className: 'player',
-
-        template: __templates.mihinchada.player,
-
-        ui: {
-            // money: 'input[type="number"]',
-            // name: 'input[type="text"]',
-            // trash: '.icon-remove'
-        },
-
-        events: {
-            // 'input @ui.money': 'moneyChange',
-            // 'input @ui.name': 'nameChange',
-            // 'touchstart @ui.trash': 'removePerson'
-        },
-
-        initialize: function() {
-            console.log("player!!!!");
-            // var that = this;
-
-            // App.Events.on('person-message', function(peopleTotal) {
-            //     that.refreshStatusMsg(peopleTotal);
-            // });
-        },
-
-        // onRender: function() {
-            // var that = this;
-
-            // document.addEventListener("deviceready", function() {
-            //     cordova.plugins.Focus.focus(that.ui.money);
-            //     cordova.plugins.Focus.focus(that.ui.name);
-            // }, false);
-        // }
-    });
-});
-App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
-
-    Views.Players = Marionette.CollectionView.extend({
-
-        tagName: 'ul',
-
-        className: 'players-row',
-
-        childView: Views.Player
+        onShow: function() {
+            console.log("score!");
+        }
 
     });
-
 });
