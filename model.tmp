@@ -1,0 +1,229 @@
+actions
+    player
+        goal
+        assist
+        tackle
+        shot
+        dribbles
+        interception
+        clearance
+        long ball
+        offside
+        own_goal
+        red_card
+        yellow_card
+        foul
+    team
+        applause
+        cheer
+        boo
+
+    manager         
+        great sustitution
+        bad sustitution
+        time for a sustitution
+
+    referee    
+            offside
+            red_card
+            yellow_card
+            foul
+
+            offside
+            own_goal
+            red_card
+            yellow_card
+            foul
+
+team
+    name
+    full_name
+    badge
+    keywords
+    home_kit
+    away_kit
+    city
+    country
+    stadium
+        name
+        picture
+        address
+        latitude
+        logitude
+
+manager
+    name
+    last_name
+    keywords
+    born_date
+    born_place
+    height
+    current_team_id    
+    history
+
+player
+    name
+    last_name
+    keywords
+    born_date
+    born_place
+    height
+    current_team_id
+    playing_position
+    history
+
+referee
+    name
+    last_name
+    keywords
+    born_date
+    born_place
+    height
+
+match
+    start_date
+    end_date
+    team_home
+        name
+        keywords
+        manager
+            name
+            last_name
+            keywords
+            rating
+        players
+            name
+            last_name
+            keywords
+            playing_position
+            since_minute
+            until_minute
+            rating
+            tags //yellow_card,red_card,goal,captain
+        kit
+        badge
+        goals
+            player_id
+            minute
+        rating
+    team_away
+        name
+        keywords
+        manager
+            name
+            last_name
+            keywords
+            rating
+        players
+            name
+            last_name
+            keywords
+            playing_position
+            since_minute
+            until_minute
+            rating
+            tags //yellow_card,red_card,goal,captain
+        kit
+        badge
+        goals
+            player_id
+            minute
+        rating
+    referee
+        name
+        last_name
+        keywords
+        rating
+    stadium_name
+    live_users
+    total_users
+
+
+competition
+    name
+    country
+    teams
+
+user
+    email
+    nickname
+    facebook
+    keywords
+    google
+
+actions
+    name gol
+    resource_type (player/referee/team/manager) player
+    points 10
+    keywords [gol, goal]
+
+--------------------------------------------------------------------------------
+----REDIS
+
+match_1
+    referee_points
+    referee_ranking
+    referee_actions_qty
+    team_total_points:
+    team_$id_points
+    team_$id_ranking
+    team_actions_qty
+    manager_total_points:
+    manager_$id_points
+    manager_$id_ranking
+    manager_actions_qty
+    player_total_points:
+    player_$id_points
+    player_$id_ranking
+    player_actions_qty
+    $resource_action_$action_qty
+
+match_1_min_1
+    referee_points
+    referee_ranking
+    referee_actions_qty
+    team_total_points:
+    team_$id_points
+    team_$id_ranking
+    team_actions_qty
+    manager_total_points:
+    manager_$id_points
+    manager_$id_ranking
+    manager_actions_qty
+    player_total_points:
+    player_$id_points
+    player_$id_ranking
+    player_actions_qty
+    $resource_action_$action_qty
+
+
+--------------------------------------------------------------------------------
+
+        1
+            players_total_points -> 23
+            players_points
+                3212243 -> 3 
+                1525234 -> 25
+                2342113 -> -5
+23 ---- 100%
+3 ----- 13%
+
+            player_ranking
+                3212243 -> 50 = antereor * (1 + %) = 56,5
+                1525234 -> 25
+                2342113 -> -5
+            actions
+                total_by_resource
+                    player 3
+                    managaer 2
+
+                fool -> [3212243,3212243,3212243]
+
+        2
+            players_total_points -> 13
+            players_points
+                3212243 -> 4
+                1525234 -> -1
+                2342113 -> 10
+        ..
+        95
