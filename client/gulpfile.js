@@ -52,6 +52,9 @@ gulp.task('js-build', function() {
         'node_modules/backbone/backbone.js',
         'node_modules/backbone.marionette/lib/backbone.marionette.js',
         'node_modules/fastclick/lib/fastclick.js',
+        'node_modules/jquery-mockjax/dist/jquery.mockjax.min.js',
+        // mocks
+        'www/app/mocks/mock.js',
         // app
         'www/app/app.js',
         'www/app/admob.module.js',
@@ -60,11 +63,15 @@ gulp.task('js-build', function() {
         'www/app/utils/handlebars-helpers.js',
         'www/app/models/*.js',
         'www/app/collections/*.js',
-        'www/app/views/main.layout.view.js',
-        'www/app/views/match.layout.view.js',
+        'www/app/views/footballMatch.layout.view.js',
+        // 'www/app/views/header.item.view.js',
+        'www/app/views/header.layout.view.js',
+        // 'www/app/views/tabs.item.view.js',
+        'www/app/views/footballField.layout.view.js',
         'www/app/views/team.layout.view.js',
-        'www/app/views/player.item.view.js',
-        'www/app/views/players.collection.view.js',
+        'www/app/views/footballScore.item.view.js',
+        // 'www/app/views/player.item.view.js',
+        // 'www/app/views/players.collection.view.js',
     ])
     .pipe(concat('bundle.js'))
     .pipe(size({
@@ -95,7 +102,7 @@ gulp.task('fonts-build', function() {
         .pipe(gulp.dest('www/build/font')).on('error', errorHandler);
 });
 
-gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build', 'fonts-build']);
+gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build']);
 
 gulp.task('build', ['default']);
 
@@ -106,7 +113,7 @@ gulp.task('watch', function() {
         'www/app/templates/**/*.hbs',
         'www/app/*.js',
         'www/app/**/*.js',
-        // 'mocks/mock.js'
+        'www/app/mocks/mock.js'
     ], ['default']);
     gulp.watch('www/app/styles/*.css', ['styles-build']);
 });

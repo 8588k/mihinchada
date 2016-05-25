@@ -7,7 +7,8 @@
     App.Events = _.extend({}, Backbone.Events);
 
     App.addRegions({
-        'mainRegion': '#app'
+        'headerRegion': '[data-js="header-region"]',
+        'mainRegion': '[data-js="main-region"]'
     });
 
     App.on('start', function() {
@@ -16,13 +17,11 @@
 
     win.App = App;
 
-    document.addEventListener("deviceready", function() {
+    // document.addEventListener("deviceready", function() {
+    $(function() {
         App.start();
         FastClick.attach(document.body);
-    }, false);
-
-    document.addEventListener("resume", function() {
-        App.onResume();
-    }, false);
+    });
+    // }, false);
 
 }(window));

@@ -1,6 +1,6 @@
-App.module('Vamo', function (Vamo, App, Backbone, Marionette, $, _) {
+App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) {
     
-    Vamo.AdMob = Marionette.Object.extend({
+    miHinchada.AdMob = Marionette.Object.extend({
         ids: {},
 
         lastShow: 0,

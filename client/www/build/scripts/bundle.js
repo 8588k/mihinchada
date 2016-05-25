@@ -28031,6 +28031,303 @@ Picker.extend( 'pickadate', DatePicker )
 	}
 }());
 
+/*! jQuery Mockjax
+ * A Plugin providing simple and flexible mocking of ajax requests and responses
+ * 
+ * Version: 2.1.1
+ * Home: https://github.com/jakerella/jquery-mockjax
+ * Copyright (c) 2016 Jordan Kasper, formerly appendTo;
+ * NOTE: This repository was taken over by Jordan Kasper (@jakerella) October, 2014
+ * 
+ * Dual licensed under the MIT or GPL licenses.
+ * http://opensource.org/licenses/MIT OR http://www.gnu.org/licenses/gpl-2.0.html
+ */
+!function(a,b){"use strict";if("function"==typeof define&&define.amd&&define.amd.jQuery)define(["jquery"],function(c){return b(c,a)});else{if("object"!=typeof exports)return b(a.jQuery||a.$,a);module.exports=b}}(this,function(a,b){"use strict";function c(c){void 0===b.DOMParser&&b.ActiveXObject&&(b.DOMParser=function(){},DOMParser.prototype.parseFromString=function(a){var b=new ActiveXObject("Microsoft.XMLDOM");return b.async="false",b.loadXML(a),b});try{var d=(new DOMParser).parseFromString(c,"text/xml");if(!a.isXMLDoc(d))throw new Error("Unable to parse XML");var e=a("parsererror",d);if(1===e.length)throw new Error("Error: "+a(d).text());return d}catch(f){var g=void 0===f.name?f:f.name+": "+f.message;return void a(document).trigger("xmlParseError",[g])}}function d(b,c){var f=!0;if("string"==typeof c){if(a.isFunction(b.test))return b.test(c);if("object"!=typeof b)return b===c;c=e(c)}return a.each(b,function(e){return void 0===c[e]?f=!1:void("object"==typeof c[e]&&null!==c[e]?(f&&a.isArray(c[e])&&(f=a.isArray(b[e])&&c[e].length===b[e].length),f=f&&d(b[e],c[e])):f=b[e]&&a.isFunction(b[e].test)?f&&b[e].test(c[e]):f&&b[e]===c[e])}),f}function e(a){var b,c,d,e,f={},g=String(a).split(/&/);for(b=0,c=g.length;c>b;++b){d=g[b];try{d=decodeURIComponent(d.replace(/\+/g," ")),d=d.split(/=/)}catch(h){continue}f[d[0]]?(f[d[0]].splice||(e=f[d[0]],f[d[0]]=[],f[d[0]].push(e)),f[d[0]].push(d[1])):f[d[0]]=d[1]}return f}function f(b,c){return b[c]===a.mockjaxSettings[c]}function g(b,c){if(a.isFunction(b))return b(c);if(a.isFunction(b.url.test)){if(!b.url.test(c.url))return null}else{var e=b.namespace||a.mockjaxSettings.namespace;if(e){var f=[e,b.url].join("/");f=f.replace(/(\/+)/g,"/"),b.url=f}var g=b.url.indexOf("*");if(b.url!==c.url&&-1===g||!new RegExp(b.url.replace(/[-[\]{}()+?.,\\^$|#\s]/g,"\\$&").replace(/\*/g,".+")).test(c.url))return null}if(b.requestHeaders){if(void 0===c.headers)return null;var h=!1;if(a.each(b.requestHeaders,function(a,b){var d=c.headers[a];return d!==b?(h=!0,!1):void 0}),h)return null}return!b.data||c.data&&d(b.data,c.data)?b&&b.type&&b.type.toLowerCase()!==c.type.toLowerCase()?null:b:null}function h(a){return"number"==typeof a&&a>=0}function i(b){if(a.isArray(b)&&2===b.length){var c=b[0],d=b[1];if(h(c)&&h(d))return Math.floor(Math.random()*(d-c))+c}else if(h(b))return b;return B}function j(b,d,e){var g=function(f){return function(){return function(){this.status=b.status,this.statusText=b.statusText,this.readyState=1;var g=function(){this.readyState=4;var e;"json"===d.dataType&&"object"==typeof b.responseText?this.responseText=JSON.stringify(b.responseText):"xml"===d.dataType?"string"==typeof b.responseXML?(this.responseXML=c(b.responseXML),this.responseText=b.responseXML):this.responseXML=b.responseXML:"object"==typeof b.responseText&&null!==b.responseText?(b.contentType="application/json",this.responseText=JSON.stringify(b.responseText)):this.responseText=b.responseText,("number"==typeof b.status||"string"==typeof b.status)&&(this.status=b.status),"string"==typeof b.statusText&&(this.statusText=b.statusText),e=this.onload||this.onreadystatechange,a.isFunction(e)?(b.isTimeout&&(this.status=-1),e.call(this,b.isTimeout?"timeout":void 0)):b.isTimeout&&(this.status=-1)};if(a.isFunction(b.response)){if(2===b.response.length)return void b.response(e,function(){g.call(f)});b.response(e)}g.call(f)}.apply(f)}}(this);b.proxy?v({global:!1,url:b.proxy,type:b.proxyType,data:b.data,async:d.async,dataType:"script"===d.dataType?"text/plain":d.dataType,complete:function(a){b.responseXML=b.responseText=a.responseText,f(b,"status")&&(b.status=a.status),f(b,"statusText")&&(b.statusText=a.statusText),d.async===!1?g():this.responseTimer=setTimeout(g,i(b.responseTime))}}):d.async===!1?g():this.responseTimer=setTimeout(g,i(b.responseTime))}function k(b,c,d,e){return b=a.extend(!0,{},a.mockjaxSettings,b),"undefined"==typeof b.headers&&(b.headers={}),"undefined"==typeof c.headers&&(c.headers={}),b.contentType&&(b.headers["content-type"]=b.contentType),{status:b.status,statusText:b.statusText,readyState:1,open:function(){},send:function(){e.fired=!0,j.call(this,b,c,d)},abort:function(){clearTimeout(this.responseTimer)},setRequestHeader:function(a,b){c.headers[a]=b},getResponseHeader:function(a){return b.headers&&b.headers[a]?b.headers[a]:"last-modified"===a.toLowerCase()?b.lastModified||(new Date).toString():"etag"===a.toLowerCase()?b.etag||"":"content-type"===a.toLowerCase()?b.contentType||"text/plain":void 0},getAllResponseHeaders:function(){var c="";return b.contentType&&(b.headers["Content-Type"]=b.contentType),a.each(b.headers,function(a,b){c+=a+": "+b+"\n"}),c}}}function l(a,b,c){if(m(a),a.dataType="json",a.data&&z.test(a.data)||z.test(a.url)){p(a,b,c);var d=/^(\w+:)?\/\/([^\/?#]+)/,e=d.exec(a.url),f=e&&(e[1]&&e[1]!==location.protocol||e[2]!==location.host);if(a.dataType="script","GET"===a.type.toUpperCase()&&f){var g=n(a,b,c);return g?g:!0}}return null}function m(a){"GET"===a.type.toUpperCase()?z.test(a.url)||(a.url+=(/\?/.test(a.url)?"&":"?")+(a.jsonp||"callback")+"=?"):a.data&&z.test(a.data)||(a.data=(a.data?a.data+"&":"")+(a.jsonp||"callback")+"=?")}function n(b,c,d){var e=d&&d.context||b,f=a.Deferred?new a.Deferred:null;if(c.response&&a.isFunction(c.response))c.response(d);else if("object"==typeof c.responseText)a.globalEval("("+JSON.stringify(c.responseText)+")");else{if(c.proxy)return v({global:!1,url:c.proxy,type:c.proxyType,data:c.data,dataType:"script"===b.dataType?"text/plain":b.dataType,complete:function(d){a.globalEval("("+d.responseText+")"),o(b,c,e,f)}}),f;a.globalEval("("+("string"==typeof c.responseText?'"'+c.responseText+'"':c.responseText)+")")}return o(b,c,e,f),f}function o(b,c,d,e){var f;if(setTimeout(function(){q(b,d,c),r(b,d)},i(c.responseTime)),e){try{f=a.parseJSON(c.responseText)}catch(g){}e.resolveWith(d,[f||c.responseText])}}function p(a,c,d){var e=d&&d.context||a,f="string"==typeof a.jsonpCallback&&a.jsonpCallback||"jsonp"+A++;a.data&&(a.data=(a.data+"").replace(z,"="+f+"$1")),a.url=a.url.replace(z,"="+f+"$1"),b[f]=b[f]||function(){q(a,e,c),r(a,e),b[f]=void 0;try{delete b[f]}catch(d){}},a.jsonpCallback=f}function q(b,c,d){b.success&&b.success.call(c,d.responseText||"","success",{}),b.global&&(b.context?a(b.context):a.event).trigger("ajaxSuccess",[{},b])}function r(b,c){b.complete&&b.complete.call(c,{statusText:"success",status:200},"success"),b.global&&(b.context?a(b.context):a.event).trigger("ajaxComplete",[{},b]),b.global&&!--a.active&&a.event.trigger("ajaxStop")}function s(b,c){var d,e,f,h;"object"==typeof b?(c=b,b=void 0):(c=c||{},c.url=b||c.url),e=a.ajaxSetup({},c),e.type=e.method=e.method||e.type,h=function(b,d){var e=c[b.toLowerCase()];return function(){a.isFunction(e)&&e.apply(this,[].slice.call(arguments)),d["onAfter"+b]()}};for(var i=0;i<w.length;i++)if(w[i]&&(f=g(w[i],e)))return x.push(e),a.mockjaxSettings.log(f,e),e.dataType&&"JSONP"===e.dataType.toUpperCase()&&(d=l(e,f,c))?d:(c.crossDomain=!1,f.cache=e.cache,f.timeout=e.timeout,f.global=e.global,f.isTimeout&&(f.responseTime>1?c.timeout=f.responseTime-1:(f.responseTime=2,c.timeout=1)),a.isFunction(f.onAfterSuccess)&&(c.success=h("Success",f)),a.isFunction(f.onAfterError)&&(c.error=h("Error",f)),a.isFunction(f.onAfterComplete)&&(c.complete=h("Complete",f)),t(f,c),function(b,c,e,f){d=v.call(a,a.extend(!0,{},e,{xhr:function(){return k(b,c,e,f)}}))}(f,e,c,w[i]),d);if(y.push(c),a.mockjaxSettings.throwUnmocked===!0)throw new Error("AJAX not mocked: "+c.url);return v.apply(a,[c])}function t(a,b){if(a.url instanceof RegExp&&a.hasOwnProperty("urlParams")){var c=a.url.exec(b.url);if(1!==c.length){c.shift();var d=0,e=c.length,f=a.urlParams.length,g=Math.min(e,f),h={};for(d;g>d;d++){var i=a.urlParams[d];h[i]=c[d]}b.urlParams=h}}}function u(a){var b,c,d,e=[],f=a instanceof RegExp?function(b){return a.test(b)}:function(b){return a===b};for(b=0,c=w.length;c>b;b++)d=w[b],f(d.url)||e.push(d);return e}var v=a.ajax,w=[],x=[],y=[],z=/=\?(&|$)/,A=(new Date).getTime();a.extend({ajax:s});var B=500;return a.mockjaxSettings={log:function(c,d){if(c.logging!==!1&&("undefined"!=typeof c.logging||a.mockjaxSettings.logging!==!1)&&b.console&&console.log){var e="MOCK "+d.type.toUpperCase()+": "+d.url,f=a.ajaxSetup({},d);if("function"==typeof console.log)console.log(e,f);else try{console.log(e+" "+JSON.stringify(f))}catch(g){console.log(e)}}},logging:!0,namespace:null,status:200,statusText:"OK",responseTime:B,isTimeout:!1,throwUnmocked:!1,contentType:"text/plain",response:"",responseText:"",responseXML:"",proxy:"",proxyType:"GET",lastModified:null,etag:"",headers:{etag:"IJF@H#@923uf8023hFO@I#H#","content-type":"text/plain"}},a.mockjax=function(a){var b=w.length;return w[b]=a,b},a.mockjax.clear=function(a){"string"==typeof a||a instanceof RegExp?w=u(a):a||0===a?w[a]=null:w=[],x=[],y=[]},a.mockjax.handler=function(a){return 1===arguments.length?w[a]:void 0},a.mockjax.mockedAjaxCalls=function(){return x},a.mockjax.unfiredHandlers=function(){for(var a=[],b=0,c=w.length;c>b;b++){var d=w[b];null===d||d.fired||a.push(d)}return a},a.mockjax.unmockedAjaxCalls=function(){return y},a.mockjax});
+$.mockjax({
+    url: "/football-match",
+    contentType: 'text/json',
+    type: "GET",
+    responseText: {
+        "match": {
+            "start_date": null,
+            "end_date": null,
+            "team_home": {
+                "name": "River Plate",
+                "keywords": ["River Plate", "Millonarios", "Gallinas"],
+                "manager": {
+                    "name": "Marcelo",
+                    "last_name": "Gallardo",
+                    "keywords": "Muñeco",
+                    "rating": null
+                },
+                "players": [
+                    {
+                        "name": "Player",
+                        "last_name": "1",
+                        "keywords": [],
+                        "playing_position": 'goalkeeper',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "2",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "3",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "4",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "5",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "6",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "7",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "8",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "9",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "10",
+                        "keywords": [],
+                        "playing_position": 'forward',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "11",
+                        "keywords": [],
+                        "playing_position": 'forward',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    }
+                ],
+                "kit": null,
+                "badge": null,
+                "goals": [
+                    {
+                        "player_id": null,
+                        "minute": null
+                    }
+                ],
+                "rating": null
+            },
+            "team_away": {
+                "name": "Boca Juniors",
+                "keywords": ["Boca Juniors", "Xeneizes", "Bosteros"],
+                "manager": {
+                    "name": "Gustavo",
+                    "last_name": "Barros Schelotto",
+                    "keywords": "Mellizo",
+                    "rating": null
+                },
+                "players": [
+                    {
+                        "name": "Player",
+                        "last_name": "1",
+                        "keywords": [],
+                        "playing_position": 'goalkeeper',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "2",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "3",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "4",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "5",
+                        "keywords": [],
+                        "playing_position": 'defender',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "6",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "7",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tag": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "8",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "9",
+                        "keywords": [],
+                        "playing_position": 'midfielder',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "10",
+                        "keywords": [],
+                        "playing_position": 'forward',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    },
+                    {
+                        "name": "Player",
+                        "last_name": "11",
+                        "keywords": [],
+                        "playing_position": 'forward',
+                        "since_minute": null,
+                        "until_minute": null,
+                        "rating": null,
+                        "tags": [] //yellow_card,red_card,goal,captain
+                    }
+                ],
+                "kit": null,
+                "badge": null,
+                "goals": [
+                    {
+                        "player_id": null,
+                        "minute": null
+                    }
+                ],
+                "rating": null
+            },
+            "referee": {
+                "name": "",
+                "last_name": "",
+                "keywords": [],
+                "rating": null
+            },
+            "stadium_name": "Antonio Vespucio Liberti",
+            "live_users": null,
+            "total_users": null
+        }
+    }
+});
+
+// Disable Mocks
+//$.mockjax.clear();
 (function (win) {
 
     if (win.App) { return; }
@@ -28040,7 +28337,8 @@ Picker.extend( 'pickadate', DatePicker )
     App.Events = _.extend({}, Backbone.Events);
 
     App.addRegions({
-        'mainRegion': '#app'
+        'headerRegion': '[data-js="header-region"]',
+        'mainRegion': '[data-js="main-region"]'
     });
 
     App.on('start', function() {
@@ -28049,19 +28347,17 @@ Picker.extend( 'pickadate', DatePicker )
 
     win.App = App;
 
-    document.addEventListener("deviceready", function() {
+    // document.addEventListener("deviceready", function() {
+    $(function() {
         App.start();
         FastClick.attach(document.body);
-    }, false);
-
-    document.addEventListener("resume", function() {
-        App.onResume();
-    }, false);
+    });
+    // }, false);
 
 }(window));
-App.module('Vamo', function (Vamo, App, Backbone, Marionette, $, _) {
+App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) {
     
-    Vamo.AdMob = Marionette.Object.extend({
+    miHinchada.AdMob = Marionette.Object.extend({
         ids: {},
 
         lastShow: 0,
@@ -28105,15 +28401,20 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
     Router = Marionette.AppRouter.extend({
         'appRoutes': {
             '': 'index'
+            // TODO: Agregar rutas
         }
     });
 
     controller = {
         index: function() {
-            var mainLayoutView;
+            var headerView,
+                mainView;
 
-            mainLayoutView = new miHinchada.Views.Main();
-            App.mainRegion.show(mainLayoutView);
+            headerView = new miHinchada.Views.Header();
+            App.headerRegion.show(headerView);
+
+            mainView = new miHinchada.Views.FootballMatch();
+            App.mainRegion.show(mainView);
         }
     };
 
@@ -28121,32 +28422,27 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
         new Router({
             controller: controller
         });
-
-        // adds = new miHinchada.AdMob();
-        // adds.showInterstitial();
-    };
-
-    App.onResume = function() {
-        // adds.showInterstitial();
     };
 });
 this["__templates"] = this["__templates"] || {};
-this["__templates"]["_vamo"] = this["__templates"]["_vamo"] || {};
-this["__templates"]["_vamo"]["actions"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<label for=\"personNumber\">Personas:</label><input type=\"number\" value=\"2\" min=\"0\" max=\"99\" id=\"personNumber\" class=\"person-number\" pattern=\"[0-9]{10}\">\n<input type=\"button\" value=\"+\" class=\"add\">\n<input type=\"button\" value=\"-\" class=\"remove\">";
-},"useData":true});
-this["__templates"]["_vamo"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "Vamo & Vamo\n\n<a class='dropdown-button material-icons right' href='#' data-activates='dropdown'>more_vert</a>\n\n<ul id='dropdown' class='dropdown-content'>\n	<li>\n		<a href=\"#\" data-js=\"share\">Compartir</a>\n	</li>\n	<li class=\"divider\"></li>\n	<li>\n		<a href=\"#\" data-js=\"reset\">Borrar</a>\n	</li>\n</ul>";
-},"useData":true});
-this["__templates"]["_vamo"]["total"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<p>Precio total: $ <span>0</span></p>";
-},"useData":true});
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
-this["__templates"]["mihinchada"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div data-js=\"content\">Content</div>";
+this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n</div>";
 },"useData":true});
-this["__templates"]["mihinchada"]["match"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"field-half field-half-home\" data-js=\"field-half-home\">\n	<div class=\"left-corner\"></div>\n	<div class=\"left-corner\"></div>\n</div>\n<div class=\"field-half field-half-away\" data-js=\"field-half-away\">\n	<div class=\"left-corner\"></div>\n	<div class=\"left-corner\"></div>\n</div>";
+this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n<div class=\"field-container\" data-js=\"field-region\">Field Region</div>";
+},"useData":true});
+this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_river.png\" width=\"50\" height=\"50\">\n</div>\n\n<div class=\"score\">\n    <div class=\"score-result\">\n        <span class=\"score-home\">"
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.team_home : depth0)) != null ? stack1.goals : stack1)) != null ? stack1.length : stack1), depth0))
+    + "</span>\n        -\n        <span class=\"score-away\">"
+    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.team_away : depth0)) != null ? stack1.goals : stack1)) != null ? stack1.length : stack1), depth0))
+    + "</span>\n    </div>\n    <div class=\"score-info\">\n        <span class=\"score-time\">15:47</span>\n        <span class=\"score-period\">ST</span>\n    </div>\n</div>\n\n<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_boca.png\" width=\"50\" height=\"50\">\n</div>";
+},"useData":true});
+this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "HEADER";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
@@ -28157,8 +28453,15 @@ this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</div>";
 },"useData":true});
+this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
+},"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div data-js=\"goalkeeper\"></div>\n<div data-js=\"defenders\"></div>\n<div data-js=\"midfielders\"></div>\n<div data-js=\"forwards\"></div>";
+    var helper;
+
+  return "--"
+    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+    + "--\n\n<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
 },"useData":true});
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
@@ -28203,18 +28506,6 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
 });
 App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
     
-    Models.Match = Backbone.Model.extend({
-        defaults: {
-            'date': null,
-            'teamHome': null,
-            'teamAway': null,
-            'referee': null
-        }
-    });
-
-});
-App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
-    
     Models.Player = Backbone.Model.extend({
         defaults: {
             'name': null,
@@ -28235,6 +28526,285 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
         }
     });
 });
+App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
+    
+    Models.Match = Backbone.Model.extend({
+        urlRoot: '/football-match',
+        defaults: {
+            'match': {
+                'start_date': null,
+                'end_date': null,
+                'team_home': {
+                    'name': null,
+                    'keywords': null,
+                    'manager': {
+                        'name': null,
+                        'last_name': null,
+                        'keywords': null,
+                        'rating': null
+                    },
+                    'players': [
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        }
+                    ],
+                    'kit': null,
+                    'badge': null,
+                    'goals': {
+                        'player_id': null,
+                        'minute': null
+                    },
+                    'rating': null
+                },
+                'team_away': {
+                    'name': null,
+                    'keywords': null,
+                    'manager': {
+                        'name': null,
+                        'last_name': null,
+                        'keywords': null,
+                        'rating': null
+                    },
+                    'players': [
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        },
+                        {
+                            'name': null,
+                            'last_name': null,
+                            'keywords': null,
+                            'playing_position': null,
+                            'since_minute': null,
+                            'until_minute': null,
+                            'rating': null,
+                            'tags': null
+                        }
+                    ],
+                    'kit': null,
+                    'badge': null,
+                    'goals': {
+                        'player_id': null,
+                        'minute': null
+                    },
+                    'rating': null
+                },
+                'referee': {
+                    'name': null,
+                    'last_name': null,
+                    'keywords': null,
+                    'rating': null
+                },
+                'stadium_name': null,
+                'live_users': null,
+                'total_users': null
+            }
+        }
+    });
+});
 App.module('miHinchada.Collections', function (Collections, App, Backbone, Marionette, $, _) {
 
     Collections.Team = Backbone.Collection.extend({
@@ -28244,48 +28814,76 @@ App.module('miHinchada.Collections', function (Collections, App, Backbone, Mario
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Main = Marionette.LayoutView.extend({
+    Views.FootballMatch = Marionette.LayoutView.extend({
 
-        template: __templates.mihinchada.main,
+        template: __templates.mihinchada.footballMatch,
 
         regions: {
-            'contentRegion': '[data-js="content"]'
+            'scoreRegion': '[data-js="score-region"]',
+            'fieldRegion': '[data-js="field-region"]'
         },
-
-        events: {},
 
         onShow: function(options) {
             var that = this,
-                match;
+                scoreView,
+                fieldView,
+                matchModel;
 
-            matchLayoutView = new Views.Match();
-            this.contentRegion.show(matchLayoutView);
+            matchModel = new App.miHinchada.Models.Match();
+            matchModel.fetch({
+                'success': function(model, response, options) {
+                    scoreView = new Views.FootballScore({
+                        'match': model.get('match')
+                    });
+                    that.scoreRegion.show(scoreView);
+
+                    fieldView = new Views.FootballField({
+                        'match': model.get('match')
+                    });
+                    that.fieldRegion.show(fieldView);
+                }
+            });
         }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-    Views.Main = Marionette.LayoutView.extend({
+    Views.Header = Marionette.LayoutView.extend({
 
-        className: 'field',
+        template: __templates.mihinchada.header,
 
-        template: __templates.mihinchada.match,
+        onShow: function(options) {}
+    });
+
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
+
+    Views.FootballField = Marionette.LayoutView.extend({
+
+        template: __templates.mihinchada.footballField,
 
         regions: {
             'teamHomeRegion': '[data-js="field-half-home"]',
             'teamAwayRegion': '[data-js="field-half-away"]'
+            // substitutes
+            // managers
+            // referee
         },
 
         onShow: function(options) {
             var that = this,
-                teamHomeCollectionView,
-                teamAwayCollectionView;
+                teamHomeView,
+                teamAwayView;
 
-            teamHomeCollectionView = new Views.Team();
-            this.teamHomeRegion.show(teamHomeCollectionView);
+            teamHomeView = new Views.Team({
+                'team': that.options.match.team_home
+            });
+            this.teamHomeRegion.show(teamHomeView);
 
-            teamAwayCollectionView = new Views.Team();
-            this.teamAwayRegion.show(teamAwayCollectionView);
+            teamAwayView = new Views.Team({
+                'team': that.options.match.team_away
+            });
+            this.teamAwayRegion.show(teamAwayView);
         }
     });
 });
@@ -28293,138 +28891,102 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
     Views.Team = Marionette.LayoutView.extend({
 
-        className: 'team',
-
         template: __templates.mihinchada.team,
+
+        templateHelpers: function() {
+            return this.options.team;
+        },
 
         regions: {
             'goalkeeperRegion': '[data-js="goalkeeper"]',
             'defendersRegion': '[data-js="defenders"]',
             'midfieldersRegion': '[data-js="midfielders"]',
-            'forwardsRegion': '[data-js="forwards"]'
+            'forwardsRegion': '[data-js="forwards"]',
+            // substitutes
+            // manager
         },
 
         onShow: function(options) {
-            var that = this,
-                player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-                teamCollection,
-                goalkeepersCollection,
-                goalkeepersCollectionView,
-                defendersCollection,
-                defendersCollectionView,
-                midfieldersCollection,
-                midfieldersCollectionView,
-                forwardsCollection,
-                forwardsCollectionView;
+            // var that = this,
+            //     player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
+            //     teamCollection,
+            //     goalkeepersCollection,
+            //     goalkeepersCollectionView,
+            //     defendersCollection,
+            //     defendersCollectionView,
+            //     midfieldersCollection,
+            //     midfieldersCollectionView,
+            //     forwardsCollection,
+            //     forwardsCollectionView;
 
-            player = new App.miHinchada.Models.Player({ 'name': 'Nombre1', 'lastName': 'Apellido1', 'shirtNumber': '1', 'playingPosition': 'goalkeeper' });
-            player2 = new App.miHinchada.Models.Player({ 'name': 'Nombre2', 'lastName': 'Apellido2', 'shirtNumber': '2', 'playingPosition': 'defender' });
-            player3 = new App.miHinchada.Models.Player({ 'name': 'Nombre3', 'lastName': 'Apellido3', 'shirtNumber': '3', 'playingPosition': 'defender' });
-            player4 = new App.miHinchada.Models.Player({ 'name': 'Nombre4', 'lastName': 'Apellido4', 'shirtNumber': '4', 'playingPosition': 'defender' });
-            player5 = new App.miHinchada.Models.Player({ 'name': 'Nombre5', 'lastName': 'Apellido5', 'shirtNumber': '5', 'playingPosition': 'defender' });
-            player6 = new App.miHinchada.Models.Player({ 'name': 'Nombre6', 'lastName': 'Apellido6', 'shirtNumber': '6', 'playingPosition': 'midfielder' });
-            player7 = new App.miHinchada.Models.Player({ 'name': 'Nombre7', 'lastName': 'Apellido7', 'shirtNumber': '7', 'playingPosition': 'midfielder' });
-            player8 = new App.miHinchada.Models.Player({ 'name': 'Nombre8', 'lastName': 'Apellido8', 'shirtNumber': '8', 'playingPosition': 'midfielder' });
-            player9 = new App.miHinchada.Models.Player({ 'name': 'Nombre9', 'lastName': 'Apellido9', 'shirtNumber': '9', 'playingPosition': 'midfielder' });
-            player10 = new App.miHinchada.Models.Player({ 'name': 'Nombre10', 'lastName': 'Apellido10', 'shirtNumber': '10', 'playingPosition': 'forward' });
-            player11 = new App.miHinchada.Models.Player({ 'name': 'Nombre11', 'lastName': 'Apellido11', 'shirtNumber': '11', 'playingPosition': 'forward' });
+            // player = new App.miHinchada.Models.Player({ 'name': 'Nombre1', 'lastName': 'Apellido1', 'shirtNumber': '1', 'playingPosition': 'goalkeeper' });
+            // player2 = new App.miHinchada.Models.Player({ 'name': 'Nombre2', 'lastName': 'Apellido2', 'shirtNumber': '2', 'playingPosition': 'defender' });
+            // player3 = new App.miHinchada.Models.Player({ 'name': 'Nombre3', 'lastName': 'Apellido3', 'shirtNumber': '3', 'playingPosition': 'defender' });
+            // player4 = new App.miHinchada.Models.Player({ 'name': 'Nombre4', 'lastName': 'Apellido4', 'shirtNumber': '4', 'playingPosition': 'defender' });
+            // player5 = new App.miHinchada.Models.Player({ 'name': 'Nombre5', 'lastName': 'Apellido5', 'shirtNumber': '5', 'playingPosition': 'defender' });
+            // player6 = new App.miHinchada.Models.Player({ 'name': 'Nombre6', 'lastName': 'Apellido6', 'shirtNumber': '6', 'playingPosition': 'midfielder' });
+            // player7 = new App.miHinchada.Models.Player({ 'name': 'Nombre7', 'lastName': 'Apellido7', 'shirtNumber': '7', 'playingPosition': 'midfielder' });
+            // player8 = new App.miHinchada.Models.Player({ 'name': 'Nombre8', 'lastName': 'Apellido8', 'shirtNumber': '8', 'playingPosition': 'midfielder' });
+            // player9 = new App.miHinchada.Models.Player({ 'name': 'Nombre9', 'lastName': 'Apellido9', 'shirtNumber': '9', 'playingPosition': 'midfielder' });
+            // player10 = new App.miHinchada.Models.Player({ 'name': 'Nombre10', 'lastName': 'Apellido10', 'shirtNumber': '10', 'playingPosition': 'forward' });
+            // player11 = new App.miHinchada.Models.Player({ 'name': 'Nombre11', 'lastName': 'Apellido11', 'shirtNumber': '11', 'playingPosition': 'forward' });
 
-            teamCollection = new App.miHinchada.Collections.Team([player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11]);
+            // teamCollection = new App.miHinchada.Collections.Team([player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11]);
 
-            // clono la colección para poder filtrar después
-            goalkeepersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'goalkeeper');
-            defendersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'defender');
-            midfieldersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'midfielder');
-            forwardsCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'forward');
+            // // clono la colección para poder filtrar después
+            // goalkeepersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'goalkeeper');
+            // defendersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'defender');
+            // midfieldersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'midfielder');
+            // forwardsCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'forward');
 
-            window.teamCollection = teamCollection;
-            window.goalkeepersCollection = goalkeepersCollection;
-            window.defendersCollection = defendersCollection;
-            window.midfieldersCollection = midfieldersCollection;
-            window.forwardsCollection = forwardsCollection;
-            window.metodo = this.getPlayersCollectionByPlayingPosition;
+            // window.teamCollection = teamCollection;
+            // window.goalkeepersCollection = goalkeepersCollection;
+            // window.defendersCollection = defendersCollection;
+            // window.midfieldersCollection = midfieldersCollection;
+            // window.forwardsCollection = forwardsCollection;
+            // window.metodo = this.getPlayersCollectionByPlayingPosition;
 
-            goalkeepersCollectionView = new Views.Players({
-                collection: goalkeepersCollection
-            });
-            this.goalkeeperRegion.show(goalkeepersCollectionView);
+            // goalkeepersCollectionView = new Views.Players({
+            //     collection: goalkeepersCollection
+            // });
+            // this.goalkeeperRegion.show(goalkeepersCollectionView);
 
-            defendersCollectionView = new Views.Players({
-                collection: defendersCollection
-            });
-            this.defendersRegion.show(defendersCollectionView);
+            // defendersCollectionView = new Views.Players({
+            //     collection: defendersCollection
+            // });
+            // this.defendersRegion.show(defendersCollectionView);
 
-            midfieldersCollectionView = new Views.Players({
-                collection: midfieldersCollection
-            });
-            this.midfieldersRegion.show(midfieldersCollectionView);
+            // midfieldersCollectionView = new Views.Players({
+            //     collection: midfieldersCollection
+            // });
+            // this.midfieldersRegion.show(midfieldersCollectionView);
 
-            forwardsCollectionView = new Views.Players({
-                collection: forwardsCollection
-            });
-            this.forwardsRegion.show(forwardsCollectionView);
-        },
-
-        getPlayersCollectionByPlayingPosition: function(collection, playingPosition) {
-            var clonedCollection = collection.clone();
-            clonedCollection.reset(clonedCollection.filter(function(model) {
-                return model.get('playingPosition') === playingPosition;
-            }));
-            return clonedCollection;
+            // forwardsCollectionView = new Views.Players({
+            //     collection: forwardsCollection
+            // });
+            // this.forwardsRegion.show(forwardsCollectionView);
         }
+
+        // getPlayersCollectionByPlayingPosition: function(collection, playingPosition) {
+        //     var clonedCollection = collection.clone();
+        //     clonedCollection.reset(clonedCollection.filter(function(model) {
+        //         return model.get('playingPosition') === playingPosition;
+        //     }));
+        //     return clonedCollection;
+        // }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
     
-    Views.Player = Marionette.ItemView.extend({
+    Views.FootballScore = Marionette.ItemView.extend({
 
-        tagName: 'li',
+        template: __templates.mihinchada.footballScore,
 
-        className: 'player',
-
-        template: __templates.mihinchada.player,
-
-        ui: {
-            // money: 'input[type="number"]',
-            // name: 'input[type="text"]',
-            // trash: '.icon-remove'
+        templateHelpers: function() {
+        	return this.options.match;
         },
 
-        events: {
-            // 'input @ui.money': 'moneyChange',
-            // 'input @ui.name': 'nameChange',
-            // 'touchstart @ui.trash': 'removePerson'
-        },
-
-        initialize: function() {
-            console.log("player!!!!");
-            // var that = this;
-
-            // App.Events.on('person-message', function(peopleTotal) {
-            //     that.refreshStatusMsg(peopleTotal);
-            // });
-        },
-
-        // onRender: function() {
-            // var that = this;
-
-            // document.addEventListener("deviceready", function() {
-            //     cordova.plugins.Focus.focus(that.ui.money);
-            //     cordova.plugins.Focus.focus(that.ui.name);
-            // }, false);
-        // }
-    });
-});
-App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
-
-    Views.Players = Marionette.CollectionView.extend({
-
-        tagName: 'ul',
-
-        className: 'players-row',
-
-        childView: Views.Player
+        onShow: function() {}
 
     });
-
 });
