@@ -1,33 +1,42 @@
 {
-  "name": "MiHinchada",
-  "version": "0.0.1",
-  "description": "Mi hinchada",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "jasmine-node --forceexit --captureExceptions app/test",
-    "tdd": "jasmine-node --forceexit --captureExceptions --watch app/src --autotest app/test"
-  },
-  "author": "8588kb",
-  "license": "ISC",
+  "name": "mi-hinchada",
+  "version": "0.0.0",
+  "private": true,
   "dependencies": {
-    "bluebird": "^3.0.6",
-    "body-parser": "~1.14.1",
-    "express": "~4.13.3",
-    "moment": "^2.10.6",
+    "keystone": "^0.3.16",
     "mongoose": "^4.2.5",
-    "morgan": "~1.6.1",
+    "bluebird": "^3.0.6",
+    "async": "^1.5.0",
+    "underscore": "^1.8.3",
+    "moment": "^2.10.6",
+    "cloudinary": "^1.2.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "node-sass": "^3.3.2",
+    "node-sass-middleware": "^0.9.7", 
+    "dotenv": "^1.1.0",
     "redis": "^2.4.2",
     "socket.io": "^1.3.7",
     "twit": "^2.1.1"
   },
-  "engines": {
-    "node": ">=4.0.0"
-  },
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-open": "^0.3.2",
+    "gulp": "^3.7.0",
+    "gulp-shell": "^0.5.0",
+    "gulp-watch": "^4.3.5",
+    "gulp-sass": "^2.0.4",
+    "gulp-jslint": "^1.0.1",
     "jasmine-core": "^2.3.4",
     "jasmine-node": "^1.14.5"
-  }
+    
+  },
+  "engines": {
+    "node": ">=0.10.22",
+    "npm": ">=1.3.14"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "jasmine-node --forceexit --captureExceptions test",
+    "tdd": "jasmine-node --forceexit --captureExceptions --watch ./ --autotest test"
+  },
+  "main": "keystone.js"
 }
