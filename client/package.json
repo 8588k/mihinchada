@@ -12,7 +12,7 @@
   "devDependencies": {
     "del": "~2.0.2",
     "fastclick": "^1.0.6",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.5.2",
     "gulp-declare": "~0.3.0",
