@@ -21,6 +21,9 @@
     $(function() {
         App.start();
         FastClick.attach(document.body);
+
+        // Initialize header's collapse button
+        $('.button-collapse').sideNav();
     });
     // }, false);
 
