@@ -8460,6 +8460,45 @@ body {
     border-top: 2px solid #fff;
 }
 
+.large-area-home,
+.large-area-away,
+.small-area-home,
+.small-area-away {
+    border: 1px solid white;
+    width: 50%;
+    position: absolute;
+    margin: 0 25%;
+}
+
+.large-area-home,
+.large-area-away {
+    height: 15%;
+}
+
+.small-area-home,
+.small-area-away {
+    height: 40%;
+}
+
+.large-area-home,
+.small-area-home {
+    top: 0;
+}
+
+.large-area-away,
+.small-area-away {
+    bottom: 0;
+}
+
+
+/* Player
+---------------------------------------------------------------*/
+
+.players-row li {
+    display: inline-block;
+}
+
+
 
 
 

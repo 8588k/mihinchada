@@ -28065,6 +28065,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "1",
                         "keywords": [],
+                        'shirt_number': '1',
                         "playing_position": 'goalkeeper',
                         "since_minute": null,
                         "until_minute": null,
@@ -28075,6 +28076,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "2",
                         "keywords": [],
+                        'shirt_number': '2',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28085,6 +28087,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "3",
                         "keywords": [],
+                        'shirt_number': '3',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28095,6 +28098,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "4",
                         "keywords": [],
+                        'shirt_number': '4',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28105,6 +28109,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "5",
                         "keywords": [],
+                        'shirt_number': '5',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28115,6 +28120,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "6",
                         "keywords": [],
+                        'shirt_number': '6',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28125,6 +28131,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "7",
                         "keywords": [],
+                        'shirt_number': '7',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28135,6 +28142,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "8",
                         "keywords": [],
+                        'shirt_number': '8',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28145,6 +28153,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "9",
                         "keywords": [],
+                        'shirt_number': '9',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28155,6 +28164,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "10",
                         "keywords": [],
+                        'shirt_number': '10',
                         "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
@@ -28165,6 +28175,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "11",
                         "keywords": [],
+                        'shirt_number': '11',
                         "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
@@ -28196,6 +28207,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "1",
                         "keywords": [],
+                        'shirt_number': '1',
                         "playing_position": 'goalkeeper',
                         "since_minute": null,
                         "until_minute": null,
@@ -28206,6 +28218,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "2",
                         "keywords": [],
+                        'shirt_number': '2',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28216,6 +28229,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "3",
                         "keywords": [],
+                        'shirt_number': '3',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28226,6 +28240,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "4",
                         "keywords": [],
+                        'shirt_number': '4',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28236,6 +28251,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "5",
                         "keywords": [],
+                        'shirt_number': '5',
                         "playing_position": 'defender',
                         "since_minute": null,
                         "until_minute": null,
@@ -28246,6 +28262,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "6",
                         "keywords": [],
+                        'shirt_number': '6',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28256,6 +28273,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "7",
                         "keywords": [],
+                        'shirt_number': '7',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28266,6 +28284,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "8",
                         "keywords": [],
+                        'shirt_number': '8',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28276,6 +28295,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "9",
                         "keywords": [],
+                        'shirt_number': '9',
                         "playing_position": 'midfielder',
                         "since_minute": null,
                         "until_minute": null,
@@ -28286,6 +28306,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "10",
                         "keywords": [],
+                        'shirt_number': '10',
                         "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
@@ -28296,6 +28317,7 @@ $.mockjax({
                         "name": "Player",
                         "last_name": "11",
                         "keywords": [],
+                        'shirt_number': '11',
                         "playing_position": 'forward',
                         "since_minute": null,
                         "until_minute": null,
@@ -28427,7 +28449,7 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
 this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n</div>";
+    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"large-area-home\">\n		<div class=\"small-area-home\"></div>\n	</div>\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n	<div class=\"large-area-away\">\n		<div class=\"small-area-away\"></div>\n	</div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n<div class=\"field-container\" data-js=\"field-region\">Field Region</div>";
@@ -28457,11 +28479,7 @@ this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,"
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper;
-
-  return "--"
-    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "--\n\n<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
+    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
 },"useData":true});
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
@@ -28503,18 +28521,6 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
         "/": lvalue / rvalue,
         "%": lvalue % rvalue
     }[operator];
-});
-App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
-    
-    Models.Player = Backbone.Model.extend({
-        defaults: {
-            'name': null,
-            'lastName': null,
-            'shirtNumber': null,
-            'playingPosition': null
-        }
-    });
-
 });
 App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
     
@@ -28805,10 +28811,29 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
         }
     });
 });
+App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
+    
+    Models.Player = Backbone.Model.extend({
+        defaults: {
+            'name': null,
+            'last_name': null,
+            'shirt_number': null,
+            'playing_position': null,
+            'keywords': [],
+            'since_minute': null,
+            'until_minute': null,
+            'rating': null,
+            'tags': [] //yellow_card,red_card,goal,captain
+        }
+    });
+
+});
 App.module('miHinchada.Collections', function (Collections, App, Backbone, Marionette, $, _) {
 
-    Collections.Team = Backbone.Collection.extend({
+    Collections.Players = Backbone.Collection.extend({
+
         model: App.miHinchada.Models.Player
+
     });
 
 });
@@ -28906,74 +28931,52 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             // manager
         },
 
-        onShow: function(options) {
-            // var that = this,
-            //     player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-            //     teamCollection,
-            //     goalkeepersCollection,
-            //     goalkeepersCollectionView,
-            //     defendersCollection,
-            //     defendersCollectionView,
-            //     midfieldersCollection,
-            //     midfieldersCollectionView,
-            //     forwardsCollection,
-            //     forwardsCollectionView;
+        onShow: function() {
+            var team = this.options.team,
+                playersCollection,
+                goalkeepers,
+                goalkeepersCollectionView,
+                defenders,
+                defendersCollectionView,
+                midfielders,
+                midfieldersCollectionView,
+                forwards,
+                forwardsCollectionView;
 
-            // player = new App.miHinchada.Models.Player({ 'name': 'Nombre1', 'lastName': 'Apellido1', 'shirtNumber': '1', 'playingPosition': 'goalkeeper' });
-            // player2 = new App.miHinchada.Models.Player({ 'name': 'Nombre2', 'lastName': 'Apellido2', 'shirtNumber': '2', 'playingPosition': 'defender' });
-            // player3 = new App.miHinchada.Models.Player({ 'name': 'Nombre3', 'lastName': 'Apellido3', 'shirtNumber': '3', 'playingPosition': 'defender' });
-            // player4 = new App.miHinchada.Models.Player({ 'name': 'Nombre4', 'lastName': 'Apellido4', 'shirtNumber': '4', 'playingPosition': 'defender' });
-            // player5 = new App.miHinchada.Models.Player({ 'name': 'Nombre5', 'lastName': 'Apellido5', 'shirtNumber': '5', 'playingPosition': 'defender' });
-            // player6 = new App.miHinchada.Models.Player({ 'name': 'Nombre6', 'lastName': 'Apellido6', 'shirtNumber': '6', 'playingPosition': 'midfielder' });
-            // player7 = new App.miHinchada.Models.Player({ 'name': 'Nombre7', 'lastName': 'Apellido7', 'shirtNumber': '7', 'playingPosition': 'midfielder' });
-            // player8 = new App.miHinchada.Models.Player({ 'name': 'Nombre8', 'lastName': 'Apellido8', 'shirtNumber': '8', 'playingPosition': 'midfielder' });
-            // player9 = new App.miHinchada.Models.Player({ 'name': 'Nombre9', 'lastName': 'Apellido9', 'shirtNumber': '9', 'playingPosition': 'midfielder' });
-            // player10 = new App.miHinchada.Models.Player({ 'name': 'Nombre10', 'lastName': 'Apellido10', 'shirtNumber': '10', 'playingPosition': 'forward' });
-            // player11 = new App.miHinchada.Models.Player({ 'name': 'Nombre11', 'lastName': 'Apellido11', 'shirtNumber': '11', 'playingPosition': 'forward' });
+            playersCollection = new App.miHinchada.Collections.Players(team.players);
 
-            // teamCollection = new App.miHinchada.Collections.Team([player, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11]);
+            goalkeepers = playersCollection.where({'playing_position': 'goalkeeper'});
+            defenders = playersCollection.where({'playing_position': 'defender'});
+            midfielders = playersCollection.where({'playing_position': 'midfielder'});
+            forwards = playersCollection.where({'playing_position': 'forward'});
 
-            // // clono la colección para poder filtrar después
-            // goalkeepersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'goalkeeper');
-            // defendersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'defender');
-            // midfieldersCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'midfielder');
-            // forwardsCollection = this.getPlayersCollectionByPlayingPosition(teamCollection, 'forward');
 
-            // window.teamCollection = teamCollection;
-            // window.goalkeepersCollection = goalkeepersCollection;
-            // window.defendersCollection = defendersCollection;
-            // window.midfieldersCollection = midfieldersCollection;
-            // window.forwardsCollection = forwardsCollection;
-            // window.metodo = this.getPlayersCollectionByPlayingPosition;
+            var goalkeepersCollection = new App.miHinchada.Collections.Players(goalkeepers);
+            var defendersCollection = new App.miHinchada.Collections.Players(defenders);
+            var midfieldersCollection = new App.miHinchada.Collections.Players(midfielders);
+            var forwardsCollection = new App.miHinchada.Collections.Players(forwards);
 
-            // goalkeepersCollectionView = new Views.Players({
-            //     collection: goalkeepersCollection
-            // });
-            // this.goalkeeperRegion.show(goalkeepersCollectionView);
+            goalkeepersCollectionView = new Views.Players({
+                collection: goalkeepersCollection
+            });
+            this.goalkeeperRegion.show(goalkeepersCollectionView);
 
-            // defendersCollectionView = new Views.Players({
-            //     collection: defendersCollection
-            // });
-            // this.defendersRegion.show(defendersCollectionView);
+            defendersCollectionView = new Views.Players({
+                collection: defendersCollection
+            });
+            this.defendersRegion.show(defendersCollectionView);
 
-            // midfieldersCollectionView = new Views.Players({
-            //     collection: midfieldersCollection
-            // });
-            // this.midfieldersRegion.show(midfieldersCollectionView);
+            midfieldersCollectionView = new Views.Players({
+                collection: midfieldersCollection
+            });
+            this.midfieldersRegion.show(midfieldersCollectionView);
 
-            // forwardsCollectionView = new Views.Players({
-            //     collection: forwardsCollection
-            // });
-            // this.forwardsRegion.show(forwardsCollectionView);
+            forwardsCollectionView = new Views.Players({
+                collection: forwardsCollection
+            });
+            this.forwardsRegion.show(forwardsCollectionView);
         }
 
-        // getPlayersCollectionByPlayingPosition: function(collection, playingPosition) {
-        //     var clonedCollection = collection.clone();
-        //     clonedCollection.reset(clonedCollection.filter(function(model) {
-        //         return model.get('playingPosition') === playingPosition;
-        //     }));
-        //     return clonedCollection;
-        // }
     });
 });
 App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
@@ -28989,4 +28992,28 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         onShow: function() {}
 
     });
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {    
+    
+    Views.Player = Marionette.ItemView.extend({
+
+        tagName: 'li',
+
+        template: __templates.mihinchada.player
+
+    });
+
+});
+App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _) {
+
+    Views.Players = Marionette.CollectionView.extend({
+
+        tagName: 'ul',
+
+        className: 'players-row',
+
+        childView: Views.Player
+
+    });
+
 });

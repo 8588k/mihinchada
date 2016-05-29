@@ -1,7 +1,7 @@
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
 this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n</div>";
+    return "<div class=\"field\">\n	<div class=\"left-corner-home\"></div>\n	<div class=\"right-corner-home\"></div>\n	<div class=\"large-area-home\">\n		<div class=\"small-area-home\"></div>\n	</div>\n	<div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n\n	<div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n	<div class=\"left-corner-away\"></div>\n	<div class=\"right-corner-away\"></div>\n	<div class=\"large-area-away\">\n		<div class=\"small-area-away\"></div>\n	</div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n<div class=\"field-container\" data-js=\"field-region\">Field Region</div>";
@@ -31,9 +31,5 @@ this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,"
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper;
-
-  return "--"
-    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "--\n\n<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
+    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"forwards-row\" data-js=\"forwards\">FORWARDS</div>";
 },"useData":true});
