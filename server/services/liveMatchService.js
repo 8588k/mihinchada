@@ -27,7 +27,8 @@ var matchService = require('./matchService.js'),
 
     add = function(map, key, value){
         var prev = parseInt(map[key]|| 0);
-        map[key] = prev + value;
+        var addValue = parseInt(value|| 1);
+        map[key] = prev + addValue;
     },
 
      /*  Crea un evento de una accion para un recurso
@@ -62,12 +63,12 @@ var matchService = require('./matchService.js'),
                     for(idx in result){
                         liveMatch = result[idx] || {};
 
-                        add(liveMatch, `${action.resource_type}_total_points`, action.points);
-                        add(liveMatch, `${action.resource_type}_${resource.id}_points`, action.points);
-                        add(liveMatch, `${action.resource_type}_actions_qty`, 1);
-                        add(liveMatch, `${action.resource_type}_action_${action.name}_qty`, 1);
-                        liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
-                            parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || 5);
+                        add(liveMatch, `${action.resourceType}_total_points`, action.points);
+                        add(liveMatch, `${action.resourceType}_${resource.id}_points`, action.points);
+                        add(liveMatch, `${action.resourceType}_actions_qty`, 1);
+                        add(liveMatch, `${action.resourceType}_action_${action.name}_qty`, 1);
+                        liveMatch[`${action.resourceType}_${resource.id}_ranking`] = 
+                            parseInt(liveMatch[`${action.resourceType}_${resource.id}_ranking`] || 50);
 
                         result[idx] = liveMatch;
                     }

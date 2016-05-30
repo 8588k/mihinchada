@@ -7,13 +7,13 @@ describe("matchService suite", function() {
     it("create tracks for a match", function() {
         var actions = [
             {
-                'resource_type':'team',
+                'resourceType':'team',
                 'points': 1,
                 'name': 'Alentar',
                 'keywords': ['vamos','aguante','arriba']
             },
             {
-                'resource_type':'player',
+                'resourceType':'player',
                 'points': 2,
                 'name': 'Gol',
                 'keywords': ['gol','gool','goool','goal']
@@ -186,13 +186,13 @@ describe("matchService suite", function() {
         actions = [
             {
                 'name': 'Gol',
-                'resource_type': 'player',
+                'resourceType': 'player',
                 'points': 2,
                 'keywords': ['gol', 'goal']
             },
             {
                 'name': 'Alentar',
-                'resource_type': 'team',
+                'resourceType': 'team',
                 'points': 3,
                 'keywords': ['vamos', 'aguante']
             }
@@ -220,13 +220,13 @@ describe("matchService suite", function() {
         actions = [
             {
                 'name': 'Gol',
-                'resource_type': 'player',
+                'resourceType': 'player',
                 'points': 2,
                 'keywords': ['gol', 'goal', 'golazo']
             },
             {
                 'name': 'Alentar',
-                'resource_type': 'team',
+                'resourceType': 'team',
                 'points': 3,
                 'keywords': ['vamos', 'aguante']
             },
@@ -299,7 +299,7 @@ describe("matchService suite", function() {
         actions = [
             {
                 'name': 'Alentar',
-                'resource_type': 'team',
+                'resourceType': 'team',
                 'points': 3,
                 'keywords': ['vamos', 'aguante']
             }

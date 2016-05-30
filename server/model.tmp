@@ -35,6 +35,13 @@ actions
             yellow_card
             foul
 
+stadium
+    name
+    picture
+    address
+    latitude
+    logitude
+
 team
     name
     full_name
@@ -44,12 +51,6 @@ team
     away_kit
     city
     country
-    stadium
-        name
-        picture
-        address
-        latitude
-        logitude
 
 manager
     name
@@ -153,7 +154,7 @@ user
 
 actions
     name gol
-    resource_type (player/referee/team/manager) player
+    resourceType (player/referee/team/manager) player
     points 10
     keywords [gol, goal]
 

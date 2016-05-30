@@ -67,7 +67,7 @@ describe("liveMatchService suite", function() {
 
         var match = {
             'id': 'idmatch',
-            'start_date': new Date(new Date().getTime() - 5*60000),
+            'start_date': new Date(new Date().getTime() - 3*60000),
             'end_date': new Date(new Date().getTime() + 115*60000),
             'team_home': {
                 'id': 'idboca',
@@ -132,7 +132,7 @@ describe("liveMatchService suite", function() {
         },
         action = {
             'name': 'Alentar',
-            'resource_type': 'team',
+            'resourceType': 'team',
             'points': 3,
             'keywords': ['vamos', 'aguante']
         };
