@@ -1,2 +1,35 @@
-<div class="player-number-container">{{shirtNumber}}</div>
-<div class="player-name">{{name}}</div>
+<a href="#modalPlayer" data-js="player">
+    <div class="player-number-container">{{shirt_number}}</div>
+    <div class="player-name">{{name}}</div>
+</a>
+
+{{!-- TODO: crear instancia única de modal, dinámico --}}
+<div id="modalPlayer" class="modal bottom-sheet">
+    <div class="modal-content">
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <h4>Jugador</h4>
+            </li>
+            <li class="collection-item">
+                <div>
+                    Gol<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+                </div>
+            </li>
+            <li class="collection-item">
+                <div>
+                    Offside<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+                </div>
+            </li>
+            <li class="collection-item">
+                <div>
+                    Tarjeta amarilla<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+                </div>
+            </li>
+            <li class="collection-item">
+                <div>
+                    Tarjeta roja<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+                </div>
+            </li>
+      </ul>
+    </div>
+</div>

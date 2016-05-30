@@ -15,8 +15,8 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
             var headerView,
                 mainView;
 
-            headerView = new miHinchada.Views.Header();
-            App.headerRegion.show(headerView);
+            // headerView = new miHinchada.Views.Header();
+            // App.headerRegion.show(headerView);
 
             mainView = new miHinchada.Views.FootballMatch();
             App.mainRegion.show(mainView);

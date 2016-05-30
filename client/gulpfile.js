@@ -70,8 +70,8 @@ gulp.task('js-build', function() {
         'www/app/views/footballField.layout.view.js',
         'www/app/views/team.layout.view.js',
         'www/app/views/footballScore.item.view.js',
-        // 'www/app/views/player.item.view.js',
-        // 'www/app/views/players.collection.view.js',
+        'www/app/views/player.item.view.js',
+        'www/app/views/players.collection.view.js',
     ])
     .pipe(concat('bundle.js'))
     .pipe(size({

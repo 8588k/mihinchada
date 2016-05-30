@@ -5,10 +5,21 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         template: __templates.mihinchada.footballScore,
 
         templateHelpers: function() {
-        	return this.options.match;
+            return this.options.match;
         },
 
-        onShow: function() {}
+        ui: {
+            'crest': '.score-crest'
+        },
+
+        events: {
+            'click @ui.crest': 'showTeamModal'
+        },
+
+        showTeamModal: function(event) {
+            event.preventDefault();
+            $('#modalTeam').openModal();
+        }
 
     });
 });
