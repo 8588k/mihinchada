@@ -1,6 +1,6 @@
 body {
     background-color: #ccc;
-    font-family: Arial, Helvetica, Sans-serif;
+    font-family: Roboto, Arial, Helvetica, Sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -37,12 +37,17 @@ body {
     height: 8vh;
 }*/
 
+nav {
+    background-color: #03a9f4;
+}
+
 
 /* SCORE
 ---------------------------------------------------------------*/
 
 .score-container {
-    height: 12vh;
+    height: auto;
+    padding: 10px;
     text-align: center;
 }
 
@@ -163,11 +168,48 @@ body {
 /* Player
 ---------------------------------------------------------------*/
 
+.players-row {
+    text-align: center;
+}
+
 .players-row li {
     display: inline-block;
+    margin-right: 2%;
+    text-align: center;
+    width: 18%;
+}
+
+.players-row a {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.player-number-container {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 50%;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
 }
 
 
+/* Modal
+---------------------------------------------------------------*/
+
+.modal-content .collection {
+    border: none;
+    margin: -24px;
+}
+
+.modal-content .collection.with-header .collection-header,
+.modal-content .collection.with-header .collection-item {
+    display: block;
+    width: 100%;
+}
+
+.modal-content .collection.with-header .collection-item {
+    text-align: left;
+}
 
 
 
