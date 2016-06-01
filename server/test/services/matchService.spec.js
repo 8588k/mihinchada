@@ -26,15 +26,16 @@ describe("matchService suite", function() {
                 'name': 'Boca',
                 'keywords': ['xeneizes', 'Azul y Oro', 'La Mitad Más Uno','@BocaJrsOficial'],
                 'manager': {
-                    'name': 'Rodolfo',
-                    'last_name': 'Arruabarrena',
+                    'name': {
+                        'first':'Rodolfo',
+                        'last': 'Arruabarrena'
+                    },
                     'keywords': ['Vasco'],
                     'rating': 50
                 },  
                 'players': [
                     {
-                        'name': 'Juan Roman',
-                        'last_name': 'Riquelme',
+                        'name': {'first':'Juan Roman', 'last': 'Riquelme'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
@@ -47,15 +48,13 @@ describe("matchService suite", function() {
                 'name': 'River',
                 'keywords': null,
                 'manager': {
-                    'name': 'Marcelo',
-                    'last_name': 'Gallardo',
+                    'name': {'first':'Marcelo', 'last': 'Gallardo'},
                     'keywords': null,
                     'rating': 50
                 },  
                 'players': [
                     {
-                        'name': 'Pablo',
-                        'last_name': 'Aimar',
+                        'name': {'first':'Pablo','last': 'Aimar'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
@@ -65,8 +64,7 @@ describe("matchService suite", function() {
                 'rating':50
             },
             'referee':{
-                'name': 'Diego',
-                'last_name': 'Ceballos',
+                'name': {'first':'Diego', 'last': 'Ceballos'},
                 'keywords': null,
                 'rating': 50
             }
@@ -125,16 +123,14 @@ describe("matchService suite", function() {
             'team_home': {
                 'players': [
                     {
-                        'name': 'Juan Roman',
-                        'last_name': 'Riquelme',
+                        'name': {'first':'Juan Roman','last': 'Riquelme'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
                         'rating': 50
                     },
                     {
-                        'name': 'Martin',
-                        'last_name': 'Palermo',
+                        'name': {'first':'Martin', 'last': 'Palermo'},
                         'keywords': null,
                         'playing_position': '9',
                         'since_minute': 0,
@@ -145,16 +141,14 @@ describe("matchService suite", function() {
             'team_away': {
                 'players': [
                     {
-                        'name': 'Pablo',
-                        'last_name': 'Aimar',
+                        'name': {'first':'Pablo', 'last': 'Aimar'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
                         'rating': 50
                     },
                     {
-                        'name': 'Radamel',
-                        'last_name': 'Falcao',
+                        'name': {'first':'Radamel', 'last': 'Falcao'},
                         'keywords': null,
                         'playing_position': '9',
                         'since_minute': 0,
@@ -169,8 +163,8 @@ describe("matchService suite", function() {
 
         matchService.iterateMatchPlayers(match, function(team){
             totalPlayers++;
-            if(team.last_name == 'Riquelme') isJRRPresent = true;
-            if(team.last_name == 'Aimar') isAimarPresent = true;
+            if(team.name.last == 'Riquelme') isJRRPresent = true;
+            if(team.name.last == 'Aimar') isAimarPresent = true;
         });
 
         expect(totalPlayers).toBe(4);
@@ -237,15 +231,13 @@ describe("matchService suite", function() {
                 'name': 'Boca',
                 'keywords': ['xeneizes', 'Azul y Oro', 'La Mitad Más Uno','@BocaJrsOficial'],
                 'manager': {
-                    'name': 'Rodolfo',
-                    'last_name': 'Arruabarrena',
+                    'name': {'first':'Rodolfo', 'last': 'Arruabarrena'},
                     'keywords': ['Vasco'],
                     'rating': 50
                 },  
                 'players': [
                     {
-                        'name': 'Juan Roman',
-                        'last_name': 'Riquelme',
+                        'name': {'first':'Juan Roman', 'last': 'Riquelme'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
@@ -258,15 +250,13 @@ describe("matchService suite", function() {
                 'name': 'River',
                 'keywords': null,
                 'manager': {
-                    'name': 'Marcelo',
-                    'last_name': 'Gallardo',
+                    'name': {'first':'Marcelo', 'last': 'Gallardo'},
                     'keywords': null,
                     'rating': 50
                 },  
                 'players': [
                     {
-                        'name': 'Pablo',
-                        'last_name': 'Aimar',
+                        'name': {'first':'Pablo', 'last': 'Aimar'},
                         'keywords': null,
                         'playing_position': '10',
                         'since_minute': 0,
@@ -276,8 +266,7 @@ describe("matchService suite", function() {
                 'rating':50
             },
             'referee':{
-                'name': 'Diego',
-                'last_name': 'Ceballos',
+                'name': {'first':'Diego', 'last': 'Ceballos'},
                 'keywords': null,
                 'rating': 50
             }

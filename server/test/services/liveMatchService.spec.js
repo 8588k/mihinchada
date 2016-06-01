@@ -67,6 +67,7 @@ describe("liveMatchService suite", function() {
 
         var match = {
             'id': 'idmatch',
+            'status': 'in_progress',
             'start_date': new Date(new Date().getTime() - 3*60000),
             'end_date': new Date(new Date().getTime() + 115*60000),
             'team_home': {

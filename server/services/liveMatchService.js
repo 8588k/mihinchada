@@ -4,6 +4,7 @@ var matchService = require('./matchService.js'),
     redis = require('./redisService.js'),
     Promise = require('bluebird'),
     moment = require('moment'),
+    socketService = require('./socketService.js'),
     
     getMatchMinute = function(date, match){
         return moment(date).diff(moment(match.start_date), 'minutes');
@@ -38,7 +39,14 @@ var matchService = require('./matchService.js'),
      *  resource: dto de (player/team/manager/referee)
      *  action: dto de la accion
      **/
-    createMatchActionEventAsync = function(date, match, resource, action){
+    createMatchActionEventAsync = function(date, match, resource, action, ref){
+
+        socketService.emitOnInternalMatch(match, 'new-match-event', {
+            'date': date,
+            'resource': resource,
+            'action':action,
+            'ref': ref
+        });
 
         return new Promise(function(resolve, reject){
 
@@ -48,7 +56,7 @@ var matchService = require('./matchService.js'),
                 matchStartDateTime = match.start_date.getTime(),
                 matchEndDateTime = match.end_date.getTime();
 
-            if(dateTime > matchStartDateTime && dateTime < matchEndDateTime){
+            if(match.status == 'in_progress'){
 
                 min = getMatchMinute(date, match),
                 matchKey = getRedisMatchkey(match),
@@ -63,12 +71,12 @@ var matchService = require('./matchService.js'),
                     for(idx in result){
                         liveMatch = result[idx] || {};
 
-                        add(liveMatch, `${action.resourceType}_total_points`, action.points);
-                        add(liveMatch, `${action.resourceType}_${resource.id}_points`, action.points);
-                        add(liveMatch, `${action.resourceType}_actions_qty`, 1);
-                        add(liveMatch, `${action.resourceType}_action_${action.name}_qty`, 1);
-                        liveMatch[`${action.resourceType}_${resource.id}_ranking`] = 
-                            parseInt(liveMatch[`${action.resourceType}_${resource.id}_ranking`] || 50);
+                        add(liveMatch, `${action.resource_type}_total_points`, action.points);
+                        add(liveMatch, `${action.resource_type}_${resource.id}_points`, action.points);
+                        add(liveMatch, `${action.resource_type}_actions_qty`, 1);
+                        add(liveMatch, `${action.resource_type}_action_${action.name}_qty`, 1);
+                        liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
+                            parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || 50);
 
                         result[idx] = liveMatch;
                     }
@@ -79,8 +87,11 @@ var matchService = require('./matchService.js'),
                     Promise.all([
                         setRedisLiveMatchAsync(matchKey, redisMatch),
                         setRedisLiveMatchAsync(matchMinKey, redisMinMatch)
+
                     ]).then(function(res){
-                        
+
+                        socketService.emitOnInternalMatch(match, 'overall', redisMatch);
+
                         resolve(res);
 
                     },function(err){

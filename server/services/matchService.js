@@ -2,13 +2,14 @@
 
 var twitterService = require('./twitterService.js'),
     liveMatchService = require('./liveMatchService.js'),
+    socketService = require('./socketService.js'),
     keystone = require('keystone'),
     Promise = require('bluebird'),
     _ = require('underscore'),
 
-
     getManagerMap = function(m){
         return {
+            'id': m.manager.id,
             'name': m.manager.name,
             'keywords': m.manager.getKeywords(),
             'rating': m.rating 
@@ -17,6 +18,7 @@ var twitterService = require('./twitterService.js'),
 
     getPlayerMap = function(p){
         return {
+            'id': p.player.id,
             'name': p.player.name,
             'keywords': p.player.getKeywords(),
             'playing_position': p.playingPosition,
@@ -29,6 +31,7 @@ var twitterService = require('./twitterService.js'),
 
     getRefereeMap = function(r){
         return {
+            'id': r.referee.id,
             'name': r.referee.name,
             'keywords': r.referee.getKeywords(),
             'rating': r.rating 
@@ -36,26 +39,32 @@ var twitterService = require('./twitterService.js'),
     },
 
     getTeamMap = function(t){
+
+        var teamObj = _.first(t['_team']);
+
         return {
-            'name': t.team.name,
-            'score': t.score,
-            'players': _.map(t.players, getPlayerMap),
-            'manager': getManagerMap(t.manager),
+            'id': teamObj['id'],
+            'name': teamObj['name'],
+            'score': t['team'].score,
+            'players': _.map(t['players'], getPlayerMap),
+            'manager': getManagerMap(t['manager']),
             'kit': {
-                'home_kit': t.team.homeKit,
-                'away_kit': t.team.awayKit
+                'home_kit': teamObj['home_kit'],
+                'away_kit': teamObj['away_kit']
             },
-            'badge': t.team.badge,
-            'rating': t.rating 
+            'badge': teamObj['badge'],
+            'rating': t['team'].rating 
         };
     },
 
     getMatchMap = function(m){
 
-        var homeTeam = _.find(m.teams, function(t){ return t.location == 'home'; }),
-            awayTeam = _.find(m.teams, function(t){ return t.location == 'away'; });
+        var homeTeam = _.find(m['teams'], function(t){ return t['team']['location'] == 'home'; }),
+            awayTeam = _.find(m['teams'], function(t){ return t['team']['location'] == 'away'; });
 
         return {
+            'id': m.id,
+            'status': m.status,
             'start_date': m.startDate,
             'end_date': m.endDate,
             'team_home': getTeamMap(homeTeam),
@@ -84,7 +93,7 @@ var twitterService = require('./twitterService.js'),
     },
 
     iterateMatchTeams = function(match, callback){
-        var teams = ['home','away'],
+        var teams = ['team_home','team_away'],
             t, team;
 
         for(t in teams){
@@ -109,26 +118,25 @@ var twitterService = require('./twitterService.js'),
     getMatchStreamTracks = function(match, actions) {
         var tracks = [];
 
-        checkPush(tracks, match.referee.last_name);
+        checkPush(tracks, match.referee.name.last);
         checkPush(tracks, match.referee.keywords);
 
         iterateMatchTeams(match, function(team){
             checkPush(tracks, team.name);
             checkPush(tracks, team.keywords);
 
-            checkPush(tracks, team.manager.last_name);
+            checkPush(tracks, team.manager.name.last);
             checkPush(tracks, team.manager.keywords);
         });
 
         iterateMatchPlayers(match, function(player){
-            checkPush(tracks, player.last_name);
+            checkPush(tracks, player.name.last);
             checkPush(tracks, player.keywords);
         });
 
         for(var idx in actions){
             checkPush(tracks, actions[idx].keywords); 
         }
-
         return tracks.join();
     },
 
@@ -162,20 +170,36 @@ var twitterService = require('./twitterService.js'),
     },
 
     processMatchTweet = function(match, actions, tweet){
-        //console.log(tweet);
+
         var eventAction = getTweetAction(actions, tweet),
             resourceKeywords,
             resource;
 
+        socketService.emitOnInternalMatch(
+            match,
+            'processing-tweet',
+            tweet.text
+        )
+
         if(eventAction){
-            switch(eventAction.resourceType) {
+
+            socketService.emitOnInternalMatch(
+                match,
+                'processing-tweet-event',
+                {
+                    'text':tweet.text,
+                    'event': eventAction
+                }
+            )
+
+            switch(eventAction.resource_type) {
                 case 'player':
                     iterateMatchPlayers(match, function(player){
                         if(!resource){
                             resourceKeywords = [];
-                            checkPush(resourceKeywords, player.last_name);
+                            checkPush(resourceKeywords, player.name.last);
                             checkPush(resourceKeywords, player.keywords);
-
+                            //console.log(tweet.text, '>>>>>>', resourceKeywords);
                             if(findKeyword(tweet.text, resourceKeywords)){
                                 resource = player;
                             }
@@ -184,7 +208,7 @@ var twitterService = require('./twitterService.js'),
                 break;
                 case 'referee':
                     resourceKeywords = [];
-                    checkPush(resourceKeywords, match.referee.last_name);
+                    checkPush(resourceKeywords, match.referee.name.last);
                     checkPush(resourceKeywords, match.referee.keywords);
 
                     if(findKeyword(tweet.text, resourceKeywords)){
@@ -208,7 +232,7 @@ var twitterService = require('./twitterService.js'),
                     iterateMatchTeams(match, function(team){
                         if(!resource){
                             resourceKeywords = [];
-                            checkPush(resourceKeywords, team.manager.last_name);
+                            checkPush(resourceKeywords, team.manager.name.last);
                             checkPush(resourceKeywords, team.manager.keywords);
 
                             if(findKeyword(tweet.text, resourceKeywords)){
@@ -221,30 +245,39 @@ var twitterService = require('./twitterService.js'),
         }
 
         if(eventAction && resource){
+            //console.log('event tweet', tweet);
             liveMatchService.createMatchActionEventAsync(
-                tweet.created_at, 
+                new Date(parseInt(tweet.timestamp_ms)), 
                 match, 
                 resource,
-                eventAction
+                eventAction,
+                tweet.text
             );
         }
     },
 
     listenMatchStream = function(match, actions, duration) {
 
+        console.log('Listen match stream for match id: ', match.id);
+
         var tracks = getMatchStreamTracks(match, actions),
 
             duration = duration || ((1000 * 60 * 45 * 2) + (1000 * 60 * 20)),
 
-            stream = twitterService.createStream({'track': tracks}, {
-                'tweet': function(tweet){
-                    processMatchTweet(match, actions, tweet);
+            stream = twitterService.createStream({
+                    'match_id': match.id,
+                    'track': tracks
+                }, 
+                {
+                    'tweet': function(tweet){
+                        processMatchTweet(match, actions, tweet);
+                    }
                 }
-            });
+            );
 
-            setTimeout(function(){ 
-                stream.stop();
-            }, duration);
+        setTimeout(function(){ 
+            stream.stop();
+        }, duration);
 
         return stream;
     },
@@ -262,7 +295,7 @@ var twitterService = require('./twitterService.js'),
                 .populate(population)
                 .exec(function(err, manager) {
 
-                    if(err) reject(err);
+                    if(err) return reject(err);
 
                     resolve(manager);
                 });
@@ -282,7 +315,7 @@ var twitterService = require('./twitterService.js'),
                 .populate(population)
                 .exec(function(err, referee) {
 
-                    if(err) reject(err);
+                    if(err) return reject(err);
 
                     resolve(referee);
                 });
@@ -302,9 +335,26 @@ var twitterService = require('./twitterService.js'),
                 .populate(population)
                 .exec(function(err, players) {
 
-                    if(err) reject(err);
+                    if(err) return reject(err);
 
                     resolve(players);
+                });
+        });
+
+    },
+
+
+    getTeamAsync = function(teamId) {
+
+        return new Promise(function(resolve, reject){
+            keystone.list('Team')
+                .model.find()
+                .where('_id', teamId)
+                .exec(function(err, team) {
+
+                    if(err) return reject(err);
+
+                    resolve(team);
                 });
         });
 
@@ -322,28 +372,42 @@ var twitterService = require('./twitterService.js'),
                 .populate(population)
                 .exec(function (err, match) {
 
-                    if(err) reject(err);
+                    if(err) return reject(err);
 
                     var ps = _.map(match['teams'], function(team){
                         var players = getMatchPlayersAsync(team['players']);
                         var manager = getMatchManagerAsync(team['manager']);
-                        return [players,manager];
+                        var tp = getTeamAsync(team['team']);
+                        return [players,manager,tp];
                     });
 
                     ps.push(getMatchRefereeAsync(match['referee']));
 
+
                     Promise.all(_.flatten(ps)).then(function(res){
 
-                        var add = 0;
+                        var add = 0,
+                            matchMap = { 'teams': [] };
+
                         _.each(match['teams'], function(team, index, list){
-                            team['players'] = res[index + add];
-                            team['manager'] = res[index + add +1];
-                            add = 1;
+                            var teamMap = {};
+                            teamMap['team'] = team;
+                            teamMap['players'] = res[index + add];
+                            teamMap['manager'] = res[index + add +1];
+                            teamMap['_team'] = res[index + add +2];
+                            matchMap['teams'].push(teamMap);
+                            add = 2;
                         });
 
-                        match['referee'] = res[4];
+                        matchMap['referee'] = res[6];
 
-                        resolve(getMatchMap(match));
+                        matchMap['id'] = match.id;
+                        matchMap['status'] = match.status;
+                        matchMap['startDate'] = match.startDate;
+                        matchMap['endDate'] = match.endDate;
+                        matchMap['stadium'] = match.stadium;
+
+                        resolve(getMatchMap(matchMap));
 
                     },function(err){
 

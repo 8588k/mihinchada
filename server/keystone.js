@@ -6,11 +6,11 @@ var express = require('express'),
     mongoose = require('mongoose'),
     app = express(),
     keystone = require('keystone'),
-    handlebars = require('express-handlebars');
+    handlebars = require('express-handlebars'),
+    socketio = require('socket.io');
  
 keystone.set('app', app);
 keystone.set('mongoose', mongoose);
-
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -22,7 +22,7 @@ keystone.init({
 	'brand': 'Mi Hinchada',
 
 	'sass': 'public',
-'static': 'public',
+	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
@@ -79,4 +79,20 @@ keystone.set('nav', {
 
 // Start Keystone to connect to your database and initialise the web server
 
-keystone.start();
+keystone.start({
+
+    onHttpServerCreated: function(){
+        keystone.set('io', socketio.listen(keystone.httpServer));
+    },
+
+    onStart: function(){
+        var io = keystone.get('io');
+        var session = keystone.get('express session');
+
+        // Share session between express and socketio
+        io.use(function(socket, next){
+            session(socket.handshake, {}, next);
+        });
+    
+    }
+});

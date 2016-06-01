@@ -7,6 +7,7 @@ var Twit = require('twit'),
 
     getEventMap = function(et){
         return {
+            'id': et.id,
             'name': et.name,
             'resource_type': et.resourceType,
             'points': et.points,
@@ -25,7 +26,7 @@ var Twit = require('twit'),
                 .model.find()
                 .exec(function(err, result) {
 
-                    if(err) reject(err);
+                    if(err) return reject(err);
 
                     resolve(_.map(result, getEventMap));
                 });

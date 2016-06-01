@@ -42,6 +42,9 @@ exports = module.exports = function (app) {
     app.get('/api/matches/:matchId', routes.views.api.getMatch);
     app.get('/api/events', routes.views.api.getEvents);
 
+    //app.get('/internal/matches/streams', middleware.requireUser, routes.views.matchstream);
+    app.get('/internal/matches/:matchId', routes.views.matchstream);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
