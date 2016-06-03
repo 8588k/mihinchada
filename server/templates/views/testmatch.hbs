@@ -1,5 +1,5 @@
-<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
 <script>
     var socket = io();
 
@@ -28,28 +28,3 @@
     });
 
 </script>
-
-<div class="container">
-    <h1>Match Process</h1>
-    <br>
-    match_id: {{match.id}}
-    <br>
-    twitter_streams: 
-    {{# each twitter_streams}}
-    --->{{match_id}}<---{{tweets}}
-    {{/each}}
-
-    <br>
-    processed tweets: <span id="processed_tweets">0</span>
-    <br>
-    events found in tweets: <span id="processed_events">0</span>
-    <br>
-    match events created: <span id="match_event">0</span>
-    <br>
-    OVERALL:
-    <br> 
-    <textarea id="overalll" rows="50" cols="50">
-    {}
-    </textarea>
-
-</div>

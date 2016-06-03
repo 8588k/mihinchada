@@ -12,7 +12,7 @@ var Twit = require('twit'),
     }),
 
     getAllStreams = function(){
-        return _.keys(createdStreams);
+        return _.values(createdStreams);
     },
 
 
@@ -29,17 +29,28 @@ var Twit = require('twit'),
 
             stream = T.stream('statuses/filter', opts);
 
-            if(opts['match_id']) createdStreams[opts['match_id']] = stream;
+            if(opts['match_id']){ 
+                createdStreams[opts['match_id']] = {
+                    'match_id': opts['match_id'],
+                    'stream' : stream,
+                    'tracks' : opts['tracks'],
+                    'tweets' : 0
+                };
+            }
 
             for (var eventName in callbacks) {
 
                 if (callbacks.hasOwnProperty(eventName)) {
                     stream.on(eventName, callbacks[eventName])
                 }
+
+                stream.on('tweet', function(tw){
+                    createdStreams[opts['match_id']]['tweets'] += 1;
+                });
             }
 
         }else{
-            stream = createdStreams[opts['match_id']];
+            stream = createdStreams[opts['match_id']]['stream'];
         }
 
         return stream;

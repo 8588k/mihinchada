@@ -1,15 +1,26 @@
 var matchService = require("../../services/matchService.js"),
+    testService = require("../../services/testService.js"),
     eventService = require("../../services/eventService.js"),
     keystone = require('keystone'),
+    Promise = require('bluebird'),
 
     getMatch = function (req, res) {
 
-        matchService.getMatchAsync('574955f6ca3e6d25a70019ff').then(function(m){
+        var mp = null;
+        if(req.params.matchId == 'test_match'){
+            mp = testService.getMatch();
+        }else{
+            mp = matchService.getMatchAsync(req.params.matchId);
+        }
 
+        Promise.all([mp]).then(function(m){
 
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(m));
-            //view.render('matchprocess');
+
+        },
+        function(err){
+            res.sendStatus(404);
         });
     },
 
