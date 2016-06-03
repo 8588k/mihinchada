@@ -17,7 +17,8 @@ var keystone = require('keystone'),
         io.on('connect', function(socket){
 
             socket.on('test_match:set', function (data) {
-                console.log(data);
+                console.log('>>>>>>>>', data);
+                socket.emit('toast:success', 'Test match updated.');
             });
         });
 
@@ -26,16 +27,11 @@ var keystone = require('keystone'),
             {
                 'layout': 'lte',
                 'box':{
-                    'title': 'lalalla',
-                    'footer': 'lolololo',
-                    'closeable': true,
-                    'collapseable': true
+                    'title': 'Test Match'
                 },
-                'match': testService.getMatch()
+                'match': JSON.stringify(testService.getMatch())
             }
         );
-
-        res.sendStatus(404);
     },
 
     testActions = function (req, res) {

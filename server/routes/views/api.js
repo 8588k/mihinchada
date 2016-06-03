@@ -18,7 +18,7 @@ var matchService = require("../../services/matchService.js"),
             res.setHeader('Access-Control-Allow-Headers', "X-Requested-With");
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(m));
+            res.send(JSON.stringify(m[0]));
 
         },
         function(err){
