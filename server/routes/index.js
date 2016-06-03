@@ -45,6 +45,14 @@ exports = module.exports = function (app) {
     //app.get('/internal/matches/streams', middleware.requireUser, routes.views.matchstream);
     app.get('/internal/matches/:matchId', routes.views.matchstream);
 
+
+    app.get('/admin/status/twiter', routes.views.status.twiter);
+    app.get('/admin/status/sockets', routes.views.status.sockets);
+
+    app.get('/admin/test/match', routes.views.test.testMatch);
+    app.get('/admin/test/actions', routes.views.test.testActions);
+    app.get('/admin/test/process', routes.views.test.testProcess);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

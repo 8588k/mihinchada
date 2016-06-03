@@ -35,6 +35,13 @@ exports = module.exports = function (req, res) {
         view.render(
             'matchstream', 
             {
+                'layout': 'lte',
+                'box':{
+                    'title': 'lalalla',
+                    'footer': 'lolololo',
+                    'closeable': true,
+                    'collapseable': true
+                },
                 'match': match,
                 'twitter_streams': twitterService.getAllStreams(),
                 'actions': actions
