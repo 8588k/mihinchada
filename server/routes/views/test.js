@@ -38,7 +38,8 @@ var keystone = require('keystone'),
             {
                 'layout': 'lte',
                 'box':{
-                    'title': 'Test Match'
+                    'title': 'Test Match',
+                    'collapseable': true
                 },
                 'match': JSON.stringify(testService.getMatch())
             }

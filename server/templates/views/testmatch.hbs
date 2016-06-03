@@ -1,5 +1,7 @@
 <div id="jsoneditor"></div>
-<button id="btnSave">Save Click</button>
+
+<button id="btnSave" type="button" class="btn btn-block btn-primary btn-lg"><i class="fa fa-save"></i> Save</button>
+
 
   <style type="text/css">
     
@@ -34,9 +36,7 @@
 
 
         $("#btnSave").click(function() {
-            var json = editor.get();
-            console.log('-------emitiendo----------', json);
-            socket.emit('test_match:set', json);
+            socket.emit('test_match:set', editor.get());
         });
     };
 </script>
