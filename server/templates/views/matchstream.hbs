@@ -1,29 +1,32 @@
 <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
-    var processedTweets = 0;
-    var processedTweetsEvents = 0;
-    var processedTweetsMatchEvents = 0;
+    window.onload = function () {
+        var processedTweets = 0;
+        var processedTweetsEvents = 0;
+        var processedTweetsMatchEvents = 0;
 
-    socket.on('processing-tweet', function(message){
-        processedTweets++;
-        $('#processed_tweets').html(processedTweets);
-    });
+        socket.on('processing-tweet', function(message){
+            processedTweets++;
+            $('#processed_tweets').html(processedTweets);
+        });
 
-    socket.on('processing-tweet-event', function(message){
-        processedTweetsEvents++;
-        $('#processed_events').html(processedTweetsEvents);
-    });
+        socket.on('processing-tweet-event', function(message){
+            processedTweetsEvents++;
+            $('#processed_events').html(processedTweetsEvents);
+        });
 
-    socket.on('new-match-event', function(message){
-        processedTweetsMatchEvents++;
-        console.log(message);
-        $('#match_event').html(processedTweetsMatchEvents);
-    });
-    
-    socket.on('overall', function(message){
-        $('textarea').val(JSON.stringify(message, null, 4));
-    });
+        socket.on('new-match-event', function(message){
+            processedTweetsMatchEvents++;
+            console.log(message);
+            $('#match_event').html(processedTweetsMatchEvents);
+        });
+        
+        socket.on('overall', function(message){
+            $('textarea').val(JSON.stringify(message, null, 4));
+        });
+    }
+
 
 </script>
 

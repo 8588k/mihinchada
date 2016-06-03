@@ -8,19 +8,30 @@ var keystone = require('keystone'),
     Promise = require('bluebird'),
     _ = require('underscore'),
 
+
     testMatch = function (req, res) {
 
         var view = new keystone.View(req, res),
             locals = res.locals,
             io = keystone.get('io');
 
-        io.on('connect', function(socket){
 
-            socket.on('test_match:set', function (data) {
-                console.log('>>>>>>>>', data);
+        io.on('connect', function(socket){
+            socket._events = {};
+            socket.adapter._events = {};
+
+
+            socket.on('test_match:set', function(data){
+                testService.setMatch(data);
                 socket.emit('toast:success', 'Test match updated.');
             });
+
+            socket.on('disconnect', function(){
+                socket._events = {};
+                socket.adapter._events = {};
+            });
         });
+
 
         view.render(
             'testmatch', 

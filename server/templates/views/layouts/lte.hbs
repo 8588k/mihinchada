@@ -19,7 +19,23 @@
   <link rel="stylesheet" href="/lte/css/skins/skin-blue.min.css">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<!-- jQuery 2.2.0 -->
+<script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/lte/js/app.min.js"></script>
+
   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  <link href="/jsoneditor/jsoneditor.min.css" rel="stylesheet" type="text/css">
+  <script src="/jsoneditor/jsoneditor.min.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -29,6 +45,24 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+
+<script>
+    window.socket = io();
+
+    socket.on('toast:warning', function(message){
+        toastr.warning(message);
+    });
+
+    socket.on('toast:success', function(message){
+        toastr.success(message);
+    });
+
+    socket.on('toast:error', function(message){
+        toastr.error(message);
+    });
+
+</script>
+
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -201,35 +235,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.0 -->
-<script src="/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="/lte/js/app.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-<script>
-    window.socket = io();
-
-    socket.on('toast:warning', function(message){
-        toastr.warning(message);
-    });
-
-    socket.on('toast:success', function(message){
-        toastr.success(message);
-    });
-
-    socket.on('toast:error', function(message){
-        toastr.error(message);
-    });
-
-</script>
 
 </body>
 </html>
