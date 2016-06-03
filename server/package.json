@@ -13,21 +13,21 @@
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7", 
+    "node-sass-middleware": "^0.9.7",
     "dotenv": "^1.1.0",
     "redis": "^2.4.2",
     "socket.io": "^1.4.6",
     "twit": "^2.1.1"
   },
   "devDependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.7.0",
+    "gulp-jslint": "^1.0.1",
+    "gulp-sass": "^2.0.4",
     "gulp-shell": "^0.5.0",
     "gulp-watch": "^4.3.5",
-    "gulp-sass": "^2.0.4",
-    "gulp-jslint": "^1.0.1",
     "jasmine-core": "^2.3.4",
     "jasmine-node": "^1.14.5"
-    
   },
   "engines": {
     "node": ">=0.10.22",
