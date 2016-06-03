@@ -6,7 +6,7 @@
 
     App.Events = _.extend({}, Backbone.Events);
 
-    App.socket = io('/localhost:3000');
+    App.socket = io('localhost:3000');
 
     App.addRegions({
         'headerRegion': '[data-js="header-region"]',

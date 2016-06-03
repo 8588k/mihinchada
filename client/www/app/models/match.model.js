@@ -1,278 +1,78 @@
 App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, _) {
     
     Models.Match = Backbone.Model.extend({
-        urlRoot: '/football-match',
+        urlRoot: 'http://localhost:3000/api/matches',
         defaults: {
-            'match': {
-                'start_date': null,
-                'end_date': null,
-                'team_home': {
-                    'name': null,
+            'id': null,
+            'status': null,
+            'start_date': null,
+            'end_date': null,
+            'team_home': {
+                'id': null,
+                'name': null,
+                'keywords': null,
+                'manager': {
+                    'id': null,
+                    'name': {
+                        'first': null,
+                        'last': null
+                    },
                     'keywords': null,
-                    'manager': {
-                        'name': null,
-                        'last_name': null,
+                    'rating': null
+                },
+                'players': [
+                    {
+                        'id': null,
+                        'name': {
+                            'first': null,
+                            'last': null
+                        },
                         'keywords': null,
-                        'rating': null
+                        'playing_position': null,
+                        'since_minute': null,
+                        'rating': null,
+                    }
+                ],
+                'score': null,
+                'rating': null
+            },
+            'team_away': {
+                'id': null,
+                'name': null,
+                'keywords': null,
+                'manager': {
+                    'id': null,
+                    'name': {
+                        'first': null,
+                        'last': null
                     },
-                    'players': [
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        }
-                    ],
-                    'kit': null,
-                    'badge': null,
-                    'goals': {
-                        'player_id': null,
-                        'minute': null
-                    },
+                    'keywords': null,
                     'rating': null
                 },
-                'team_away': {
-                    'name': null,
-                    'keywords': null,
-                    'manager': {
-                        'name': null,
-                        'last_name': null,
+                'players': [
+                    {
+                        'id': null,
+                        'name': {
+                            'first': null,
+                            'last': null
+                        },
                         'keywords': null,
-                        'rating': null
-                    },
-                    'players': [
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        },
-                        {
-                            'name': null,
-                            'last_name': null,
-                            'keywords': null,
-                            'playing_position': null,
-                            'since_minute': null,
-                            'until_minute': null,
-                            'rating': null,
-                            'tags': null
-                        }
-                    ],
-                    'kit': null,
-                    'badge': null,
-                    'goals': {
-                        'player_id': null,
-                        'minute': null
-                    },
-                    'rating': null
+                        'playing_position': null,
+                        'since_minute': null,
+                        'rating': null,
+                    }
+                ],
+                'score': null,
+                'rating': null
+            },
+            'referee': {
+                id: null,
+                'name': {
+                    'first': null,
+                    'last': null
                 },
-                'referee': {
-                    'name': null,
-                    'last_name': null,
-                    'keywords': null,
-                    'rating': null
-                },
-                'stadium_name': null,
-                'live_users': null,
-                'total_users': null
+                'keywords': null,
+                'rating': null
             }
         }
     });
