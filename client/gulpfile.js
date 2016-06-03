@@ -53,6 +53,7 @@ gulp.task('js-build', function() {
         'node_modules/backbone.marionette/lib/backbone.marionette.js',
         'node_modules/fastclick/lib/fastclick.js',
         'node_modules/jquery-mockjax/dist/jquery.mockjax.min.js',
+        'node_modules/socket.io-client/socket.io.js',
         // mocks
         'www/app/mocks/mock.js',
         // app

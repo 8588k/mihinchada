@@ -6,6 +6,8 @@
 
     App.Events = _.extend({}, Backbone.Events);
 
+    App.socket = io('localhost:3000');
+
     App.addRegions({
         'headerRegion': '[data-js="header-region"]',
         'mainRegion': '[data-js="main-region"]'
@@ -21,7 +23,6 @@
     $(function() {
         App.start();
         FastClick.attach(document.body);
-
         // Initialize header's collapse button
         $('.button-collapse').sideNav();
     });

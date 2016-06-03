@@ -4,10 +4,6 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         template: __templates.mihinchada.footballScore,
 
-        templateHelpers: function() {
-            return this.options.match;
-        },
-
         ui: {
             'crest': '.score-crest'
         },

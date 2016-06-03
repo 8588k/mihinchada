@@ -15,16 +15,17 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 fieldView,
                 matchModel;
 
-            matchModel = new App.miHinchada.Models.Match();
+            matchModel = new App.miHinchada.Models.Match({id: 'test_match'});
             matchModel.fetch({
+                // 'dataType': 'jsonp',
                 'success': function(model, response, options) {
                     scoreView = new Views.FootballScore({
-                        'match': model.get('match')
+                        'model': model
                     });
                     that.scoreRegion.show(scoreView);
 
                     fieldView = new Views.FootballField({
-                        'match': model.get('match')
+                        'model': model
                     });
                     that.fieldRegion.show(fieldView);
                 }

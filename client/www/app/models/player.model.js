@@ -11,6 +11,14 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
             'until_minute': null,
             'rating': null,
             'tags': [] //yellow_card,red_card,goal,captain
+        },
+
+        initialize: function() {
+            var that = this;
+
+            App.socket.on('player:$id:update:rating', function(newRating) {
+                that.set('rating', newRating);
+            });
         }
     });
 

@@ -10,13 +10,16 @@ this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compi
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
   return "<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_river.png\" width=\"35\" height=\"35\">\n</div>\n\n<div class=\"score\">\n    <div class=\"score-result\">\n        <span class=\"score-home\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.team_home : depth0)) != null ? stack1.goals : stack1)) != null ? stack1.length : stack1), depth0))
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.team_home : depth0)) != null ? stack1.score : stack1), depth0))
     + "</span>\n        -\n        <span class=\"score-away\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.team_away : depth0)) != null ? stack1.goals : stack1)) != null ? stack1.length : stack1), depth0))
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.team_away : depth0)) != null ? stack1.score : stack1), depth0))
     + "</span>\n    </div>\n    <div class=\"score-info\">\n        <span class=\"score-time\">15:47</span>\n        <span class=\"score-period\">ST</span>\n    </div>\n</div>\n\n<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_boca.png\" width=\"35\" height=\"35\">\n</div>\n\n<div id=\"modalTeam\" class=\"modal bottom-sheet\">\n    <div class=\"modal-content\">\n        <ul class=\"collection with-header\">\n            <li class=\"collection-header\">\n                <h4>Equipo</h4>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Alentar<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Aplaudir<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Abuchear<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n      </ul>\n    </div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "HEADER";
+},"useData":true});
+this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    return "MODAL BOTTOM\n\n";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;

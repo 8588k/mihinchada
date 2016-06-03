@@ -18,12 +18,12 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 teamAwayView;
 
             teamHomeView = new Views.Team({
-                'team': that.options.match.team_home
+                'team': that.options.model.get('team_home')
             });
             this.teamHomeRegion.show(teamHomeView);
 
             teamAwayView = new Views.Team({
-                'team': that.options.match.team_away
+                'team': that.options.model.get('team_away')
             });
             this.teamAwayRegion.show(teamAwayView);
         }
