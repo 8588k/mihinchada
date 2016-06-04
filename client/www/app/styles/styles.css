@@ -1,5 +1,6 @@
 body {
     background-color: #ccc;
+    box-sizing: border-box;
     font-family: Roboto, Arial, Helvetica, Sans-serif;
     margin: 0;
     padding: 0;
@@ -207,11 +208,14 @@ nav {
 
 .modal-content .collection {
     border: none;
+    font-size: 0;
     margin: -24px;
     overflow: visible;
+    text-align: center;
 }
 
 .modal-content .collection.with-header .collection-header {
+    border-bottom: none;
     padding-top: 50px;
     position: relative;
 }
@@ -219,11 +223,27 @@ nav {
 .modal-content .collection.with-header .collection-header,
 .modal-content .collection.with-header .collection-item {
     display: block;
+    font-size: 14px;
     width: 100%;
 }
 
 .modal-content .collection.with-header .collection-item {
-    text-align: left;
+    border: 1px solid #e0e0e0;
+    border-left: none;
+    border-bottom: none;
+    display: inline-block;
+    height: 80px;
+    max-height: 100px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 33.33%;
+}
+
+.modal-content .collection.with-header .collection-item:nth-child(4),
+.modal-content .collection.with-header .collection-item:nth-child(7),
+.modal-content .collection.with-header .collection-item:nth-child(10) {
+    border-right: none;
 }
 
 .modal-content .collection-header img {
@@ -237,6 +257,9 @@ nav {
     top: -50px;
 }
 
+.modal.bottom-sheet {
+    max-height: 75%;
+}
 
 
 

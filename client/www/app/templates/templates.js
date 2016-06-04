@@ -21,7 +21,7 @@ this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6
 this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
     return "            <li class=\"collection-item\">\n                <div>\n                    "
     + this.escapeExpression(this.lambda(depth0, depth0))
-    + "<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n";
+    + "\n                </div>\n            </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper;
 
