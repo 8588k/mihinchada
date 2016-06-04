@@ -2,6 +2,7 @@ var keystone = require('keystone'),
     twitterService = require('../../services/twitterService.js'),
     matchService = require("../../services/matchService.js"),
     eventService = require("../../services/eventService.js"),
+    testService = require("../../services/testService.js"),
     socketService = require("../../services/socketService.js"),
     Promise = require('bluebird'),
     _ = require('underscore');
@@ -17,7 +18,7 @@ exports = module.exports = function (req, res) {
     locals.section = 'matchprocess';
 
     var mp = matchService.getMatchAsync(req.params.matchId); //'574955f6ca3e6d25a70019ff'
-    var ep = eventService.getEventTypesAsync();
+    var ep = testService.getActions();
     
     Promise.all([mp,ep]).then(function(results){
         var match = results[0],

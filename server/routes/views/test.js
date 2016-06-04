@@ -10,7 +10,6 @@ var keystone = require('keystone'),
 
 
     testMatch = function (req, res) {
-
         var view = new keystone.View(req, res),
             locals = res.locals,
             io = keystone.get('io');
@@ -51,7 +50,39 @@ var keystone = require('keystone'),
     },
 
     testProcess = function (req, res) {
-        res.sendStatus(404);
+        var view = new keystone.View(req, res),
+            locals = res.locals,
+            io = keystone.get('io');
+
+
+        io.on('connect', function(socket){
+            socket._events = {};
+            socket.adapter._events = {};
+
+
+            socket.on('test_match:set', function(data){
+                testService.setMatch(data);
+                socket.emit('toast:success', 'Test match updated.');
+            });
+
+            socket.on('disconnect', function(){
+                socket._events = {};
+                socket.adapter._events = {};
+            });
+        });
+
+
+        view.render(
+            'testprocess', 
+            {
+                'layout': 'lte',
+                'box':{
+                    'title': 'Process Test Match',
+                    'collapseable': true
+                },
+                'match': JSON.stringify(testService.getMatch())
+            }
+        );
     };
 
 exports.testMatch = testMatch;

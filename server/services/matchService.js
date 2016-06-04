@@ -3,6 +3,7 @@
 var twitterService = require('./twitterService.js'),
     liveMatchService = require('./liveMatchService.js'),
     socketService = require('./socketService.js'),
+    testService = require("./testService.js"),
     keystone = require('keystone'),
     Promise = require('bluebird'),
     _ = require('underscore'),
@@ -266,7 +267,8 @@ var twitterService = require('./twitterService.js'),
 
             stream = twitterService.createStream({
                     'match_id': match.id,
-                    'track': tracks
+                    'track': tracks,
+                    'language': 'es'
                 }, 
                 {
                     'tweet': function(tweet){
@@ -365,6 +367,10 @@ var twitterService = require('./twitterService.js'),
         population = population || 'teams competition';
 
         return new Promise(function(resolve, reject){
+
+            if(matchId == 'test_match'){
+                return resolve(testService.getMatch());
+            }
 
             keystone.list('Match')
                 .model.findOne()

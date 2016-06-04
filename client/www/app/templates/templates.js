@@ -18,17 +18,16 @@ this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compi
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "HEADER";
 },"useData":true});
-this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "MODAL BOTTOM\n\n";
-},"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
   return "<a href=\"#modalPlayer\" data-js=\"player\">\n    <div class=\"player-number-container\">"
     + alias3(((helper = (helper = helpers.shirt_number || (depth0 != null ? depth0.shirt_number : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"shirt_number","hash":{},"data":data}) : helper)))
     + "</div>\n    <div class=\"player-name\">"
-    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</div>\n</a>\n\n<div id=\"modalPlayer\" class=\"modal bottom-sheet\">\n    <div class=\"modal-content\">\n        <ul class=\"collection with-header\">\n            <li class=\"collection-header\">\n                <h4>Jugador</h4>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Gol<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Offside<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Tarjeta amarilla<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Tarjeta roja<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n      </ul>\n    </div>\n</div>";
+    + alias3(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
+    + "</div>\n    "
+    + alias3(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"rating","hash":{},"data":data}) : helper)))
+    + "\n</a>\n\n<div id=\"modalPlayer\" class=\"modal bottom-sheet\">\n    <div class=\"modal-content\">\n        <ul class=\"collection with-header\">\n            <li class=\"collection-header\">\n                <h4>Jugador</h4>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Gol<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Offside<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Tarjeta amarilla<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n            <li class=\"collection-item\">\n                <div>\n                    Tarjeta roja<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>\n                </div>\n            </li>\n      </ul>\n    </div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";

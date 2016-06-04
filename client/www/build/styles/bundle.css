@@ -2661,11 +2661,9 @@ a {
 .valign-wrapper {
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          -webkit-box-align: center;
           align-items: center;
 }
 
@@ -2714,14 +2712,12 @@ ul li {
 }
 
 .hoverable {
-  -webkit-transition: box-shadow .25s;
-          transition: box-shadow .25s;
+  transition: box-shadow .25s;
   box-shadow: 0;
 }
 
 .hoverable:hover {
-  -webkit-transition: box-shadow .25s;
-          transition: box-shadow .25s;
+  transition: box-shadow .25s;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -3015,8 +3011,7 @@ table.striped > tbody > tr > td {
 }
 
 table.highlight > tbody > tr {
-  -webkit-transition: background-color .25s ease;
-          transition: background-color .25s ease;
+  transition: background-color .25s ease;
 }
 
 table.highlight > tbody > tr:hover {
@@ -3183,8 +3178,7 @@ td, th {
 
 .collection a.collection-item {
   display: block;
-  -webkit-transition: .25s;
-          transition: .25s;
+  transition: .25s;
   color: #26a69a;
 }
 
@@ -3278,8 +3272,7 @@ nav ul a span.badge {
   left: 0;
   bottom: 0;
   background-color: #26a69a;
-  -webkit-transition: width .3s linear;
-          transition: width .3s linear;
+  transition: width .3s linear;
 }
 
 .progress .indeterminate {
@@ -4186,8 +4179,7 @@ nav ul {
 }
 
 nav ul li {
-  -webkit-transition: background-color .3s;
-          transition: background-color .3s;
+  transition: background-color .3s;
   float: left;
   padding: 0;
 }
@@ -4197,8 +4189,7 @@ nav ul li.active {
 }
 
 nav ul a {
-  -webkit-transition: background-color .3s;
-          transition: background-color .3s;
+  transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
   display: inline-block;
@@ -4243,8 +4234,7 @@ nav .input-field label {
 
 nav .input-field label i {
   color: rgba(255, 255, 255, 0.7);
-  -webkit-transition: color .3s;
-          transition: color .3s;
+  transition: color .3s;
 }
 
 nav .input-field label.active i {
@@ -4543,8 +4533,7 @@ small {
 }
 
 .card-panel {
-  -webkit-transition: box-shadow .25s;
-          transition: box-shadow .25s;
+  transition: box-shadow .25s;
   padding: 20px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
@@ -4555,8 +4544,7 @@ small {
   position: relative;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
-  -webkit-transition: box-shadow .25s;
-          transition: box-shadow .25s;
+  transition: box-shadow .25s;
   border-radius: 2px;
 }
 
@@ -4650,8 +4638,7 @@ small {
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 20px;
-  -webkit-transition: color .3s ease;
-          transition: color .3s ease;
+  transition: color .3s ease;
   text-transform: uppercase;
 }
 
@@ -4729,15 +4716,12 @@ small {
   color: #fff;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          -webkit-box-align: center;
           align-items: center;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
-          -webkit-box-pack: justify;
           justify-content: space-between;
 }
 
@@ -4772,7 +4756,6 @@ small {
 .tabs {
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   position: relative;
   overflow-x: auto;
@@ -4811,8 +4794,7 @@ small {
   height: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-transition: color .28s ease;
-          transition: color .28s ease;
+  transition: color .28s ease;
 }
 
 .tabs .tab a:hover {
@@ -4845,7 +4827,6 @@ small {
   display: none;
   position: absolute;
   text-align: center;
-  max-width: -webkit-calc(100% - 4px);
   max-width: calc(100% - 4px);
   overflow: hidden;
   left: 0;
@@ -4928,8 +4909,7 @@ small {
   background-color: #26a69a;
   text-align: center;
   letter-spacing: .5px;
-  -webkit-transition: .2s ease-out;
-          transition: .2s ease-out;
+  transition: .2s ease-out;
   cursor: pointer;
 }
 
@@ -4949,8 +4929,7 @@ small {
   padding: 0;
   background-color: #26a69a;
   border-radius: 50%;
-  -webkit-transition: .3s;
-          transition: .3s;
+  transition: .3s;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -5140,8 +5119,7 @@ button.btn-floating {
   vertical-align: middle;
   z-index: 1;
   will-change: opacity, transform;
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
+  transition: all .3s ease-out;
 }
 
 .waves-effect .waves-ripple {
@@ -5153,13 +5131,12 @@ button.btn-floating {
   margin-left: -10px;
   opacity: 0;
   background: rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.7s ease-out;
-          transition: all 0.7s ease-out;
-  -webkit-transition-property: opacity, -webkit-transform;
-          transition-property: opacity, -webkit-transform;
+  transition: all 0.7s ease-out;
+  transition-property: opacity, -webkit-transform;
+  transition-property: -webkit-transform, opacity;
   transition-property: transform, opacity;
-  -webkit-transition-property: -webkit-transform, opacity, -webkit-transform;
-          transition-property: transform, opacity, -webkit-transform;
+  transition-property: -webkit-transform, opacity, -webkit-transform;
+  transition-property: transform, opacity, -webkit-transform;
   -webkit-transform: scale(0);
           -ms-transform: scale(0);
       transform: scale(0);
@@ -5203,8 +5180,7 @@ button.btn-floating {
 }
 
 .waves-notransition {
-  -webkit-transition: none !important;
-          transition: none !important;
+  transition: none !important;
 }
 
 .waves-circle {
@@ -5310,7 +5286,6 @@ a.waves-effect .waves-ripple {
 
 .modal.modal-fixed-footer .modal-content {
   position: absolute;
-  height: -webkit-calc(100% - 56px);
   height: calc(100% - 56px);
   max-height: 100%;
   width: 100%;
@@ -5420,8 +5395,7 @@ a.waves-effect .waves-ripple {
 .collapsible.popout > li {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   margin: 0 24px;
-  -webkit-transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .collapsible.popout > li.active {
@@ -5462,8 +5436,7 @@ a.waves-effect .waves-ripple {
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
   position: relative;
-  -webkit-transition: opacity .4s;
-          transition: opacity .4s;
+  transition: opacity .4s;
 }
 
 .materialboxed:hover {
@@ -5565,8 +5538,7 @@ textarea.materialize-textarea {
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -5815,8 +5787,7 @@ textarea.materialize-textarea + label:after {
   position: absolute;
   top: 65px;
   opacity: 0;
-  -webkit-transition: .2s opacity ease-out, .2s color ease-out;
-          transition: .2s opacity ease-out, .2s color ease-out;
+  transition: .2s opacity ease-out, .2s color ease-out;
 }
 
 .input-field {
@@ -5831,8 +5802,7 @@ textarea.materialize-textarea + label:after {
   left: 0.75rem;
   font-size: 1rem;
   cursor: text;
-  -webkit-transition: .2s ease-out;
-          transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .input-field label.active {
@@ -5846,8 +5816,7 @@ textarea.materialize-textarea + label:after {
   position: absolute;
   width: 3rem;
   font-size: 2rem;
-  -webkit-transition: color .2s;
-          transition: color .2s;
+  transition: color .2s;
 }
 
 .input-field .prefix.active {
@@ -5858,7 +5827,6 @@ textarea.materialize-textarea + label:after {
 .input-field .prefix ~ textarea {
   margin-left: 3rem;
   width: 92%;
-  width: -webkit-calc(100% - 3rem);
   width: calc(100% - 3rem);
 }
 
@@ -5873,7 +5841,6 @@ textarea.materialize-textarea + label:after {
 @media only screen and (max-width: 992px) {
   .input-field .prefix ~ input {
     width: 86%;
-    width: -webkit-calc(100% - 3rem);
     width: calc(100% - 3rem);
   }
 }
@@ -5881,7 +5848,6 @@ textarea.materialize-textarea + label:after {
 @media only screen and (max-width: 600px) {
   .input-field .prefix ~ input {
     width: 80%;
-    width: -webkit-calc(100% - 3rem);
     width: calc(100% - 3rem);
   }
 }
@@ -5891,7 +5857,6 @@ textarea.materialize-textarea + label:after {
   display: block;
   line-height: inherit;
   padding-left: 4rem;
-  width: -webkit-calc(100% - 4rem);
   width: calc(100% - 4rem);
 }
 
@@ -5920,8 +5885,7 @@ textarea.materialize-textarea + label:after {
   color: transparent;
   cursor: pointer;
   font-size: 2rem;
-  -webkit-transition: .3s color;
-          transition: .3s color;
+  transition: .3s color;
 }
 
 /* Textarea */
@@ -5968,8 +5932,7 @@ textarea.materialize-textarea {
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  -webkit-transition: .28s ease;
-          transition: .28s ease;
+  transition: .28s ease;
   /* webkit (konqueror) browsers */
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -5987,8 +5950,7 @@ textarea.materialize-textarea {
   width: 16px;
   height: 16px;
   z-index: 0;
-  -webkit-transition: .28s ease;
-          transition: .28s ease;
+  transition: .28s ease;
 }
 
 /* Unchecked styles */
@@ -6132,8 +6094,7 @@ form p:last-child {
   border: 2px solid #5a5a5a;
   border-radius: 1px;
   margin-top: 2px;
-  -webkit-transition: .2s;
-          transition: .2s;
+  transition: .2s;
 }
 
 [type="checkbox"]:not(.filled-in) + label:after {
@@ -6217,8 +6178,7 @@ form p:last-child {
   left: 0;
   position: absolute;
   /* .1s delay is for check animation */
-  -webkit-transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
-          transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+  transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
   z-index: 1;
 }
 
@@ -6338,8 +6298,7 @@ form p:last-child {
   background-color: #818181;
   border-radius: 15px;
   margin-right: 10px;
-  -webkit-transition: background 0.3s ease;
-          transition: background 0.3s ease;
+  transition: background 0.3s ease;
   vertical-align: middle;
   margin: 0 16px;
 }
@@ -6355,8 +6314,7 @@ form p:last-child {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
   left: -5px;
   top: -3px;
-  -webkit-transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
-          transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+  transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
 }
 
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active::after,
@@ -6469,7 +6427,6 @@ select:disabled {
 .prefix ~ .select-wrapper {
   margin-left: 3rem;
   width: 92%;
-  width: -webkit-calc(100% - 3rem);
   width: calc(100% - 3rem);
 }
 
@@ -6624,8 +6581,7 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   margin: -5px 0 0 0;
-  -webkit-transition: .3s;
-          transition: .3s;
+  transition: .3s;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
@@ -6739,7 +6695,6 @@ input[type=range]:focus::-ms-fill-upper {
           -ms-transform: translateX(-100%);
       transform: translateX(-100%);
   height: 100%;
-  height: -webkit-calc(100% + 60px);
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
@@ -7473,8 +7428,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: 16px;
   margin: 0 12px;
   background-color: #e0e0e0;
-  -webkit-transition: background-color .3s;
-          transition: background-color .3s;
+  transition: background-color .3s;
   border-radius: 50%;
 }
 
@@ -7586,8 +7540,7 @@ input[type=range]:focus::-ms-fill-upper {
  */
 .picker__holder {
   position: fixed;
-  -webkit-transition: background 0.15s ease-out, top 0s 0.15s;
-          transition: background 0.15s ease-out, top 0s 0.15s;
+  transition: background 0.15s ease-out, top 0s 0.15s;
   -webkit-backface-visibility: hidden;
 }
 
@@ -7604,8 +7557,7 @@ input[type=range]:focus::-ms-fill-upper {
   filter: alpha(opacity=0);
   -moz-opacity: 0;
   opacity: 0;
-  -webkit-transition: all 0.15s ease-out;
-          transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 @media (min-height: 28.875em) {
@@ -7667,8 +7619,7 @@ input[type=range]:focus::-ms-fill-upper {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#1E000000,endColorstr=#1E000000)";
   zoom: 1;
   background: rgba(0, 0, 0, 0.32);
-  -webkit-transition: background 0.15s ease-out;
-          transition: background 0.15s ease-out;
+  transition: background 0.15s ease-out;
 }
 
 .picker--opened .picker__frame {
@@ -7910,15 +7861,12 @@ input[type=range]:focus::-ms-fill-upper {
   text-align: center;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          -webkit-box-align: center;
           align-items: center;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
-          -webkit-box-pack: justify;
           justify-content: space-between;
 }
 

@@ -6,19 +6,12 @@ var matchService = require("../../services/matchService.js"),
 
     getMatch = function (req, res) {
 
-        var mp = null;
-        if(req.params.matchId == 'test_match'){
-            mp = testService.getMatch();
-        }else{
-            mp = matchService.getMatchAsync(req.params.matchId);
-        }
-
-        Promise.all([mp]).then(function(m){
+        matchService.getMatchAsync(req.params.matchId).then(function(m){
             res.setHeader('Access-Control-Allow-Credentials',"true");
             res.setHeader('Access-Control-Allow-Headers', "X-Requested-With");
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(m[0]));
+            res.send(JSON.stringify(m));
 
         },
         function(err){

@@ -16,7 +16,7 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
         initialize: function() {
             var that = this;
 
-            App.socket.on('player:$id:update:rating', function(newRating) {
+            App.socket.on('player:' + this.get('id') + ':update:rating', function(newRating) {
                 that.set('rating', newRating);
             });
         }

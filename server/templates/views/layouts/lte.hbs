@@ -187,37 +187,7 @@
       </div>
       {{/if}}
 
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          {{#if box.title}}
-          <h3 class="box-title">{{box.title}}</h3>
-          {{/if}}
-          <div class="box-tools pull-right">
-            {{#if box.collapseable}}
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            {{/if}}
-            {{#if box.closeable}}
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-            {{/if}}
-          </div>
-        </div>
-        <div class="box-body">
-          <!-- The content block should contain the body of your template's content-->
-          {{{body}}}
-        </div>
-        <!-- /.box-body -->
-
-        {{#if box.footer}}
-        <div class="box-footer">
-          {{box.footer}}
-        </div>
-        {{/if}}
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+      {{{body}}}
 
     </section>
     <!-- /.content -->
