@@ -14,7 +14,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         showTeamModal: function(event) {
             event.preventDefault();
-            $('#modalTeam').openModal();
+            $('#modalBottom').openModal();
         }
 
     });

@@ -18,7 +18,12 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         showPlayerModal: function(event) {
             event.preventDefault();
-            $('#modalPlayer').openModal();
+            var name = this.model.get('name');
+
+            App.miHinchada.Cache.modalBottomModel.set({
+                'name': name.first + ' ' + name.last
+            });
+            $('#modalBottom').openModal();
         }
 
     });

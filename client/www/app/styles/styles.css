@@ -196,9 +196,24 @@ nav {
 /* Modal
 ---------------------------------------------------------------*/
 
+.modal {
+    overflow: visible;
+}
+
+.modal .modal-content {
+    border-top: 2px solid #03a9f4;
+    box-shadow: 0px -2px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
 .modal-content .collection {
     border: none;
     margin: -24px;
+    overflow: visible;
+}
+
+.modal-content .collection.with-header .collection-header {
+    padding-top: 50px;
+    position: relative;
 }
 
 .modal-content .collection.with-header .collection-header,
@@ -211,6 +226,16 @@ nav {
     text-align: left;
 }
 
+.modal-content .collection-header img {
+    background-color: #fff;
+    border: 2px solid #03a9f4;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, .75);
+    left: 50%;
+    margin-left: -50px;
+    position: absolute;
+    top: -50px;
+}
 
 
 

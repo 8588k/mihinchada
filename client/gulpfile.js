@@ -64,6 +64,7 @@ gulp.task('js-build', function() {
         'www/app/utils/handlebars-helpers.js',
         'www/app/models/*.js',
         'www/app/collections/*.js',
+        'www/app/views/modal-bottom.item.view.js',
         'www/app/views/footballMatch.layout.view.js',
         // 'www/app/views/header.item.view.js',
         'www/app/views/header.layout.view.js',
