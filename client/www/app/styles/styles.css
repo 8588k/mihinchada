@@ -1,5 +1,5 @@
 body {
-    background-color: #ccc;
+    background-color: #f8f8f8;
     box-sizing: border-box;
     font-family: Roboto, Arial, Helvetica, Sans-serif;
     margin: 0;
@@ -48,14 +48,19 @@ nav .button-collapse {
     margin-left: 8px;
 }
 
-nav .button-collapse i {
-    font-size: 30px;
+nav .button-collapse i,
+nav .nav-actions-container i {
+    font-size: 24px;
     height: 40px;
     line-height: 40px;
 }
 
 .side-nav {
     box-shadow: none;
+}
+
+.nav-actions-container {
+    float: right;
 }
 
 
