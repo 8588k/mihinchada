@@ -12,7 +12,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             'goalkeeperRegion': '[data-js="goalkeeper"]',
             'defendersRegion': '[data-js="defenders"]',
             'midfieldersRegion': '[data-js="midfielders"]',
-            'forwardsRegion': '[data-js="forwards"]',
+            'attackersRegion': '[data-js="attackers"]',
             // substitutes
             // manager
         },
@@ -26,21 +26,20 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 defendersCollectionView,
                 midfielders,
                 midfieldersCollectionView,
-                forwards,
-                forwardsCollectionView;
+                attackers,
+                attackersCollectionView;
 
             playersCollection = new App.miHinchada.Collections.Players(team.players);
 
             goalkeepers = playersCollection.where({'playing_position': 'goalkeeper'});
             defenders = playersCollection.where({'playing_position': 'defender'});
             midfielders = playersCollection.where({'playing_position': 'midfielder'});
-            forwards = playersCollection.where({'playing_position': 'forward'});
-
+            attackers = playersCollection.where({'playing_position': 'attacker'});
 
             var goalkeepersCollection = new App.miHinchada.Collections.Players(goalkeepers);
             var defendersCollection = new App.miHinchada.Collections.Players(defenders);
             var midfieldersCollection = new App.miHinchada.Collections.Players(midfielders);
-            var forwardsCollection = new App.miHinchada.Collections.Players(forwards);
+            var attackersCollection = new App.miHinchada.Collections.Players(attackers);
 
             goalkeepersCollectionView = new Views.Players({
                 collection: goalkeepersCollection
@@ -57,10 +56,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             });
             this.midfieldersRegion.show(midfieldersCollectionView);
 
-            forwardsCollectionView = new Views.Players({
-                collection: forwardsCollection
+            attackersCollectionView = new Views.Players({
+                collection: attackersCollection
             });
-            this.forwardsRegion.show(forwardsCollectionView);
+            this.attackersRegion.show(attackersCollectionView);
         }
 
     });

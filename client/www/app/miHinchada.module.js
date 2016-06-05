@@ -3,6 +3,8 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
         adds,
         Router;
 
+    miHinchada.Cache = {};
+
     Router = Marionette.AppRouter.extend({
         'appRoutes': {
             '': 'index'
@@ -31,5 +33,12 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
         new Router({
             controller: controller
         });
+
+
+        miHinchada.Cache.modalBottomModel = new miHinchada.Models.ModalBottom();
+        var modalBottomView = new  miHinchada.Views.ModalBottom({
+                'model': miHinchada.Cache.modalBottomModel
+            });
+        App.modalBottomRegion.show(modalBottomView);
     };
 });

@@ -1,40 +1,35 @@
 actions
     player
-        goal
-        assist
-        tackle
-        shot
-        dribbles
-        interception
-        clearance
-        long ball
-        offside
-        own_goal
-        red_card
-        yellow_card
-        foul
+        goal         // ¡golazo!
+        assist       // gran pase
+        tackle       // buen quite
+        red_card     // que lo echen
+        yellow_card  // es para amarilla
+        applause     // aplaudir
+        boo          // silbar
+        //shot
+        //dribbles 
+        //interception
+        //clearance
+        //long ball
+        //offside
+        //own_goal
+        //foul
     team
-        applause
-        cheer
-        boo
-
+        cheer // alentar
+        boo   // abuchear
+        //applause
     manager         
-        great sustitution
-        bad sustitution
-        time for a sustitution
-
-    referee    
-            offside
-            red_card
-            yellow_card
-            foul
-
-            offside
-            own_goal
-            red_card
-            yellow_card
-            foul
-
+        great sustitution        // buen cambio
+        bad sustitution          // mal cambio
+        //time for a sustitution
+    referee
+        applause     // aplaudir
+        boo          // abuchear
+        //offside
+        //red_card
+        //yellow_card
+        //foul
 stadium
     name
     picture

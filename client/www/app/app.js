@@ -10,7 +10,8 @@
 
     App.addRegions({
         'headerRegion': '[data-js="header-region"]',
-        'mainRegion': '[data-js="main-region"]'
+        'mainRegion': '[data-js="main-region"]',
+        'modalBottomRegion': '[data-js="modal-bottom"]'
     });
 
     App.on('start', function() {
