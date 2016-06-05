@@ -40,6 +40,49 @@ body {
 
 nav {
     background-color: #03a9f4;
+    height: 40px;
+}
+
+nav .button-collapse {
+    height: 40px;
+    margin-left: 8px;
+}
+
+nav .button-collapse i {
+    font-size: 30px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.side-nav {
+    box-shadow: none;
+}
+
+
+/* TABS
+---------------------------------------------------------------*/
+
+.tabs-container .tabs {
+    background-color: #03a9f4;
+    font-size: 12px;
+    height: 40px;
+}
+
+.tabs .tab {
+    line-height: 40px;
+}
+
+.tabs .tab a {
+    color: #fff;
+    height: 40px;
+}
+
+.tabs .tab.disabled a {
+    color: #ccc;
+}
+
+.tabs .indicator {
+    background-color: #fff;
 }
 
 
