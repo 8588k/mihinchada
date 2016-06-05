@@ -5,6 +5,7 @@ var keystone = require('keystone'),
     matchService = require("../../services/matchService.js"),
     eventService = require("../../services/eventService.js"),
     socketService = require("../../services/socketService.js"),
+    twitterService = require("../../services/twitterService.js"),
     Promise = require('bluebird'),
     _ = require('underscore'),
 
@@ -80,7 +81,8 @@ var keystone = require('keystone'),
                     'title': 'Process Test Match',
                     'collapseable': true
                 },
-                'match': JSON.stringify(testService.getMatch())
+                'match': JSON.stringify(testService.getMatch()),
+                'twitter': twitterService.getAllStreams()
             }
         );
     };
