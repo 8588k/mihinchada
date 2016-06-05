@@ -95,21 +95,56 @@ nav .nav-actions-container i {
 ---------------------------------------------------------------*/
 
 .score-container {
+    background-color: #03a9f4;
     height: auto;
     padding: 10px;
     text-align: center;
 }
 
+.score-crest-container,
 .score-crest {
+    background-color: #fff;
+    border-radius: 50%;
     display: inline-block;
+}
+
+.score-crest-container {
+    border: 2px solid white;
+}
+
+.score-crest {
+    border: 2px solid #03A9F4;
+    height: 50px;
+    position: relative;
     vertical-align: middle;
-    width: 20%;
+    width: 50px;
+}
+
+.score-crest img {
+    border: 0;
+    left: 50%;
+    margin-left: -17.5px;
+    margin-top: -17.5px;
+    position: absolute;
+    top: 50%;
+    vertical-align: middle;
 }
 
 .score {
+    color: #fff;
     display: inline-block;
     vertical-align: middle;
     width: 30%;
+}
+
+.score-result {
+    font-size: 24px;
+    height: 30px;
+}
+
+.score-result .score-result-home,
+.score-result .score-result-away {
+    font-weight: bold;
 }
 
 

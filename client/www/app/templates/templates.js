@@ -9,11 +9,11 @@ this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compi
 this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
 
-  return "<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_river.png\" width=\"35\" height=\"35\">\n</div>\n\n<div class=\"score\">\n    <div class=\"score-result\">\n        <span class=\"score-home\">"
+  return "<div class=\"score-crest-container\">\n    <div class=\"score-crest\">\n        <img src=\"./app/imgs/escudo_river.png\" width=\"35\" height=\"35\">\n    </div>\n</div>\n\n<div class=\"score\">\n    <div class=\"score-result\">\n        <span class=\"score-home\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.team_home : depth0)) != null ? stack1.score : stack1), depth0))
     + "</span>\n        -\n        <span class=\"score-away\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.team_away : depth0)) != null ? stack1.score : stack1), depth0))
-    + "</span>\n    </div>\n    <div class=\"score-info\">\n        <span class=\"score-time\">15:47</span>\n        <span class=\"score-period\">ST</span>\n    </div>\n</div>\n\n<div class=\"score-crest\">\n    <img src=\"./app/imgs/escudo_boca.png\" width=\"35\" height=\"35\">\n</div>";
+    + "</span>\n    </div>\n    <div class=\"score-info\">\n        <span class=\"score-time\">15:47</span>\n        <span class=\"score-period\">ST</span>\n    </div>\n</div>\n\n<div class=\"score-crest-container\">\n    <div class=\"score-crest\">\n        <img src=\"./app/imgs/escudo_boca.png\" width=\"35\" height=\"35\">\n    </div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "HEADER";
