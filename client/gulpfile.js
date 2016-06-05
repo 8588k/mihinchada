@@ -101,10 +101,10 @@ gulp.task('fonts-build', function() {
     gulp.src([
             'node_modules/materialize-css/dist/font/**/*.+(eot|svg|ttf|woff|otf)'
         ])
-        .pipe(gulp.dest('www/build/font')).on('error', errorHandler);
+        .pipe(gulp.dest('www/build/fonts')).on('error', errorHandler);
 });
 
-gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build']);
+gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build', 'fonts-build']);
 
 gulp.task('build', ['default']);
 
