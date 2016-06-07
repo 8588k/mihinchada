@@ -4,13 +4,19 @@ var matchService = require("../../services/matchService.js"),
     keystone = require('keystone'),
     Promise = require('bluebird'),
 
+    setApiHeaders = function(res){
+        res.setHeader('Access-Control-Allow-Credentials',"true");
+        res.setHeader('Access-Control-Allow-Headers', "X-Requested-With");
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Content-Type', 'application/json');
+    },
+
     getMatch = function (req, res) {
 
         matchService.getMatchAsync(req.params.matchId).then(function(m){
-            res.setHeader('Access-Control-Allow-Credentials',"true");
-            res.setHeader('Access-Control-Allow-Headers', "X-Requested-With");
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.setHeader('Content-Type', 'application/json');
+
+            setApiHeaders(res);
+
             res.send(JSON.stringify(m));
 
         },
@@ -21,11 +27,19 @@ var matchService = require("../../services/matchService.js"),
 
     getEvents = function (req, res) {
 
-        res.setHeader('Content-Type', 'application/json');
+        setApiHeaders(res);
 
-        eventService.getEventTypesAsync().then(function(events){
+        var eventsPromise = null;
+
+        if(req.query.test){
+            eventsPromise = testService.getActions();
+        }else{
+            eventsPromise = eventService.getEventTypesAsync();
+        }
+
+        Promise.all([eventsPromise]).then(function(events){
             
-            res.send(JSON.stringify(events));
+            res.send(JSON.stringify(events[0]));
         }, 
         function(err){
             res.send(JSON.stringify(err));
