@@ -1,30 +1,487 @@
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-<!-- twitter box -->
-<div class="box">
-    <div class="box-header with-border">
-      <h3 class="box-title">Twitter Stream</h3>
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-          <i class="fa fa-minus"></i></button>
-      </div>
-    </div>
-    <div class="box-body">
-        <table class="table table-condensed">
-        <tbody>
-            <tr>
-              <td>Tweets</td>
-              <td>{{twitter.tweets}}</td>
-            </tr>
-            <tr>
-              <td>Tracks</td>
-              <td>{{twitter.tracks}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="btn-group">
-          <button type="button" class="btn btn-info">Refresh</button>
-          <button type="button" class="btn btn-info">Relaunch</button>
+<!-- Control panel -->  
+    <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Control Panel</h3>
+        </div>
+        <div class="box-body">
+            <div class="btn-group">
+            {{#if twitter}}
+                <button type="button" class="btn btn-app">
+                <i class="fa fa-pause"></i> Pause
+                </button>
+            {{else}}
+                <button id="startMatchStream" type="button" class="btn btn-app">
+                <i class="fa fa-play"></i> Play
+                </button>
+            {{/if}}
+            </div>
         </div>
     </div>
-</div>
 <!-- /.box -->
+
+<!-- twitter box -->
+    {{#if twitter}}
+        <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Twitter Stream</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                      <td>Tweets</td>
+                      <td>{{twitter.tweets}}</td>
+                    </tr>
+                    <tr>
+                      <td>Tracks</td>
+                      <td>{{twitter.tracks}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info">Refresh</button>
+                  <button type="button" class="btn btn-info">Relaunch</button>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+<!-- /.box -->
+
+<!-- match box -->
+    {{#if match}}
+        
+        <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Match</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+
+
+              <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                <div class="panel box box-primary">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Points
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="box-body">
+
+                        <div id="teamsPoints" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="players_team_home" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="players_team_away" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="extraPoints" style="height: 400px; min-width: 310px"></div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-danger">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      Quantity
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="box-body">
+
+                        <div id="actions_by_resource" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="team_actions" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="player_actions" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="manager_actions" style="height: 400px; min-width: 310px"></div>
+
+                        <div id="referee_actions" style="height: 400px; min-width: 310px"></div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+        </div>
+    {{/if}}
+<!-- /.box -->
+<script type="text/javascript">
+    window.onload = function () {
+
+
+        Highcharts.setOptions({
+            global : {
+                useUTC : false
+            }
+        });
+        var match = {{{match_str}}};
+        var matchLive = {{{live_match_str}}};
+        var events = {{{events_str}}};
+
+
+
+        var teamsPointsSeries = [];
+        _.each(['team_home','team_away'], function(teamLoc){
+
+            var data = [], i;
+
+            for (i = 1; i < _.size(matchLive); i += 1) {
+                var y = matchLive[i]['team_' + match[teamLoc].id + '_points'];
+                y = parseInt(y) || 0;
+                data.push([i,y]);
+            }
+
+            var serie = {
+                'name' : match[teamLoc].name,
+                'data' : data
+            }
+
+            teamsPointsSeries.push(serie);
+
+
+
+            var playerPointsSeries = [];
+            _.each(match[teamLoc].players, function(player){
+
+                var data = [], i;
+
+                for (i = 1; i < _.size(matchLive); i += 1) {
+                    var y = matchLive[i]['player_' + player.id + '_points'];
+                    y = parseInt(y) || 0;
+                    data.push([i,y]);
+                }
+
+                var serie = {
+                    'name' : player.name.first + ' ' + player.name.last,
+                    'data' : data
+                }
+
+                playerPointsSeries.push(serie);
+            });
+
+            $('#players_' + teamLoc).highcharts('StockChart', {
+                chart : {
+                    events : {
+                        load : function () {
+                            
+                        }
+                    }
+                },
+
+                rangeSelector: {
+                    buttons: [{
+                        count: 1,
+                        type: 'minute',
+                        text: '1M'
+                    }, {
+                        count: 5,
+                        type: 'minute',
+                        text: '5M'
+                    }, {
+                        type: 'all',
+                        text: 'All'
+                    }],
+                    inputEnabled: false,
+                    selected: 0
+                },
+
+                xAxis: {labels: {   formatter: function () {return this.value;}} },
+
+                title : {
+                    text : teamLoc +' Players Points'
+                },
+
+                exporting: {
+                    enabled: false
+                },
+
+                series : playerPointsSeries
+            });
+
+        });
+
+        $('#teamsPoints').highcharts('StockChart', {
+            chart : {
+                events : {
+                    load : function () {
+
+                        // set up the updating of the chart each second
+                        /*
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = Math.round(Math.random() * 100);
+                            series.addPoint([x, y], true, true);
+                        }, 1000);
+                        */
+                    }
+                }
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+
+            xAxis: {labels: {   formatter: function () {return this.value;}} },
+
+            title : {
+                text : 'Team points'
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : teamsPointsSeries
+        });
+
+        $('#extraPoints').highcharts('StockChart', {
+            chart : {
+                events : {
+                    load : function () {
+
+                    }
+                }
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+
+            xAxis: {labels: {   formatter: function () {return this.value;}} },
+
+            title : {
+                text : 'Extra points'
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : [
+                {
+                    'name' : match.referee.name.first + ' ' + match.referee.name.last,
+                    'data' : (function () {
+                        var data = [], i;
+
+                        for (i = 1; i < _.size(matchLive); i += 1) {
+                            var y = matchLive[i]['referee_' + match.referee.id + '_points'];
+                            y = parseInt(y) || 0;
+                            data.push([i,y]);
+                        }
+                        return data;
+                    }())
+                },
+                {
+                    'name' : match.team_home.manager.name.last,
+                    'data' : (function () {
+                        var data = [], i;
+
+                        for (i = 1; i < _.size(matchLive); i += 1) {
+                            var y = matchLive[i]['manager_' + match.team_home.manager.id + '_points'];
+                            y = parseInt(y) || 0;
+                            data.push([i,y]);
+                        }
+                        return data;
+                    }())
+                },
+                {
+                    'name' : match.team_away.manager.name.last,
+                    'data' : (function () {
+                        var data = [], i;
+
+                        for (i = 1; i < _.size(matchLive); i += 1) {
+                            var y = matchLive[i]['manager_' + match.team_away.manager.id + '_points'];
+                            y = parseInt(y) || 0;
+                            data.push([i,y]);
+                        }
+                        return data;
+                    }())
+                }
+            ]
+        });
+
+
+        //----------------------------------------------------
+        //                      ACTIONS QTY
+        //----------------------------------------------------
+
+        var qtySeries = [];
+
+        _.each(['team','player', 'referee', 'manager'], function(res){
+            var data = [], i;
+
+            for (i = 1; i < _.size(matchLive); i += 1) {
+                var y = matchLive[i][res + '_actions_qty'];
+                y = parseInt(y) || 0;
+                data.push([i,y]);
+            }
+
+            var serie = {
+                'name' : res + '_action qty',
+                'data' : data
+            }
+
+            qtySeries.push(serie);
+
+            var resActions = _.filter(events, function(ev){
+                return ev.resource_type == res;
+            });
+
+            var resQtySeries = [];
+
+            _.each(resActions, function(ev){
+                var data = [], i;
+
+                for (i = 1; i < _.size(matchLive); i += 1) {
+                    var y = matchLive[i][ res + '_action_' + ev.id + '_qty'];
+                    y = parseInt(y) || 0;
+                    data.push([i,y]);
+                }
+
+                var serie = {
+                    'name' : ev.name,
+                    'data' : data
+                }
+
+                resQtySeries.push(serie);
+            });
+
+            $('#' + res + '_actions').highcharts('StockChart', {
+                chart : {
+                    events : {
+                        load : function () {
+
+                        }
+                    }
+                },
+
+                rangeSelector: {
+                    buttons: [{
+                        count: 1,
+                        type: 'minute',
+                        text: '1M'
+                    }, {
+                        count: 5,
+                        type: 'minute',
+                        text: '5M'
+                    }, {
+                        type: 'all',
+                        text: 'All'
+                    }],
+                    inputEnabled: false,
+                    selected: 0
+                },
+
+                xAxis: {labels: {   formatter: function () {return this.value;}} },
+
+                title : {
+                    text : res + ' actions'
+                },
+
+                exporting: {
+                    enabled: false
+                },
+
+                series : resQtySeries
+            });
+
+        });
+
+        $('#actions_by_resource').highcharts('StockChart', {
+            chart : {
+                events : {
+                    load : function () {
+
+                    }
+                }
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+
+            xAxis: {labels: {   formatter: function () {return this.value;}} },
+
+            title : {
+                text : 'Points by Resource'
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : qtySeries
+        });
+
+
+        socket.on('new-event', function(message){
+            console.log(message);
+        });
+
+        $("#startMatchStream").click(function() {
+            socket.emit('match:test_match:process', null);
+        });
+    };
+
+
+</script>
+

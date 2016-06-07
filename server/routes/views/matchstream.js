@@ -30,7 +30,7 @@ exports = module.exports = function (req, res) {
 
         io.on('connect', function(socket){
             console.log('--- User connected');
-            socketService.joinInternalMatch(match, socket);
+            socketService.joinMatchEvents(match, socket);
         });
 
         view.render(
