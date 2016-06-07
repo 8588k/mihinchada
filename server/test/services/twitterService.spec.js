@@ -12,7 +12,7 @@ describe("twitterService suite", function() {
             },
             stream = twitterService.createStream(opts, {
                 'message': function(msg){
-                    //console.log('new message:', msg);
+                    console.log('new message:', msg);
                     msgsCount++;
                 },
                 'error': function(err){

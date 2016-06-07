@@ -35,6 +35,7 @@ var Twit = require('twit'),
                     'stream' : stream,
                     'tracks' : opts['tracks'],
                     'tweets' : 0
+//exclude:nativeretweets exclude:retweets
                 };
             }
 
@@ -45,7 +46,9 @@ var Twit = require('twit'),
                 }
 
                 stream.on('tweet', function(tw){
-                    createdStreams[opts['match_id']]['tweets'] += 1;
+                    if(createdStreams[opts['match_id']]){
+                        createdStreams[opts['match_id']]['tweets'] += 1;    
+                    }
                 });
             }
 

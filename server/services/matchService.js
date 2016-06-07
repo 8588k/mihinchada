@@ -2,7 +2,6 @@
 
 var twitterService = require('./twitterService.js'),
     liveMatchService = require('./liveMatchService.js'),
-    socketService = require('./socketService.js'),
     testService = require("./testService.js"),
     keystone = require('keystone'),
     Promise = require('bluebird'),
@@ -176,22 +175,7 @@ var twitterService = require('./twitterService.js'),
             resourceKeywords,
             resource;
 
-        socketService.emitOnInternalMatch(
-            match,
-            'processing-tweet',
-            tweet.text
-        )
-
         if(eventAction){
-
-            socketService.emitOnInternalMatch(
-                match,
-                'processing-tweet-event',
-                {
-                    'text':tweet.text,
-                    'event': eventAction
-                }
-            )
 
             switch(eventAction.resource_type) {
                 case 'player':
@@ -272,7 +256,9 @@ var twitterService = require('./twitterService.js'),
                 }, 
                 {
                     'tweet': function(tweet){
-                        processMatchTweet(match, actions, tweet);
+                        if(!tweet.retweeted_status){
+                            processMatchTweet(match, actions, tweet);    
+                        }
                     }
                 }
             );

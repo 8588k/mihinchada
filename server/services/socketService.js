@@ -4,28 +4,56 @@ var keystone = require('keystone'),
     Promise = require('bluebird'),
     _ = require('underscore'),
 
-    getInternalMatchRoom = function(match){
-        return `internal-match-${match.id}`;
+    getMatchEventsRoom = function(match){
+        return `match:${match.id}:events`;
     },
 
-    joinInternalMatch = function(match, socket) {
+    getMatchRoom = function(match){
+        return `match:${match.id}`;
+    },
+
+    joinMatchEvents = function(match, socket) {
         if(socket && match){
-            socket.join(getInternalMatchRoom(match));
+            socket.join(getMatchEventsRoom(match));
         }
     },
 
-    emitOnInternalMatch = function(match, key, msg) {
+    joinMatch = function(match, socket) {
+        if(socket && match){
+            socket.join(getMatchRoom(match));
+        }
+    },
+
+    emitOnMatchEvent = function(match, key, msg) {
 
         var io = keystone.get('io');
 
         if(!io) console.error("socket.io not found!!!")
 
         if(io && match && key && msg){
-            io.to(getInternalMatchRoom(match))
+            io.to(getMatchEventsRoom(match))
+                .emit(key, msg);
+        }
+    },
+
+    emitOnMatch = function(match, key, msg) {
+
+        var io = keystone.get('io');
+
+        if(!io) console.error("socket.io not found!!!")
+
+        if(io && match && key && msg){
+            io.to(getMatchRoom(match))
                 .emit(key, msg);
         }
     };
 
-exports.getInternalMatchRoom = getInternalMatchRoom;
-exports.emitOnInternalMatch = emitOnInternalMatch;
-exports.joinInternalMatch = joinInternalMatch;
+exports.getMatchEventsRoom = getMatchEventsRoom;
+exports.getMatchRoom = getMatchRoom;
+
+exports.emitOnMatchEvent = emitOnMatchEvent;
+exports.emitOnMatch = emitOnMatch;
+
+exports.joinMatchEvents = joinMatchEvents;
+exports.joinMatch = joinMatch;
+

@@ -26,6 +26,43 @@ var matchService = require('./matchService.js'),
         return redis.hmsetAsync(key, map);
     },
 
+    getLiveMatchAsync = function(match){
+
+        return new Promise(function(resolve, reject){
+
+            var matchKey = getRedisMatchkey(match),
+                redisMatchAsync = getRedisLiveMatchAsync(matchKey),
+                asyncs = [redisMatchAsync];
+
+            for (var i = 1; i < 160; i++) { 
+                var matchMinKey = getRedisMatchMinutekey(match, i),
+                    redisMinMatchAsync = getRedisLiveMatchAsync(matchMinKey);
+
+                asyncs.push(redisMinMatchAsync);
+            }
+
+            Promise.all(asyncs).then(
+                function(results){
+                    var res = {};
+                    for (var i = 0; i < results.length; i++) {
+                        if(i == 0) {
+                            res['overall'] = results[0];
+                        }else{
+                            if(results[i]){
+                                res[i] = results[i];
+                            }
+                        }
+                    }
+                    return resolve(res);
+                }, 
+                function(err){
+                    reject(err);
+                }
+            );
+
+        });
+    },
+
     add = function(map, key, value){
         var prev = parseInt(map[key]|| 0);
         var addValue = parseInt(value|| 1);
@@ -40,13 +77,6 @@ var matchService = require('./matchService.js'),
      *  action: dto de la accion
      **/
     createMatchActionEventAsync = function(date, match, resource, action, ref){
-
-        socketService.emitOnInternalMatch(match, 'new-match-event', {
-            'date': date,
-            'resource': resource,
-            'action':action,
-            'ref': ref
-        });
 
         return new Promise(function(resolve, reject){
 
@@ -74,7 +104,7 @@ var matchService = require('./matchService.js'),
                         add(liveMatch, `${action.resource_type}_total_points`, action.points);
                         add(liveMatch, `${action.resource_type}_${resource.id}_points`, action.points);
                         add(liveMatch, `${action.resource_type}_actions_qty`, 1);
-                        add(liveMatch, `${action.resource_type}_action_${action.name}_qty`, 1);
+                        add(liveMatch, `${action.resource_type}_action_${action.id}_qty`, 1);
                         liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
                             parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || 50);
 
@@ -90,7 +120,15 @@ var matchService = require('./matchService.js'),
 
                     ]).then(function(res){
 
-                        socketService.emitOnInternalMatch(match, 'overall', redisMatch);
+                        socketService.emitOnMatchEvent(
+                            match, 
+                            'new-event',
+                            {
+                                'overall': redisMatch,
+                                'min': parseInt(min),
+                                'snapshot': redisMinMatch
+                            }
+                        );
 
                         resolve(res);
 
@@ -109,6 +147,7 @@ var matchService = require('./matchService.js'),
         });
     };
 
+exports.getLiveMatchAsync = getLiveMatchAsync;
 exports.getRedisLiveMatchAsync = getRedisLiveMatchAsync;
 exports.setRedisLiveMatchAsync = setRedisLiveMatchAsync;
 exports.createMatchActionEventAsync = createMatchActionEventAsync;
