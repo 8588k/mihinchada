@@ -117,7 +117,7 @@ var _ = require('underscore'),
     match = {
         'id': 'test_match',
         'status': 'in_progress',
-        'start_date': new Date(new Date().getTime() - 17*60000),
+        'start_date': new Date(new Date().getTime() - 0*60000),
         'end_date': new Date(new Date().getTime() + 110*60000),
         'team_home': {
             'id': 'idarg',

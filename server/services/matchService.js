@@ -259,6 +259,18 @@ var twitterService = require('./twitterService.js'),
                         if(!tweet.retweeted_status){
                             processMatchTweet(match, actions, tweet);    
                         }
+                    },
+                    'error': function(err){
+                        console.log('error in stream.', err);
+                    },
+                    'connect': function(err){
+                        console.log('connecting to stream.');
+                    },
+                    'connected': function(err){
+                        console.log('connected to stream.');
+                    },
+                    'disconnect': function(err){
+                        console.log('<<<<<<<<<<<<<<<<<< disconnect from stream.', err);
                     }
                 }
             );

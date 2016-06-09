@@ -15,12 +15,20 @@ var Twit = require('twit'),
         return _.values(createdStreams);
     },
 
+    removeStream = function(matchId){
+        var s = createdStreams[matchId];
+        if(s){
+            s.stream.stop();
+            console.log('Twitter stream stoped.')
+            delete createdStreams[matchId];
+        }
+    },
 
     getStreams = function(matchId){
         return createdStreams[matchId];
     },
 
-    //opts example {tracks: array of strings}
+    //opts example {track: array of strings}
     //callbacks: map<string(event_name), function>
     createStream = function(opts, callbacks){
         var stream;
@@ -33,9 +41,8 @@ var Twit = require('twit'),
                 createdStreams[opts['match_id']] = {
                     'match_id': opts['match_id'],
                     'stream' : stream,
-                    'tracks' : opts['tracks'],
+                    'tracks' : opts['track'],
                     'tweets' : 0
-//exclude:nativeretweets exclude:retweets
                 };
             }
 
@@ -58,7 +65,7 @@ var Twit = require('twit'),
 
         return stream;
     };
-
+exports.removeStream = removeStream;
 exports.getStreams = getStreams;
 exports.getAllStreams = getAllStreams;
 exports.createStream = createStream;

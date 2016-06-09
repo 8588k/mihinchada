@@ -8,7 +8,7 @@ describe("twitterService suite", function() {
 
         var msgsCount = 0,
             opts = {
-                'track': ['twitter','futbol','football']
+                'track': ['futbol','football']
             },
             stream = twitterService.createStream(opts, {
                 'message': function(msg){

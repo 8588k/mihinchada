@@ -7,6 +7,7 @@ var express = require('express'),
     app = express(),
     keystone = require('keystone'),
     handlebars = require('express-handlebars'),
+    socketService = require("./services/socketService.js"),
     socketio = require('socket.io');
  
 keystone.set('app', app);
@@ -94,5 +95,9 @@ keystone.start({
             session(socket.handshake, {}, next);
         });
     
+        io.on('connect', function(socket){
+            console.log('-----> client connected <-----')
+            socketService.serverListeners(socket);
+        });
     }
 });

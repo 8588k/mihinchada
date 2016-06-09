@@ -49,7 +49,7 @@ var matchService = require('./matchService.js'),
                             res['overall'] = results[0];
                         }else{
                             if(results[i]){
-                                res[i] = results[i];
+                                res[(results[i]['min'])] = results[i];
                             }
                         }
                     }
@@ -113,6 +113,7 @@ var matchService = require('./matchService.js'),
 
                     redisMatch = result[0];
                     redisMinMatch = result[1];
+                    redisMinMatch['min'] = min;
 
                     Promise.all([
                         setRedisLiveMatchAsync(matchKey, redisMatch),
@@ -126,7 +127,8 @@ var matchService = require('./matchService.js'),
                             {
                                 'overall': redisMatch,
                                 'min': parseInt(min),
-                                'snapshot': redisMinMatch
+                                'snapshot': redisMinMatch,
+                                'ref': ref
                             }
                         );
 
