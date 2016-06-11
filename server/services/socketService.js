@@ -118,6 +118,10 @@ var keystone = require('keystone'),
         *                                   MATCH
         ************************************************************************/
         
+        //TODO subscribe:match
+
+        //player:' + this.get('id') + ':update:rating
+
         socket.on('match:subscribe:events', function(data){
 
             if(data.match_id){
