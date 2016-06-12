@@ -44,9 +44,12 @@ main {
 ---------------------------------------------------------------*/
 
 nav {
-    background-color: #03a9f4;
-    /*height: 40px;*/
+    background-color: #0c1f34;
     height: 7vh;
+}
+
+nav a {
+    color: #10bcf4;
 }
 
 nav .button-collapse {
@@ -78,7 +81,7 @@ nav .nav-actions-container i {
 }
 
 .tabs-container .tabs {
-    background-color: #03a9f4;
+    background-color: #0c1f34;
     font-size: 12px;
     height: 100%;
 }
@@ -88,8 +91,16 @@ nav .nav-actions-container i {
 }
 
 .tabs .tab a {
-    color: #fff;
+    color: #10bcf4;
     height: 40px;
+}
+
+.tabs .tab a:hover {
+    color: #10bcf4;
+}
+
+.tabs .tab a.active {
+    color: #fff;
 }
 
 .tabs .tab.disabled a {
@@ -105,7 +116,7 @@ nav .nav-actions-container i {
 ---------------------------------------------------------------*/
 
 .score-container {
-    background-color: #03a9f4;
+    background-color: #0c1f34;
     /*height: auto;*/
     height: 13vh;
     padding: 10px;
@@ -124,7 +135,7 @@ nav .nav-actions-container i {
 }
 
 .score-crest {
-    border: 2px solid #03A9F4;
+    border: 2px solid #10bcf4;
     height: 50px;
     position: relative;
     vertical-align: middle;
@@ -219,6 +230,12 @@ nav .nav-actions-container i {
     color: #fff;
     font-size: 11px;
 }
+
+/*.player-name {
+    border: 1px solid;
+    display: inline-block;
+    margin: 0 auto;
+}*/
 
 .player-number-container {
     background-color: #fff;
@@ -535,7 +552,7 @@ input::-webkit-inner-spin-button {
 }
 
 .football-pitch {
-    background-color: red;
+    background-color: #777d83;
     height: 73vh;
     padding: 10px 0 10px 10px;
 }
