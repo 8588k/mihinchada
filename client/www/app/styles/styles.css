@@ -12,6 +12,10 @@ body {
     min-height: 100%;
 }
 
+main {
+    height: 86vh;
+}
+
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -41,7 +45,8 @@ body {
 
 nav {
     background-color: #03a9f4;
-    height: 40px;
+    /*height: 40px;*/
+    height: 7vh;
 }
 
 nav .button-collapse {
@@ -68,10 +73,14 @@ nav .nav-actions-container i {
 /* TABS
 ---------------------------------------------------------------*/
 
+.tabs-container {
+    height: 7vh;
+}
+
 .tabs-container .tabs {
     background-color: #03a9f4;
     font-size: 12px;
-    height: 40px;
+    height: 100%;
 }
 
 .tabs .tab {
@@ -97,7 +106,8 @@ nav .nav-actions-container i {
 
 .score-container {
     background-color: #03a9f4;
-    height: auto;
+    /*height: auto;*/
+    height: 13vh;
     padding: 10px;
     text-align: center;
 }
@@ -149,22 +159,65 @@ nav .nav-actions-container i {
 }
 
 
+/* Team
+---------------------------------------------------------------*/
+
+.goalkeeper-row,
+.defenders-row,
+.midfielders-row,
+.attackers-row {
+    display: table;
+    height: 8.5vh;
+    table-layout: fixed;
+    width: 100%;
+}
+
+
 /* Player
 ---------------------------------------------------------------*/
 
+.players {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .players-row {
+    display: table-row;
+    margin: 0;
     text-align: center;
 }
 
 .players-row li {
-    display: inline-block;
+    display: table-cell;
     margin-right: 2%;
-    text-align: center;
-    width: 18%;
+}
+
+.player-picture {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 5vh;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 5vh;
+}
+
+.player-picture img {
+    height: 6vh;
+    left: 50%;
+    margin-left: -17px;
+    margin-top: -17px;
+    position: absolute;
+    top: 50%;
+    width: 6vh;
 }
 
 .players-row a {
-    color: rgba(0, 0, 0, 0.87);
+    color: #fff;
+    font-size: 11px;
 }
 
 .player-number-container {
@@ -483,6 +536,7 @@ input::-webkit-inner-spin-button {
 
 .football-pitch {
     background-color: red;
+    height: 73vh;
     padding: 10px 0 10px 10px;
 }
 
@@ -495,7 +549,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
     overflow: hidden;
     position: relative;
-    width: 75%;
+    width: 85%;
 }
 
 .football-pitch-half-home {
@@ -511,7 +565,7 @@ input::-webkit-inner-spin-button {
 .football-pitch-half-away:before {
     content: "";
     display: block;
-    padding-top: 70%;
+    padding-top: 75%;
 }
 
 .football-pitch-corner-home:before,

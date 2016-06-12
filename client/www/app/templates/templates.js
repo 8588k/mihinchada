@@ -1,10 +1,10 @@
 this["__templates"] = this["__templates"] || {};
 this["__templates"]["mihinchada"] = this["__templates"]["mihinchada"] || {};
 this["__templates"]["mihinchada"]["footballField"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"field\">\n    <div class=\"left-corner-home\"></div>\n    <div class=\"right-corner-home\"></div>\n    <div class=\"field-half field-half-home\" data-js=\"field-half-home\"></div>\n\n    <div class=\"field-half field-half-away\" data-js=\"field-half-away\"></div>\n    <div class=\"left-corner-away\"></div>\n    <div class=\"right-corner-away\"></div>\n</div>";
+    return "<div class='football-pitch-half-home'>\n    <div class=\"football-pitch-corner-home\"></div>\n    <div class=\"football-pitch-big-area-home\">\n        <div class=\"football-pitch-small-area-home\"></div>\n    </div>\n    <div class=\"players\" data-js=\"field-half-home\"></div>\n</div>\n<div class='football-pitch-half-away'>\n    <div class=\"football-pitch-corner-away\"></div>\n    <div class=\"football-pitch-big-area-away\">\n        <div class=\"football-pitch-small-area-away\"></div>\n    </div>\n    <div class=\"players\" data-js=\"field-half-away\"></div>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballMatch"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n\n<div class=\"football-pitch\">\n    <div class='football-pitch-half-home'>\n        <div class=\"football-pitch-corner-home\"></div>\n        <div class=\"football-pitch-big-area-home\">\n            <div class=\"football-pitch-small-area-home\"></div>\n        </div>\n        <div class='square-content'>\n            <div>\n                <span>Aspect ratio 1:1</span>\n            </div>\n        </div>\n    </div>\n    <div class='football-pitch-half-away'>\n        <div class=\"football-pitch-corner-away\"></div>\n        <div class=\"football-pitch-big-area-away\">\n            <div class=\"football-pitch-small-area-away\"></div>\n        </div>\n        <div class='square-content'>\n            <div>\n                <span>Aspect ratio 1:1</span>\n            </div>\n        </div>\n    </div>\n</div>\n\n\n";
+    return "<div class=\"score-container\" data-js=\"score-region\">Score Region</div>\n\n\n<div class=\"football-pitch\" data-js=\"field-region\"></div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["footballScore"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
@@ -32,19 +32,15 @@ this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":func
     + "    </ul>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+    var stack1;
 
-  return "<a href=\"#modalPlayer\" data-js=\"player\">\n    <div class=\"player-number-container\">"
-    + alias3(((helper = (helper = helpers.shirt_number || (depth0 != null ? depth0.shirt_number : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"shirt_number","hash":{},"data":data}) : helper)))
-    + "</div>\n    <div class=\"player-name\">"
-    + alias3(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
-    + "</div>\n    "
-    + alias3(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"rating","hash":{},"data":data}) : helper)))
-    + "\n</a>";
+  return "<div class=\"player-picture\">\n	<img src=\"./app/imgs/messi_50x50.jpg\">\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player\">\n    <div class=\"player-name\">"
+    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
+    + "</div>\n</a>";
 },"useData":true});
 this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
 this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\">GOALKEEPER</div>\n<div class=\"defenders-row\" data-js=\"defenders\">DEFENDERS</div>\n<div class=\"midfielders-row\" data-js=\"midfielders\">MIDFIELDERS</div>\n<div class=\"attackers-row\" data-js=\"attackers\">FORWARDS</div>";
+    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n<div class=\"defenders-row\" data-js=\"defenders\"></div>\n<div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n<div class=\"attackers-row\" data-js=\"attackers\"></div>";
 },"useData":true});
