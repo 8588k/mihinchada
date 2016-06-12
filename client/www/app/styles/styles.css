@@ -1,3 +1,8 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
 body {
     background-color: #f8f8f8;
     box-sizing: border-box;
@@ -33,10 +38,6 @@ body {
 
 /* HEADER
 ---------------------------------------------------------------*/
-
-/*.header-container {
-    height: 8vh;
-}*/
 
 nav {
     background-color: #03a9f4;
@@ -148,107 +149,6 @@ nav .nav-actions-container i {
 }
 
 
-/* FIELD
----------------------------------------------------------------*/
-
-.field-container {
-    border: 1px solid red;
-    height: 80vh;
-    padding-left: 10px;
-    
-}
-
-.field {
-    position: relative;
-    width: 80%;
-}
-
-.field-half {
-    background-color: #009900;
-    border: 2px solid #fff;
-    height: 38vh;
-}
-
-.field-half-home {
-    border-bottom: 1px solid #fff;
-}
-
-.field-half-away {
-    border-top: 1px solid #fff;
-}
-
-.left-corner-home,
-.right-corner-home,
-.left-corner-away,
-.right-corner-away {
-    height: 5%;
-    position: absolute;
-    width: 8%;
-}
-
-.left-corner-home {
-    border-radius: 0 0 100% 0;
-    top: 0;
-    left: 0;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-
-.right-corner-home {
-    border-radius: 0 0 0 100%;
-    top: 0;
-    right: 0;
-    border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-
-.left-corner-away {
-    border-radius: 0 100% 0 0;
-    bottom: 0;
-    left: 0;
-    border-right: 2px solid #fff;
-    border-top: 2px solid #fff;
-}
-
-.right-corner-away {
-    border-radius: 100% 0 0 0;
-    bottom: 0;
-    right: 0;
-    border-left: 2px solid #fff;
-    border-top: 2px solid #fff;
-}
-
-.large-area-home,
-.large-area-away,
-.small-area-home,
-.small-area-away {
-    border: 1px solid white;
-    width: 50%;
-    position: absolute;
-    margin: 0 25%;
-}
-
-.large-area-home,
-.large-area-away {
-    height: 15%;
-}
-
-.small-area-home,
-.small-area-away {
-    height: 40%;
-}
-
-.large-area-home,
-.small-area-home {
-    top: 0;
-}
-
-.large-area-away,
-.small-area-away {
-    bottom: 0;
-}
-
-
 /* Player
 ---------------------------------------------------------------*/
 
@@ -343,6 +243,7 @@ nav .nav-actions-container i {
 .modal.bottom-sheet {
     max-height: 75%;
 }
+
 
 
 
@@ -576,22 +477,157 @@ input::-webkit-inner-spin-button {
 }*/
 
 
-/* App
----------------------------------------------------------------*/
-
-/*.app-container {
-    position: relative;
-    min-height: 90%;
-}*/
-
-
-/* Dropdown
----------------------------------------------------------------*/
-
-/*.dropdown-button {
-    z-index: 10;
+.football-pitch-container {
+    text-align: left;
 }
 
-.dropdown-content {
-    top: 40px !important;
-}*/
+.football-pitch {
+    background-color: red;
+    padding: 10px 0 10px 10px;
+}
+
+.football-pitch-half-home,
+.football-pitch-half-away {
+    background-color: #078C07;
+    background-image: url('../imgs/grass-texture-3.png');
+    background-size: 40px;
+    border: 2px solid #fff;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    width: 75%;
+}
+
+.football-pitch-half-home {
+    border-bottom: 1px solid #fff;
+}
+
+.football-pitch-half-away {
+    border-top: 1px solid #fff;
+    margin-top: 0;
+}
+
+.football-pitch-half-home:before,
+.football-pitch-half-away:before {
+    content: "";
+    display: block;
+    padding-top: 70%;
+}
+
+.football-pitch-corner-home:before,
+.football-pitch-corner-home:after,
+.football-pitch-corner-away:before,
+.football-pitch-corner-away:after {
+    content: "";
+    position: absolute;
+    width: 8%;
+    height: 5%;
+    padding-bottom: 6%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.football-pitch-corner-home:before {
+    left: -5%;
+    top: -5%;
+}
+
+.football-pitch-corner-home:after {
+    right: -5%;
+    top: -5%;
+}
+
+.football-pitch-corner-away:before {
+    left: -5%;
+    top: 95%;
+}
+
+.football-pitch-corner-away:after {
+    right: -5%;
+    top: 95%;
+}
+
+.football-pitch-big-area-home,
+.football-pitch-big-area-away {
+    border: 2px solid #fff;
+    height: 32%;
+    left: 50%;
+    margin-left: -23%;
+    position: absolute;
+    width: 46%;
+}
+
+.football-pitch-big-area-home {
+    border-top: none;
+    top: 0;
+}
+
+.football-pitch-big-area-away {
+    border-bottom: none;
+    top: 68%;
+}
+
+/*penal*/
+.football-pitch-big-area-home:before,
+.football-pitch-big-area-away:before {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    content: "";
+    height: 1%;
+    left: 50%;
+    margin-left: -1%;
+    position: absolute;
+    width: 1%;
+}
+
+.football-pitch-big-area-home:before {
+    top: 70%;
+}
+
+.football-pitch-big-area-away:before {
+    top: 30%;
+}
+
+.football-pitch-big-area-home:after,
+.football-pitch-big-area-away:after {
+    border: 2px solid #fff;
+    border-radius: 50% / 100%;
+    content: "";
+    height: 35%;
+    left: 21%;
+    margin-left: -1%;
+    position: absolute;
+    width: 60%;
+}
+
+.football-pitch-big-area-home:after {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    top: 100%;
+}
+
+.football-pitch-big-area-away:after {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: -35%;
+}
+
+.football-pitch-small-area-home,
+.football-pitch-small-area-away {
+    border: 2px solid #fff;
+    height: 45%;
+    left: 50%;
+    margin-left: -25%;
+    position: absolute;
+    width: 50%;
+}
+
+.football-pitch-small-area-home {
+    border-top: none;
+    top: 0;
+}
+
+.football-pitch-small-area-away {
+    border-bottom: none;
+    top: 55%;
+}
