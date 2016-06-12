@@ -7,13 +7,13 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         template: __templates.mihinchada.player,
 
         ui: {
-            'playerNumber': '.player-number-container',
-            'playerName': '.player-name'
+            'playerPicture': '[data-js="player-picture"]',
+            'playerInfo': '[data-js="player-info"]'
         },
 
         events: {
-            'click @ui.playerNumber': 'showPlayerModal',
-            'click @ui.playerName': 'showPlayerModal'
+            'click @ui.playerPicture': 'showPlayerModal',
+            'click @ui.playerInfo': 'showPlayerModal'
         },
 
         showPlayerModal: function(event) {
