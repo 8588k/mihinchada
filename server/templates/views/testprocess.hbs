@@ -38,17 +38,17 @@
                 <tbody>
                     <tr>
                       <td>Tweets</td>
-                      <td>{{twitter.tweets}}</td>
+                      <td id="twitterTweets">{{twitter.tweets}}</td>
                     </tr>
                     <tr>
                       <td>Tracks</td>
-                      <td>{{twitter.tracks}}</td>
+                      <td id="twitterTracks">{{twitter.tracks}}</td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-info">Refresh</button>
-                  <button type="button" class="btn btn-info">Relaunch</button>
+                  <button id="twitterRefresh" type="button" class="btn btn-info">Refresh</button>
+                  <button id="twitterRelaunch" type="button" class="btn btn-info">Relaunch</button>
                 </div>
             </div>
         </div>
@@ -137,7 +137,8 @@
         var matchLive = {{{live_match_str}}};
         var events = {{{events_str}}};
 
-
+        window.hcPlayers = {}; //home, away
+        window.hcActionsQty = {};//team','player', 'referee', 'manager
 
         var teamsPointsSeries = [];
         _.each(['team_home','team_away'], function(teamLoc){
@@ -145,9 +146,14 @@
             var data = [], i;
 
             for (i = 1; i < _.size(matchLive); i += 1) {
-                var y = matchLive[i]['team_' + match[teamLoc].id + '_points'];
-                y = parseInt(y) || 0;
-                data.push([i,y]);
+                if(matchLive[i]){
+                    var y = matchLive[i]['team_' + match[teamLoc].id + '_points'];
+                    y = parseInt(y) || 0;
+                    data.push([i,y]);                    
+                }else{
+                    data.push([i,0]);
+                }
+
             }
 
             var serie = {
@@ -157,17 +163,20 @@
 
             teamsPointsSeries.push(serie);
 
-
-
             var playerPointsSeries = [];
             _.each(match[teamLoc].players, function(player){
 
                 var data = [], i;
 
                 for (i = 1; i < _.size(matchLive); i += 1) {
-                    var y = matchLive[i]['player_' + player.id + '_points'];
-                    y = parseInt(y) || 0;
-                    data.push([i,y]);
+                    if(matchLive[i]){
+                        var y = matchLive[i]['player_' + player.id + '_points'];
+                        y = parseInt(y) || 0;
+                        data.push([i,y]);
+                    }else{
+                        data.push([i,0]);
+                    }
+
                 }
 
                 var serie = {
@@ -178,11 +187,11 @@
                 playerPointsSeries.push(serie);
             });
 
-            $('#players_' + teamLoc).highcharts('StockChart', {
+             $('#players_' + teamLoc).highcharts('StockChart', {
                 chart : {
                     events : {
                         load : function () {
-                            
+                            window.hcPlayers[teamLoc] = this;               
                         }
                     }
                 },
@@ -223,7 +232,7 @@
             chart : {
                 events : {
                     load : function () {
-
+                        window.hcTeamsPoints = this;
                         // set up the updating of the chart each second
                         /*
                         var series = this.series[0];
@@ -271,7 +280,7 @@
             chart : {
                 events : {
                     load : function () {
-
+                        window.hcExtraPoints = this;
                     }
                 }
             },
@@ -310,9 +319,14 @@
                         var data = [], i;
 
                         for (i = 1; i < _.size(matchLive); i += 1) {
-                            var y = matchLive[i]['referee_' + match.referee.id + '_points'];
-                            y = parseInt(y) || 0;
-                            data.push([i,y]);
+                            if(matchLive[i]){
+                                var y = matchLive[i]['referee_' + match.referee.id + '_points'];
+                                y = parseInt(y) || 0;
+                                data.push([i,y]);
+                            }else{
+                                data.push([i,0]);
+                            }
+
                         }
                         return data;
                     }())
@@ -323,9 +337,13 @@
                         var data = [], i;
 
                         for (i = 1; i < _.size(matchLive); i += 1) {
-                            var y = matchLive[i]['manager_' + match.team_home.manager.id + '_points'];
-                            y = parseInt(y) || 0;
-                            data.push([i,y]);
+                            if(matchLive[i]){
+                                var y = matchLive[i]['manager_' + match.team_home.manager.id + '_points'];
+                                y = parseInt(y) || 0;
+                                data.push([i,y]);
+                            }else{
+                                data.push([i,0]);
+                            }
                         }
                         return data;
                     }())
@@ -336,9 +354,14 @@
                         var data = [], i;
 
                         for (i = 1; i < _.size(matchLive); i += 1) {
-                            var y = matchLive[i]['manager_' + match.team_away.manager.id + '_points'];
-                            y = parseInt(y) || 0;
-                            data.push([i,y]);
+                            if(matchLive[i]){
+                                var y = matchLive[i]['manager_' + match.team_away.manager.id + '_points'];
+                                y = parseInt(y) || 0;
+                                data.push([i,y]);
+                            }else{
+                                data.push([i,0]);
+                            }
+
                         }
                         return data;
                     }())
@@ -357,9 +380,14 @@
             var data = [], i;
 
             for (i = 1; i < _.size(matchLive); i += 1) {
-                var y = matchLive[i][res + '_actions_qty'];
-                y = parseInt(y) || 0;
-                data.push([i,y]);
+                if(matchLive[i]){
+                    var y = matchLive[i][res + '_actions_qty'];
+                    y = parseInt(y) || 0;
+                    data.push([i,y]);
+                }else{
+                    data.push([i,0]);
+                }
+
             }
 
             var serie = {
@@ -379,9 +407,14 @@
                 var data = [], i;
 
                 for (i = 1; i < _.size(matchLive); i += 1) {
-                    var y = matchLive[i][ res + '_action_' + ev.id + '_qty'];
-                    y = parseInt(y) || 0;
-                    data.push([i,y]);
+                    if(matchLive[i]){
+                        var y = matchLive[i][ res + '_action_' + ev.id + '_qty'];
+                        y = parseInt(y) || 0;
+                        data.push([i,y]);
+                    }else{
+                        data.push([i,0]);
+                    }
+
                 }
 
                 var serie = {
@@ -396,7 +429,7 @@
                 chart : {
                     events : {
                         load : function () {
-
+                            window.hcActionsQty[res] = this;
                         }
                     }
                 },
@@ -437,7 +470,7 @@
             chart : {
                 events : {
                     load : function () {
-
+                        window.hcActionsByResource = this;
                     }
                 }
             },
@@ -473,13 +506,47 @@
         });
 
 
-        socket.on('new-event', function(message){
-            console.log(message);
+        socket.on('new-event', function(msg){
+            console.log(msg);
+
+            //window.hcPlayers = {}; //home, away
+            //window.hcActionsQty = {};//team','player', 'referee', 'manager
+
+            var val0 = msg.snapshot[('team_' + match['team_home'].id + '_points')] || 0;
+            var val1 = msg.snapshot[('team_' + match['team_away'].id + '_points')] || 0;
+            hcTeamsPoints.series[0].addPoint([msg.min, parseInt(val0)], true, true);
+            hcTeamsPoints.series[1].addPoint([msg.min, parseInt(val1)], true, true);
+
+            //hcExtraPoints
+            //hcActionsByResource
+
         });
+        
+        setInterval(function(){
+            hcTeamsPoints.redraw()
+        }, 1000);
 
         $("#startMatchStream").click(function() {
             socket.emit('match:test_match:process', null);
+            location.reload();
         });
+
+        socket.on('twitter:stream', function(message){
+            console.log('twitter:stream', message);
+            $("#twitterTweets").html(message.tweets);
+            $("#twitterTracks").html(message.tracks);
+        });
+
+        $("#twitterRefresh").click(function() {
+            socket.emit('twitter:get', {'match_id': 'test_match'});
+        });
+
+        $("#twitterRelaunch").click(function() {
+            socket.emit('twitter:relaunch', {'match_id': 'test_match'});
+        });
+
+
+        socket.emit('match:subscribe:events', {'match_id': 'test_match'});
     };
 
 

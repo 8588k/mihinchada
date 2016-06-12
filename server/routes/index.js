@@ -43,8 +43,6 @@ exports = module.exports = function (app) {
     app.get('/api/events', routes.views.api.getEvents);
 
     //app.get('/internal/matches/streams', middleware.requireUser, routes.views.matchstream);
-    app.get('/internal/matches/:matchId', routes.views.matchstream);
-
 
     app.get('/admin/status/twiter', routes.views.status.twiter);
     app.get('/admin/status/sockets', routes.views.status.sockets);

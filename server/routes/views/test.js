@@ -12,26 +12,7 @@ var keystone = require('keystone'),
 
 
     testMatch = function (req, res) {
-        var view = new keystone.View(req, res),
-            locals = res.locals,
-            io = keystone.get('io');
-
-
-        io.on('connect', function(socket){
-            socket._events = {};
-            socket.adapter._events = {};
-
-            socket.on('test_match:set', function(data){
-                testService.setMatch(data);
-                socket.emit('toast:success', 'Test match updated.');
-            });
-
-            socket.on('disconnect', function(){
-                socket._events = {};
-                socket.adapter._events = {};
-            });
-        });
-
+        var view = new keystone.View(req, res);
 
         view.render(
             'testmatch', 
@@ -52,34 +33,8 @@ var keystone = require('keystone'),
 
     testProcess = function (req, res) {
         var view = new keystone.View(req, res),
-            locals = res.locals,
-            io = keystone.get('io'),
             match = testService.getMatch(),
             actions = testService.getActions();
-
-
-        io.on('connect', function(socket){
-            socket._events = {};
-            socket.adapter._events = {};
-
-            socketService.joinMatchEvents(match, socket);
-
-            socket.on('match:test_match:process', function(data){
-
-                if(match.status == 'in_progress') {
-                    matchService.listenMatchStream(match, actions);
-                    socket.emit('toast:success', 'Listening match stream.');
-                }else{
-                    socket.emit('toast:fail', 'Invalid status.');
-                }
-
-            });
-
-            socket.on('disconnect', function(){
-                socket._events = {};
-                socket.adapter._events = {};
-            });
-        });
 
         liveMatchService.getLiveMatchAsync(match).then(
             function(liveMatch){
