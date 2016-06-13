@@ -41,6 +41,12 @@ this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6
 this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";
 },"useData":true});
-this["__templates"]["mihinchada"]["team"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n<div class=\"defenders-row\" data-js=\"defenders\"></div>\n<div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n<div class=\"attackers-row\" data-js=\"attackers\"></div>";
+this["__templates"]["mihinchada"]["team"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+    return "    <div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n    <div class=\"defenders-row\" data-js=\"defenders\"></div>\n    <div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n    <div class=\"attackers-row\" data-js=\"attackers\"></div>\n";
+},"3":function(depth0,helpers,partials,data) {
+    return "    <div class=\"attackers-row\" data-js=\"attackers\"></div>\n    <div class=\"midfielders-row\" data-js=\"midfielders\"></div>\n    <div class=\"defenders-row\" data-js=\"defenders\"></div>\n    <div class=\"goalkeeper-row\" data-js=\"goalkeeper\"></div>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isHomeTeam : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.program(3, data, 0),"data":data})) != null ? stack1 : "");
 },"useData":true});

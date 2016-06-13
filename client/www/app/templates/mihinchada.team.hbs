@@ -1,4 +1,11 @@
-<div class="goalkeeper-row" data-js="goalkeeper"></div>
-<div class="defenders-row" data-js="defenders"></div>
-<div class="midfielders-row" data-js="midfielders"></div>
-<div class="attackers-row" data-js="attackers"></div>
+{{#if isHomeTeam}}
+    <div class="goalkeeper-row" data-js="goalkeeper"></div>
+    <div class="defenders-row" data-js="defenders"></div>
+    <div class="midfielders-row" data-js="midfielders"></div>
+    <div class="attackers-row" data-js="attackers"></div>
+{{else}}
+    <div class="attackers-row" data-js="attackers"></div>
+    <div class="midfielders-row" data-js="midfielders"></div>
+    <div class="defenders-row" data-js="defenders"></div>
+    <div class="goalkeeper-row" data-js="goalkeeper"></div>
+{{/if}}
