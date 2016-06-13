@@ -131,8 +131,8 @@ var keystone = require('keystone'),
             }
 
             var ale = function getRandomIntInclusive(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
-
-            io.to(getMatchRoom(match))
+            var io = keystone.get('io');
+            io.to(getMatchRoom(data.match))
                 .emit(`${data.action.resource_type}:${data.resource.id}:update:rating`, ale(1,100));
 
 
