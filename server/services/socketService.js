@@ -123,16 +123,26 @@ var keystone = require('keystone'),
 
             if(data.date && data.match && data.resource && data.action){
                 liveMatchService.createMatchActionEventAsync(
-                    data.date, 
+                    new Date(data.date), 
                     data.match, 
                     data.resource, 
                     data.action
                 )
             }
 
+            var ale = function getRandomIntInclusive(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
+
+            io.to(getMatchRoom(match))
+                .emit(`${data.action.resource_type}:${data.resource.id}:update:rating`, ale(1,100));
+
+
         });
 
-        //TODO subscribe:match
+        socket.on('match:subscribe', function(data){
+            if(data.match){
+                socket.join(getMatchRoom(data.match)); 
+            }
+        });
 
         //player:' + this.get('id') + ':update:rating
 

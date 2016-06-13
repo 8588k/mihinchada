@@ -82,9 +82,7 @@ var matchService = require('./matchService.js'),
 
             var matchKey, matchMinKey, redisMatch, redisMatchAsync, promises,
                 redisMinMatchAsync, redisMinMatch, liveMatch, min, prevRank, idx,
-                dateTime = date.getTime(),
-                matchStartDateTime = match.start_date.getTime(),
-                matchEndDateTime = match.end_date.getTime();
+                dateTime = date.getTime();
 
             if(match.status == 'in_progress'){
 
