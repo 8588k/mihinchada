@@ -21,7 +21,22 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             var name = this.model.get('name');
 
             App.miHinchada.Cache.modalBottomModel.set({
-                'name': name.first + ' ' + name.last
+                'name': name.first + ' ' + name.last,
+                'id': this.model.get('id'),
+                'action': {
+                    id: "alentar",
+                    resource_type: "team",
+                    points: 1,
+                    name: "Alentar",
+                    keywords: [
+                        "vamos",
+                        "aguante",
+                        "arriba",
+                        "aupa",
+                        "hala",
+                        "vamo"
+                    ]
+                }
             });
             $('#modalBottom').openModal();
         }

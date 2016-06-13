@@ -22,10 +22,6 @@ App.module('miHinchada', function (miHinchada, App, Backbone, Marionette, $, _) 
 
             mainView = new miHinchada.Views.FootballMatch();
             App.mainRegion.show(mainView);
-
-            App.socket.emit('subscribe:match', {
-                match_id: 'id'
-            });
         }
     };
 

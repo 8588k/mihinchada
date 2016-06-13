@@ -19,7 +19,7 @@ this["__templates"]["mihinchada"]["header"] = Handlebars.template({"compiler":[6
     return "HEADER";
 },"useData":true});
 this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-    return "            <li class=\"collection-item\">\n                <div>\n                    "
+    return "            <li class=\"collection-item\">\n                <div data-js=\"player-action\">\n                    "
     + this.escapeExpression(this.lambda(depth0, depth0))
     + "\n                </div>\n            </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -32,11 +32,13 @@ this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":func
     + "    </ul>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, helper, alias1=this.escapeExpression;
 
-  return "<div class=\"player-picture\" data-js=\"player-picture\">\n	<img src=\"./app/imgs/messi_50x50.jpg\">\n	<span class=\"player-red-card\"></span>\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player-info\">\n    <div class=\"player-name\">"
-    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
-    + "</div>\n</a>";
+  return "<div class=\"player-picture\" data-js=\"player-picture\">\n	<img src=\"./app/imgs/messi_50x50.jpg\">\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player-info\">\n    <div class=\"player-name\">"
+    + alias1(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
+    + "</div>\n    "
+    + alias1(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"rating","hash":{},"data":data}) : helper)))
+    + "\n</a>";
 },"useData":true});
 this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<li>Inicio</li>\n<li>Partidos</li>\n<li>Chat</li>";

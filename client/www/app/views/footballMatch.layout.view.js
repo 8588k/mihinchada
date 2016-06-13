@@ -16,6 +16,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 matchModel;
 
             matchModel = new App.miHinchada.Models.Match({id: 'test_match'});
+            App.miHinchada.Cache.matchModel = matchModel;
             matchModel.fetch({
                 // 'dataType': 'jsonp',
                 'success': function(model, response, options) {
@@ -28,6 +29,14 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                         'model': model
                     });
                     that.fieldRegion.show(fieldView);
+console.log("MODEL ", model.get('id'));
+                    App.socket.emit('match:subscribe', {
+                        'data': {
+                            'match': {
+                                'id': model.get('id')
+                            }
+                        }
+                    });
                 }
             });
         }
