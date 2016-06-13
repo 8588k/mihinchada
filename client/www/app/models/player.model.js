@@ -15,8 +15,10 @@ App.module('miHinchada.Models', function (Models, App, Backbone, Marionette, $, 
 
         initialize: function() {
             var that = this;
+            console.log('>>>>on:', 'player:' + this.get('id') + ':update:rating');
 
             App.socket.on('player:' + this.get('id') + ':update:rating', function(newRating) {
+                console.log('>>>>>>>>>>>>new rating', newRating);
                 that.set('rating', newRating);
             });
         }

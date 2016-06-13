@@ -20,9 +20,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
             console.log("player-action");
             console.log('this.model.get("id") -> ', this.model.get('id'));
             console.log('App.miHinchada.Cache.matchModel -> ', App.miHinchada.Cache.matchModel);
+            console.log('action', this.model.get('action'));
             App.socket.emit('match:live:event', {
                 date: new Date().getTime(),
-                match: App.miHinchada.Cache.matchModel,
+                match: App.miHinchada.Cache.matchModel.attributes,
                 resource: {
                     id: this.model.get('id')
                 },

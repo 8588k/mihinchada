@@ -24,10 +24,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 'name': name.first + ' ' + name.last,
                 'id': this.model.get('id'),
                 'action': {
-                    id: "alentar",
-                    resource_type: "team",
+                    id: "aplauso",
+                    resource_type: "player",
                     points: 1,
-                    name: "Alentar",
+                    name: "Aplausos",
                     keywords: [
                         "vamos",
                         "aguante",
@@ -39,6 +39,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 }
             });
             $('#modalBottom').openModal();
+        },
+
+        modelEvents:{
+            change: 'render'
         }
 
     });

@@ -31,10 +31,8 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                     that.fieldRegion.show(fieldView);
 console.log("MODEL ", model.get('id'));
                     App.socket.emit('match:subscribe', {
-                        'data': {
-                            'match': {
-                                'id': model.get('id')
-                            }
+                        'match': {
+                            'id': model.get('id')
                         }
                     });
                 }

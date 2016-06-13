@@ -132,15 +132,23 @@ var keystone = require('keystone'),
 
             var ale = function getRandomIntInclusive(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
             var io = keystone.get('io');
+            var key = `${data.action.resource_type}:${data.resource.id}:update:rating`;
+            var val = ale(1,100);
+
+            console.log('emiting to key->', key, ' - ', val);
+
             io.to(getMatchRoom(data.match))
-                .emit(`${data.action.resource_type}:${data.resource.id}:update:rating`, ale(1,100));
+                .emit(key, val);
 
 
         });
 
         socket.on('match:subscribe', function(data){
+            console.log('match:subscribe', data);
             if(data.match){
-                socket.join(getMatchRoom(data.match)); 
+                var matchRoom = getMatchRoom(data.match);
+                console.log('match:subscribe ROOM:', matchRoom);
+                socket.join(matchRoom); 
             }
         });
 
