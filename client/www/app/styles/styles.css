@@ -1,10 +1,19 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
 body {
-    background-color: #ccc;
+    background-color: #f8f8f8;
     box-sizing: border-box;
     font-family: Roboto, Arial, Helvetica, Sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100%;
+}
+
+main {
+    height: 86vh;
 }
 
 @font-face {
@@ -34,12 +43,72 @@ body {
 /* HEADER
 ---------------------------------------------------------------*/
 
-/*.header-container {
-    height: 8vh;
-}*/
-
 nav {
-    background-color: #03a9f4;
+    background-color: #0c1f34;
+    height: 7vh;
+}
+
+nav a {
+    color: #10bcf4;
+}
+
+nav .button-collapse {
+    height: 40px;
+    margin-left: 8px;
+}
+
+nav .button-collapse i,
+nav .nav-actions-container i {
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.side-nav {
+    box-shadow: none;
+}
+
+.nav-actions-container {
+    float: right;
+}
+
+
+/* TABS
+---------------------------------------------------------------*/
+
+.tabs-container {
+    height: 7vh;
+}
+
+.tabs-container .tabs {
+    background-color: #0c1f34;
+    font-size: 12px;
+    height: 100%;
+}
+
+.tabs .tab {
+    line-height: 40px;
+}
+
+.tabs .tab a {
+    color: #10bcf4;
+    height: 40px;
+}
+
+.tabs .tab a:hover {
+    color: #10bcf4;
+}
+
+.tabs .tab a.active {
+    color: #fff;
+}
+
+.tabs .tab.disabled a {
+    color: #ccc;
+}
+
+.tabs .indicator {
+    background-color: #fff;
 }
 
 
@@ -47,142 +116,129 @@ nav {
 ---------------------------------------------------------------*/
 
 .score-container {
-    height: auto;
+    background-color: #0c1f34;
+    /*height: auto;*/
+    height: 13vh;
     padding: 10px;
     text-align: center;
 }
 
+.score-crest-container,
 .score-crest {
+    background-color: #fff;
+    border-radius: 50%;
     display: inline-block;
+}
+
+.score-crest-container {
+    border: 2px solid white;
+}
+
+.score-crest {
+    border: 2px solid #10bcf4;
+    height: 50px;
+    position: relative;
     vertical-align: middle;
-    width: 20%;
+    width: 50px;
+}
+
+.score-crest img {
+    border: 0;
+    left: 50%;
+    margin-left: -17.5px;
+    margin-top: -17.5px;
+    position: absolute;
+    top: 50%;
+    vertical-align: middle;
 }
 
 .score {
+    color: #fff;
     display: inline-block;
     vertical-align: middle;
     width: 30%;
 }
 
+.score-result {
+    font-size: 24px;
+    height: 30px;
+}
 
-/* FIELD
+.score-result .score-result-home,
+.score-result .score-result-away {
+    font-weight: bold;
+}
+
+
+/* Team
 ---------------------------------------------------------------*/
 
-.field-container {
-    border: 1px solid red;
-    height: 80vh;
-    padding-left: 10px;
-    
+.goalkeeper-row,
+.defenders-row,
+.midfielders-row,
+.attackers-row {
+    display: table;
+    height: 8.5vh;
+    table-layout: fixed;
+    width: 100%;
 }
 
-.field {
-    position: relative;
-    width: 80%;
-}
-
-.field-half {
-    background-color: #009900;
-    border: 2px solid #fff;
-    height: 38vh;
-}
-
-.field-half-home {
-    border-bottom: 1px solid #fff;
-}
-
-.field-half-away {
-    border-top: 1px solid #fff;
-}
-
-.left-corner-home,
-.right-corner-home,
-.left-corner-away,
-.right-corner-away {
-    height: 5%;
-    position: absolute;
-    width: 8%;
-}
-
-.left-corner-home {
-    border-radius: 0 0 100% 0;
-    top: 0;
-    left: 0;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-
-.right-corner-home {
-    border-radius: 0 0 0 100%;
-    top: 0;
-    right: 0;
-    border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-
-.left-corner-away {
-    border-radius: 0 100% 0 0;
-    bottom: 0;
-    left: 0;
-    border-right: 2px solid #fff;
-    border-top: 2px solid #fff;
-}
-
-.right-corner-away {
-    border-radius: 100% 0 0 0;
-    bottom: 0;
-    right: 0;
-    border-left: 2px solid #fff;
-    border-top: 2px solid #fff;
-}
-
-.large-area-home,
-.large-area-away,
-.small-area-home,
-.small-area-away {
-    border: 1px solid white;
-    width: 50%;
-    position: absolute;
-    margin: 0 25%;
-}
-
-.large-area-home,
-.large-area-away {
-    height: 15%;
-}
-
-.small-area-home,
-.small-area-away {
-    height: 40%;
-}
-
-.large-area-home,
-.small-area-home {
-    top: 0;
-}
-
-.large-area-away,
-.small-area-away {
-    bottom: 0;
+.football-pitch-half-away .attackers-row {
+    margin-top: 10px;
 }
 
 
 /* Player
 ---------------------------------------------------------------*/
 
+.players {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .players-row {
+    display: table-row;
+    margin: 0;
     text-align: center;
 }
 
 .players-row li {
-    display: inline-block;
+    display: table-cell;
     margin-right: 2%;
-    text-align: center;
-    width: 18%;
+}
+
+.player-picture {
+    height: 5vh;
+    margin: 0 auto;
+    position: relative;
+    width: 5vh;
+}
+
+.player-picture img {
+    border-radius: 50%;
+    height: 6vh;
+    left: 50%;
+    margin-left: -17px;
+    margin-top: -17px;
+    position: absolute;
+    top: 50%;
+    width: 6vh;
 }
 
 .players-row a {
-    color: rgba(0, 0, 0, 0.87);
+    color: #fff;
+    font-size: 11px;
+    display: inline-block;
 }
+
+/*.player-name {
+    border: 1px solid;
+    display: inline-block;
+    margin: 0 auto;
+}*/
 
 .player-number-container {
     background-color: #fff;
@@ -191,6 +247,23 @@ nav {
     margin: 0 auto;
     text-align: center;
     width: 50%;
+}
+
+.player-yellow-card,
+.player-red-card {
+    bottom: -5px;
+    height: 10px;
+    position: absolute;
+    right: -5px;
+    width: 7px;
+}
+
+.player-yellow-card {
+    background-color: yellow;
+}
+
+.player-red-card {
+    background-color: red;
 }
 
 
@@ -260,6 +333,7 @@ nav {
 .modal.bottom-sheet {
     max-height: 75%;
 }
+
 
 
 
@@ -493,22 +567,158 @@ input::-webkit-inner-spin-button {
 }*/
 
 
-/* App
----------------------------------------------------------------*/
-
-/*.app-container {
-    position: relative;
-    min-height: 90%;
-}*/
-
-
-/* Dropdown
----------------------------------------------------------------*/
-
-/*.dropdown-button {
-    z-index: 10;
+.football-pitch-container {
+    text-align: left;
 }
 
-.dropdown-content {
-    top: 40px !important;
-}*/
+.football-pitch {
+    background-color: #777d83;
+    height: 73vh;
+    padding: 10px 0 10px 10px;
+}
+
+.football-pitch-half-home,
+.football-pitch-half-away {
+    background-color: #078C07;
+    background-image: url('../imgs/grass-texture-3.png');
+    background-size: 40px;
+    border: 2px solid #fff;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    width: 85%;
+}
+
+.football-pitch-half-home {
+    border-bottom: 1px solid #fff;
+}
+
+.football-pitch-half-away {
+    border-top: 1px solid #fff;
+    margin-top: 0;
+}
+
+.football-pitch-half-home:before,
+.football-pitch-half-away:before {
+    content: "";
+    display: block;
+    padding-top: 75%;
+}
+
+.football-pitch-corner-home:before,
+.football-pitch-corner-home:after,
+.football-pitch-corner-away:before,
+.football-pitch-corner-away:after {
+    content: "";
+    position: absolute;
+    width: 8%;
+    height: 5%;
+    padding-bottom: 6%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.football-pitch-corner-home:before {
+    left: -5%;
+    top: -5%;
+}
+
+.football-pitch-corner-home:after {
+    right: -5%;
+    top: -5%;
+}
+
+.football-pitch-corner-away:before {
+    left: -5%;
+    top: 95%;
+}
+
+.football-pitch-corner-away:after {
+    right: -5%;
+    top: 95%;
+}
+
+.football-pitch-big-area-home,
+.football-pitch-big-area-away {
+    border: 2px solid #fff;
+    height: 32%;
+    left: 50%;
+    margin-left: -23%;
+    position: absolute;
+    width: 46%;
+}
+
+.football-pitch-big-area-home {
+    border-top: none;
+    top: 0;
+}
+
+.football-pitch-big-area-away {
+    border-bottom: none;
+    top: 68%;
+}
+
+/*penal*/
+.football-pitch-big-area-home:before,
+.football-pitch-big-area-away:before {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    content: "";
+    height: 1%;
+    left: 50%;
+    margin-left: -1%;
+    position: absolute;
+    width: 1%;
+}
+
+.football-pitch-big-area-home:before {
+    top: 70%;
+}
+
+.football-pitch-big-area-away:before {
+    top: 30%;
+}
+
+.football-pitch-big-area-home:after,
+.football-pitch-big-area-away:after {
+    border: 2px solid #fff;
+    border-radius: 50% / 100%;
+    content: "";
+    height: 35%;
+    left: 21%;
+    margin-left: -1%;
+    position: absolute;
+    width: 60%;
+}
+
+.football-pitch-big-area-home:after {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    top: 100%;
+}
+
+.football-pitch-big-area-away:after {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: -35%;
+}
+
+.football-pitch-small-area-home,
+.football-pitch-small-area-away {
+    border: 2px solid #fff;
+    height: 45%;
+    left: 50%;
+    margin-left: -25%;
+    position: absolute;
+    width: 50%;
+}
+
+.football-pitch-small-area-home {
+    border-top: none;
+    top: 0;
+}
+
+.football-pitch-small-area-away {
+    border-bottom: none;
+    top: 55%;
+}

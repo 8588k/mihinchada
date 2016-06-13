@@ -5,7 +5,10 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         template: __templates.mihinchada.team,
 
         templateHelpers: function() {
-            return this.options.team;
+            return {
+                'team': this.options.team,
+                'isHomeTeam': this.options.team_type === 'home'
+            };
         },
 
         regions: {
@@ -18,6 +21,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         },
 
         onShow: function() {
+            console.log("* this.options.team -> ", this.options.team_type);
             var team = this.options.team,
                 playersCollection,
                 goalkeepers,

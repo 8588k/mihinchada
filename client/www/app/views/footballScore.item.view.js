@@ -5,7 +5,7 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         template: __templates.mihinchada.footballScore,
 
         ui: {
-            'crest': '.score-crest'
+            'crest': '.score-crest-container'
         },
 
         events: {
@@ -14,6 +14,11 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         showTeamModal: function(event) {
             event.preventDefault();
+            var team = this.model.get(event.currentTarget.getAttribute('data-js'));
+
+            App.miHinchada.Cache.modalBottomModel.set({
+                'name': team.name
+            });
             $('#modalBottom').openModal();
         }
 

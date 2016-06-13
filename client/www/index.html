@@ -22,6 +22,7 @@
         <script src="http://static.mlstatic.com/org-img/ch/vendor/html5shiv/html5shiv-3.7.0.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="build/styles/bundle.css"/>
 </head>
 <body>
@@ -38,9 +39,28 @@
             <li><a href="#!">Second Sidebar Link</a></li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse">
-            <i class="mdi-navigation-menu"></i>
+            <i class="material-icons">menu</i>
+            <!-- <i class="mdi-navigation-menu"></i> -->
         </a>
+        <ul class="nav-actions-container">
+            <li>
+                <i class="material-icons">more_vert</i>
+            </li>
+        </ul>
     </nav>
+
+    <div class="tabs-container">
+            <ul class="tabs">
+                <li class="tab"><a class="active" href="#test1">Partido</a></li>
+                <li class="tab"><a href="#test2">Chat</a></li>
+                <li class="tab"><a href="#test3">Especialistas</a></li>
+                <li class="tab"><a href="#test4">Otra</a></li>
+            </ul>
+        <!-- <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div> -->
+    </div>
 
 
     <main role="main" id="app" class="app" data-js="main-region"></main>
