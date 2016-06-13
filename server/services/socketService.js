@@ -4,6 +4,7 @@ var keystone = require('keystone'),
     testService = require('./testService.js'),
     matchService = require('./matchService.js'),
     twitterService = require('./twitterService.js'),
+    liveMatchService = require('./liveMatchService.js'),
     eventService = require('./eventService.js'),
     Promise = require('bluebird'),
     moment = require('moment'),
@@ -117,7 +118,20 @@ var keystone = require('keystone'),
         /************************************************************************
         *                                   MATCH
         ************************************************************************/
-        
+    
+        socket.on('match:live:event', function(data){
+
+            if(data.date && data.match && data.resource && data.action){
+                liveMatchService.createMatchActionEventAsync(
+                    data.date, 
+                    data.match, 
+                    data.resource, 
+                    data.action
+                )
+            }
+
+        });
+
         //TODO subscribe:match
 
         //player:' + this.get('id') + ':update:rating

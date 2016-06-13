@@ -512,10 +512,10 @@
             //window.hcPlayers = {}; //home, away
             //window.hcActionsQty = {};//team','player', 'referee', 'manager
 
-            var val0 = msg.snapshot[('team_' + match['team_home'].id + '_points')] || 0;
-            var val1 = msg.snapshot[('team_' + match['team_away'].id + '_points')] || 0;
-            hcTeamsPoints.series[0].addPoint([msg.min, parseInt(val0)], true, true);
-            hcTeamsPoints.series[1].addPoint([msg.min, parseInt(val1)], true, true);
+            //var val0 = msg.snapshot[('team_' + match['team_home'].id + '_points')] || 0;
+            //var val1 = msg.snapshot[('team_' + match['team_away'].id + '_points')] || 0;
+            //hcTeamsPoints.series[0].addPoint([msg.min, parseInt(val0)], true, true);
+            //hcTeamsPoints.series[1].addPoint([msg.min, parseInt(val1)], true, true);
 
             //hcExtraPoints
             //hcActionsByResource
@@ -523,8 +523,8 @@
         });
         
         setInterval(function(){
-            hcTeamsPoints.redraw()
-        }, 1000);
+            location.reload();
+        }, 60000);
 
         $("#startMatchStream").click(function() {
             socket.emit('match:test_match:process', null);
