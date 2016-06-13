@@ -34,7 +34,7 @@ this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":func
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"player-picture\" data-js=\"player-picture\">\n	<img src=\"./app/imgs/messi_50x50.jpg\">\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player-info\">\n    <div class=\"player-name\">"
+  return "<div class=\"player-picture\" data-js=\"player-picture\">\n	<img src=\"./app/imgs/messi_50x50.jpg\">\n	<span class=\"player-red-card\"></span>\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player-info\">\n    <div class=\"player-name\">"
     + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
     + "</div>\n</a>";
 },"useData":true});

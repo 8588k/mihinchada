@@ -211,16 +211,14 @@ nav .nav-actions-container i {
 }
 
 .player-picture {
-    background-color: #fff;
-    border-radius: 50%;
     height: 5vh;
     margin: 0 auto;
-    overflow: hidden;
     position: relative;
     width: 5vh;
 }
 
 .player-picture img {
+    border-radius: 50%;
     height: 6vh;
     left: 50%;
     margin-left: -17px;
@@ -233,6 +231,7 @@ nav .nav-actions-container i {
 .players-row a {
     color: #fff;
     font-size: 11px;
+    display: inline-block;
 }
 
 /*.player-name {
@@ -248,6 +247,23 @@ nav .nav-actions-container i {
     margin: 0 auto;
     text-align: center;
     width: 50%;
+}
+
+.player-yellow-card,
+.player-red-card {
+    bottom: -5px;
+    height: 10px;
+    position: absolute;
+    right: -5px;
+    width: 7px;
+}
+
+.player-yellow-card {
+    background-color: yellow;
+}
+
+.player-red-card {
+    background-color: red;
 }
 
 
