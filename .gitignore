@@ -35,5 +35,6 @@ npm-debug.log
 .DS_Store
 
 # Cordova
-platforms
-plugins
+client/www
+client/platforms
+client/plugins
