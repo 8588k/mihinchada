@@ -21,6 +21,7 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+var kue = keystone.get('kue');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -28,8 +29,9 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
+	views: importRoutes('./views')
 };
+
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
@@ -50,6 +52,8 @@ exports = module.exports = function (app) {
     app.get('/admin/test/match', routes.views.test.testMatch);
     app.get('/admin/test/actions', routes.views.test.testActions);
     app.get('/admin/test/process', routes.views.test.testProcess);
+
+    app.use('/kue', kue.app);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

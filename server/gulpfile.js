@@ -3,7 +3,7 @@ var watch = require('gulp-watch');
 var shell = require('gulp-shell')
 var jslint = require('gulp-jslint');
 var sass = require('gulp-sass');
-
+var nodemon = require('gulp-nodemon');
 
 var paths = {
     'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json'],
@@ -14,6 +14,11 @@ var paths = {
 
 };
 
+gulp.task('nodemon', function (cb) {
+    return nodemon({
+        script: 'keystone.js'
+    });
+});
 
 gulp.task('watch:sass', function () {
     gulp.watch(paths.style.all, ['sass']);
@@ -36,4 +41,4 @@ gulp.task('watch', [
   'watch:sass',
 ]);
 
-gulp.task('default', ['watch', 'lint','runKeystone']);
+gulp.task('default', ['watch', 'lint','nodemon']);

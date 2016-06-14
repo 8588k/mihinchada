@@ -8,10 +8,16 @@ var express = require('express'),
     keystone = require('keystone'),
     handlebars = require('express-handlebars'),
     socketService = require("./services/socketService.js"),
+    kueService = require("./services/kueService.js"),
     socketio = require('socket.io');
+    kue = require('kue'),
+    queue = kue.createQueue(),
+    _ = require('underscore');  
  
 keystone.set('app', app);
 keystone.set('mongoose', mongoose);
+keystone.set('kue', kue);
+keystone.set('queue', queue);
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -63,7 +69,6 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 
-
 // Switch Keystone Email defaults to handlebars
 
 keystone.Email.defaults.templateExt = 'hbs';
@@ -99,5 +104,7 @@ keystone.start({
             console.log('-----> client connected <-----')
             socketService.serverListeners(socket);
         });
+
+        kueService.loadKueProcesses();
     }
 });

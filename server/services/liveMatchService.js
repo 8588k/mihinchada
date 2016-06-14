@@ -1,6 +1,7 @@
 "use strict";
 
-var matchService = require('./matchService.js'),
+var keystone = require('keystone'),
+    matchService = require('./matchService.js'),
     redis = require('./redisService.js'),
     Promise = require('bluebird'),
     moment = require('moment'),
@@ -82,7 +83,7 @@ var matchService = require('./matchService.js'),
 
             var matchKey, matchMinKey, redisMatch, redisMatchAsync, promises,
                 redisMinMatchAsync, redisMinMatch, liveMatch, min, prevRank, idx,
-                dateTime = date.getTime();
+                scheduleJob, dateTime = date.getTime();
 
             if(match.status == 'in_progress'){
 
@@ -103,8 +104,15 @@ var matchService = require('./matchService.js'),
                         add(liveMatch, `${action.resource_type}_${resource.id}_points`, action.points);
                         add(liveMatch, `${action.resource_type}_actions_qty`, 1);
                         add(liveMatch, `${action.resource_type}_action_${action.id}_qty`, 1);
-                        liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
-                            parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || 50);
+
+                        if(idx == 0){
+                            liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
+                                parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || 50);
+                        }else{
+                            scheduleJob = liveMatch[`${action.resource_type}_${resource.id}_ranking`]? false : true;
+                            liveMatch[`${action.resource_type}_${resource.id}_ranking`] = 
+                                parseInt(liveMatch[`${action.resource_type}_${resource.id}_ranking`] || -1);
+                        }
 
                         result[idx] = liveMatch;
                     }
@@ -119,6 +127,8 @@ var matchService = require('./matchService.js'),
 
                     ]).then(function(res){
 
+                        console.log('Emiting on new event on match.');
+
                         socketService.emitOnMatchEvent(
                             match, 
                             'new-event',
@@ -129,6 +139,23 @@ var matchService = require('./matchService.js'),
                                 'ref': ref
                             }
                         );
+
+                        console.log('Creating new job for process:', scheduleJob);
+
+                        if(scheduleJob){
+
+                            keystone.get('queue').create('match_rating_update', {
+                                title: `Match ${match.id} ${action.resource_type} ${resource.id}`
+                              , 'match': match
+                              , 'resource': resource
+                              , 'snapshot': redisMinMatch
+                              , 'overall': redisMatch
+                              , 'action': action
+                            })
+                            .delay(60000)
+                            .removeOnComplete(true)
+                            .save()
+                        }
 
                         resolve(res);
 
