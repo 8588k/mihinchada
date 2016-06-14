@@ -18,7 +18,7 @@ var _ = require('underscore'),
         {
             'id':'abuchear',
             'resource_type':'team',
-            'points': 1,
+            'points': -1,
             'name': 'Abuchear',
             'keywords': ['horrible','anti futbol','horrendo','mal','sin ideas','triste']
         },
@@ -30,14 +30,14 @@ var _ = require('underscore'),
         {
             'id':'gol',
             'resource_type':'player',
-            'points': 1,
+            'points': 10,
             'name': 'Golazo',
-            'keywords': ['gol','gool','goool','golazo']
+            'keywords': ['gol','golazo']
         },
         {
             'id':'pase',
             'resource_type':'player',
-            'points': 1,
+            'points': 5,
             'name': 'Gran pase!',
             'keywords': ['pase','asistencia']
         },
@@ -58,21 +58,21 @@ var _ = require('underscore'),
         {
             'id':'silbar',
             'resource_type':'player',
-            'points': 2,
+            'points': -10,
             'name': 'Silbar!',
-            'keywords': ['mal','horrible','anti futbol','horrendo','mal', 'pecho']
+            'keywords': ['mal','horrible','anti futbol','horrendo','malo', 'pecho','pelotudo','forro','morfon','basta de','burro']
         },
         {
             'id':'amarilla',
             'resource_type':'player',
-            'points': 2,
+            'points': -1,
             'name': 'Es para amarilla!',
             'keywords': ['amarilla','amonestado','amonestacion']
         },
         {
             'id':'roja',
             'resource_type':'player',
-            'points': 2,
+            'points': -2,
             'name': 'Que lo echen!',
             'keywords': ['sucio','roja','expulsado']
         },
@@ -91,11 +91,24 @@ var _ = require('underscore'),
         {
             'id':'malcambio',
             'resource_type':'manager',
-            'points': 1,
+            'points': -1,
             'name': 'Mal cambio',
             'keywords': ['mal cambio','no rindio el cambio']
         },
-
+        {
+            'id':'aplauso',
+            'resource_type':'manager',
+            'points': 5,
+            'name': 'Aplausos!',
+            'keywords': ['genio','maestro','mago','aplausos','magistral']
+        },
+        {
+            'id':'silbar',
+            'resource_type':'manager',
+            'points': -5,
+            'name': 'Silbar!',
+            'keywords': ['mal','horrible','anti futbol','horrendo','malo', 'pecho','pelotudo','forro','morfon','basta de','burro','erro']
+        },
         //=============================================
         //                    REFEREE
         //=============================================
@@ -110,10 +123,10 @@ var _ = require('underscore'),
         {
             'id':'boo',
             'resource_type':'referee',
-            'points': 1,
+            'points': -1,
             'name': 'Abuchear',
-            'keywords': ['mal','equivoco']
-        },
+            'keywords': ['mal','equivoco','erro']
+        }
     ],
 
     match = {
@@ -135,7 +148,7 @@ var _ = require('underscore'),
                 {
                     'id': 'idromero',
                     'name': {'first': 'Sergio', 'last': 'Romero' },
-                    'keywords': null,
+                    'keywords': ['chiquito'],
                     'playing_position': 'goalkeeper',
                     'since_minute': 0,
                     'rating': 50
@@ -144,6 +157,14 @@ var _ = require('underscore'),
                     'id': 'idmercado',
                     'name': {'first': 'Gabriel', 'last': 'Mercado' },
                     'keywords': ['@gabemadryn'],
+                    'playing_position': null,//'defender',
+                    'since_minute': null,
+                    'rating': 50
+                },
+                {
+                    'id': 'idroncaglia',
+                    'name': {'first': 'Facundo', 'last': 'Roncaglia' },
+                    'keywords': ['@facuroncaglia10'],
                     'playing_position': 'defender',
                     'since_minute': 0,
                     'rating': 50
@@ -168,6 +189,14 @@ var _ = require('underscore'),
                     'id': 'idrojo',
                     'name': {'first': 'Marcos', 'last': 'Rojo' },
                     'keywords': ['@marcosrojo5'],
+                    'playing_position': null,//'defender',
+                    'since_minute': null,
+                    'rating': 50
+                },
+                {
+                    'id': 'idcuesta',
+                    'name': {'first': 'Victor', 'last': 'Cuesta' },
+                    'keywords': ['@victorcuesta7'],
                     'playing_position': 'defender',
                     'since_minute': 0,
                     'rating': 50
@@ -176,14 +205,30 @@ var _ = require('underscore'),
                     'id': 'idfernandez',
                     'name': {'first': 'Augusto', 'last': 'Fernández' },
                     'keywords': ['@augusto12f'],
-                    'playing_position': 'midfielder',
-                    'since_minute': 0,
+                    'playing_position': null,//'midfielder',
+                    'since_minute': null,
                     'rating': 50
                 },
                 {
                     'id': 'idmascherano',
                     'name': {'first': 'Javier', 'last': 'Mascherano' },
                     'keywords': ['@Mascherano'],
+                    'playing_position': null,//'midfielder',
+                    'since_minute': null,
+                    'rating': 50
+                },
+                {
+                    'id': 'idkranevitter',
+                    'name': {'first': 'Matías', 'last': 'Kranevitter' },
+                    'keywords': ['colo'],
+                    'playing_position': 'midfielder',
+                    'since_minute': 0,
+                    'rating': 50
+                },
+                {
+                    'id': 'idlamela',
+                    'name': {'first': 'Erik', 'last': 'Lamela' },
+                    'keywords': ['coco'],
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
@@ -200,16 +245,16 @@ var _ = require('underscore'),
                     'id': 'idgaitan',
                     'name': {'first': 'Nicolás', 'last': 'Gaitán' },
                     'keywords': ['@NicoGaitan20'],
-                    'playing_position': 'midfielder',
-                    'since_minute': 0,
+                    'playing_position': null,//'attacker',
+                    'since_minute': null,//0,
                     'rating': 50
                 },
                 {
                     'id': 'iddimaría',
                     'name': {'first': 'Ángel', 'last': 'Di María' },
                     'keywords': ['@AngeIDiMaria10'],
-                    'playing_position': 'attacker',
-                    'since_minute': 0,
+                    'playing_position': null,//'attacker',
+                    'since_minute': null,
                     'rating': 50
                 },
                 {
@@ -219,6 +264,30 @@ var _ = require('underscore'),
                     'playing_position': 'attacker',
                     'since_minute': 0,
                     'rating': 50
+                },
+                {
+                    'id': 'idlavezzi',
+                    'name': {'first': 'Ezequiel', 'last': 'Lavezzi' },
+                    'keywords': null,
+                    'playing_position': 'attacker',
+                    'since_minute': 0,
+                    'rating': 50
+                },
+                {
+                    'id': 'idaguero',
+                    'name': {'first': 'Sergio', 'last': 'Aguero' },
+                    'keywords': ['kun'],
+                    'playing_position': 'attacker',
+                    'since_minute': 0,
+                    'rating': 50
+                },
+                {
+                    'id': 'idmessi',
+                    'name': {'first': 'Lionel', 'last': 'Messi' },
+                    'keywords': null,
+                    'playing_position': null,//'attacker',
+                    'since_minute': null,
+                    'rating': 50
                 }
             ],
             'score': 0,
@@ -226,99 +295,99 @@ var _ = require('underscore'),
         },
 
         'team_away': {
-            'id': 'idpanama',
-            'name': 'Panama',
+            'id': 'idbolivia',
+            'name': 'Bolivia',
             'keywords': null,
             'manager': {
-                'id': 'idgomez',
-                'name': {'first':'Hernán Darío', 'last': 'Gómez'},
+                'id': 'idbaldivieso',
+                'name': {'first':'Julio César', 'last': 'Baldivieso'},
                 'keywords': null,
                 'rating': 50
             },  
             'players': [
                 {
-                    'id': 'idpenedo',
-                    'name': {'first': 'Jaime', 'last': 'Penedo'},
+                    'id': 'idlampe',
+                    'name': {'first': 'Carlos', 'last': 'Lampe'},
                     'keywords': null,
                     'playing_position': 'goalkeeper',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idmachado',
-                    'name': {'first': 'Adolfo', 'last': 'Machado'},
+                    'id': 'idzenteno',
+                    'name': {'first': 'Edward', 'last': 'Zenteno'},
                     'keywords': null,
                     'playing_position': 'defender',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idbaloy',
-                    'name': {'first': 'Felipe', 'last': 'Baloy'},
+                    'id': 'idmelean',
+                    'name': {'first': 'Alejandro', 'last': 'Meleán'},
                     'keywords': null,
                     'playing_position': 'defender',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idcummings',
-                    'name': {'first': 'Harold', 'last': 'Cummings'},
+                    'id': 'idcabrera',
+                    'name': {'first': 'Nelson', 'last': 'Cabrera'},
                     'keywords': null,
                     'playing_position': 'defender',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idmiller',
-                    'name': {'first': 'Roderick', 'last': 'Miller'},
-                    'keywords': null,
-                    'playing_position': 'defender',
-                    'since_minute': 0,
-                    'rating': 50
-                },
-                {
-                    'id': 'idcooper',
-                    'name': {'first': 'Armando', 'last': 'Cooper'},
+                    'id': 'idsaavedra',
+                    'name': {'first': 'Erwin', 'last': 'Saavedra'},
                     'keywords': null,
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idgomez',
-                    'name': {'first': 'Gabriel', 'last': 'Gómez'},
+                    'id': 'idazogue',
+                    'name': {'first': 'Pedro', 'last': 'Azogue'},
                     'keywords': null,
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idgodoy',
-                    'name': {'first': 'Aníbal', 'last': 'Godoy'},
+                    'id': 'idcampos',
+                    'name': {'first': 'Jhasmani', 'last': 'Campos'},
                     'keywords': null,
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idQuintero',
-                    'name': {'first': 'Alberto', 'last': 'Quintero'},
+                    'id': 'idgutierrez',
+                    'name': {'first': 'Luis', 'last': 'Gutiérrez'},
                     'keywords': null,
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idPimentel',
-                    'name': {'first': 'Valentín', 'last': 'Pimentel'},
+                    'id': 'idsmedberg',
+                    'name': {'first': 'Martín', 'last': 'Smedberg'},
                     'keywords': null,
                     'playing_position': 'midfielder',
                     'since_minute': 0,
                     'rating': 50
                 },
                 {
-                    'id': 'idPérez',
-                    'name': {'first': 'Blas', 'last': 'Pérez'},
+                    'id': 'idarce',
+                    'name': {'first': 'Juan Carlos', 'last': 'Arce'},
+                    'keywords': null,
+                    'playing_position': 'midfielder',
+                    'since_minute': 0,
+                    'rating': 50
+                },
+                {
+                    'id': 'idduk',
+                    'name': {'first': 'Yasmani', 'last': 'Duk'},
                     'keywords': null,
                     'playing_position': 'attacker',
                     'since_minute': 0,
@@ -329,8 +398,8 @@ var _ = require('underscore'),
             'rating':50
         },
         'referee':{
-            'id': 'idfedorczuk',
-            'name': {'first': 'Daniel', 'last': 'Fedorczuk'},
+            'id': 'idcarrillo',
+            'name': {'first': 'Víctor', 'last': 'Carrillo'},
             'keywords': null,
             'rating': 50
         }
