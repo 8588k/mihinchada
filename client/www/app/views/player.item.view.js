@@ -9,7 +9,8 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         templateHelpers: function() {
             return {
                 model: this.model,
-                shirtNumber: Math.round(Math.random()*10)
+                shirtNumber: Math.round(Math.random()*10),
+                promedio: Math.round(Math.random()*100)
             };
         },
 

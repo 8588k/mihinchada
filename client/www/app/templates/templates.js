@@ -32,12 +32,14 @@ this["__templates"]["mihinchada"]["modalBottom"] = Handlebars.template({"1":func
     + "    </ul>\n</div>";
 },"useData":true});
 this["__templates"]["mihinchada"]["player"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, helper, alias1=this.escapeExpression;
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<div class=\"progress-circular-container\">\n    <div class=\"progress-circular\" data-js=\"player-progress\">\n        <div class=\"c100 p50 big\">\n            <span>"
-    + alias1(((helper = (helper = helpers.shirtNumber || (depth0 != null ? depth0.shirtNumber : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"shirtNumber","hash":{},"data":data}) : helper)))
+  return "<div class=\"progress-circular-container\">\n    <div class=\"progress-circular\" data-js=\"player-progress\">\n        <div class=\"c100 p"
+    + alias3(((helper = (helper = helpers.promedio || (depth0 != null ? depth0.promedio : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"promedio","hash":{},"data":data}) : helper)))
+    + " big\">\n            <span>"
+    + alias3(((helper = (helper = helpers.shirtNumber || (depth0 != null ? depth0.shirtNumber : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"shirtNumber","hash":{},"data":data}) : helper)))
     + "</span>\n            <div class=\"slice\">\n                <div class=\"bar\"></div>\n                <div class=\"fill\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<a href=\"#modalPlayer\" data-js=\"player-info\">\n    <div class=\"player-name\">"
-    + alias1(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
+    + alias3(this.lambda(((stack1 = (depth0 != null ? depth0.name : depth0)) != null ? stack1.last : stack1), depth0))
     + "</div>\n</a>";
 },"useData":true});
 this["__templates"]["mihinchada"]["tabs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
