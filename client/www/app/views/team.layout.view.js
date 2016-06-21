@@ -21,7 +21,6 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
         },
 
         onShow: function() {
-            console.log("* this.options.team -> ", this.options.team_type);
             var team = this.options.team,
                 playersCollection,
                 goalkeepers,
