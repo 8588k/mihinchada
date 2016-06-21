@@ -6,8 +6,9 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         regions: {
             'teamHomeRegion': '[data-js="field-half-home"]',
-            'teamAwayRegion': '[data-js="field-half-away"]'
-            // substitutes
+            'teamAwayRegion': '[data-js="field-half-away"]',
+            'outHomeRegion': '[data-js="out-home"]',
+            'outAwayRegion': '[data-js="out-away"]'
             // managers
             // referee
         },
@@ -28,6 +29,18 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
                 'team_type': 'away'
             });
             this.teamAwayRegion.show(teamAwayView);
+
+            outHomeView = new Views.Out({
+                'team': that.options.model.get('team_home'),
+                'team_type': 'home'
+            });
+            this.outHomeRegion.show(outHomeView);
+
+            outAwayView = new Views.Out({
+                'team': that.options.model.get('team_away'),
+                'team_type': 'away'
+            });
+            this.outAwayRegion.show(outAwayView);
         }
     });
 });

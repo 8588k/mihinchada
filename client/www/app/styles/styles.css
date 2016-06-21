@@ -188,6 +188,51 @@ nav .nav-actions-container i {
 }
 
 
+/* Out zone
+---------------------------------------------------------------*/
+
+.football-pitch-out {
+    height: 70vh;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 5vh;
+}
+
+.substitutes {
+    background-color: #f7f7f7;
+    height: 95px;
+}
+
+.bench-seat {
+    background-color: rgba(0,0,0,.4);
+    height: 15px;
+    margin-bottom: 1px;
+    width: 15px;
+    float: right;
+}
+
+.out-home,
+.out-away {
+    height: 35vh;
+}
+
+.out-home .manager {
+    margin-top: 20px;
+}
+
+.out-away .manager {
+    margin-top: 55px;
+}
+
+.manager-name {
+    color: rgba(0, 0, 0, .8);
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
 /* Player
 ---------------------------------------------------------------*/
 
@@ -575,6 +620,7 @@ input::-webkit-inner-spin-button {
     background-color: #c7c7c7;
     height: 73vh;
     padding: 10px 0 10px 10px;
+    position: relative;
 }
 
 .football-pitch-half-home,
