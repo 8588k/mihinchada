@@ -789,6 +789,10 @@ input::-webkit-inner-spin-button {
     background-color: #0c1f34;
 }
 
+.football-pitch-out .progress-circular {
+    background-color: #888;
+}
+
 .rect-auto,
 .c100.p51 .slice,
 .c100.p52 .slice,
@@ -959,6 +963,61 @@ input::-webkit-inner-spin-button {
     border: 0.08em solid #fff;
 }
 
+.football-pitch-out .pie,
+.football-pitch-out .c100 .bar,
+.football-pitch-out .c100.p51 .fill,
+.football-pitch-out .c100.p52 .fill,
+.football-pitch-out .c100.p53 .fill,
+.football-pitch-out .c100.p54 .fill,
+.football-pitch-out .c100.p55 .fill,
+.football-pitch-out .c100.p56 .fill,
+.football-pitch-out .c100.p57 .fill,
+.football-pitch-out .c100.p58 .fill,
+.football-pitch-out .c100.p59 .fill,
+.football-pitch-out .c100.p60 .fill,
+.football-pitch-out .c100.p61 .fill,
+.football-pitch-out .c100.p62 .fill,
+.football-pitch-out .c100.p63 .fill,
+.football-pitch-out .c100.p64 .fill,
+.football-pitch-out .c100.p65 .fill,
+.football-pitch-out .c100.p66 .fill,
+.football-pitch-out .c100.p67 .fill,
+.football-pitch-out .c100.p68 .fill,
+.football-pitch-out .c100.p69 .fill,
+.football-pitch-out .c100.p70 .fill,
+.football-pitch-out .c100.p71 .fill,
+.football-pitch-out .c100.p72 .fill,
+.football-pitch-out .c100.p73 .fill,
+.football-pitch-out .c100.p74 .fill,
+.football-pitch-out .c100.p75 .fill,
+.football-pitch-out .c100.p76 .fill,
+.football-pitch-out .c100.p77 .fill,
+.football-pitch-out .c100.p78 .fill,
+.football-pitch-out .c100.p79 .fill,
+.football-pitch-out .c100.p80 .fill,
+.football-pitch-out .c100.p81 .fill,
+.football-pitch-out .c100.p82 .fill,
+.football-pitch-out .c100.p83 .fill,
+.football-pitch-out .c100.p84 .fill,
+.football-pitch-out .c100.p85 .fill,
+.football-pitch-out .c100.p86 .fill,
+.football-pitch-out .c100.p87 .fill,
+.football-pitch-out .c100.p88 .fill,
+.football-pitch-out .c100.p89 .fill,
+.football-pitch-out .c100.p90 .fill,
+.football-pitch-out .c100.p91 .fill,
+.football-pitch-out .c100.p92 .fill,
+.football-pitch-out .c100.p93 .fill,
+.football-pitch-out .c100.p94 .fill,
+.football-pitch-out .c100.p95 .fill,
+.football-pitch-out .c100.p96 .fill,
+.football-pitch-out .c100.p97 .fill,
+.football-pitch-out .c100.p98 .fill,
+.football-pitch-out .c100.p99 .fill,
+.football-pitch-out .c100.p100 .fill {
+    border: 0.08em solid #fff;
+}
+
 .pie-fill,
 .c100.p51 .bar:after,
 .c100.p51 .fill,
@@ -1078,6 +1137,10 @@ input::-webkit-inner-spin-button {
     background-color: #0c1f34;
 }
 
+.football-pitch-out .c100 {
+    background-color: #888;
+}
+
 .c100 *,
 .c100 *:before,
 .c100 *:after {
@@ -1115,6 +1178,10 @@ input::-webkit-inner-spin-button {
     color: #fff;
 }
 
+.football-pitch-out .c100 > span {
+    color: #fff;
+}
+
 .c100:after {
     position: absolute;
     top: 0.08em;
@@ -1132,6 +1199,10 @@ input::-webkit-inner-spin-button {
 
 .football-pitch-half-away .c100:after {
     background-color: #0c1f34;
+}
+
+.football-pitch-out .c100:after {
+    background-color: #888;
 }
 
 .c100 .slice {
