@@ -75,6 +75,7 @@ gulp.task('js-build', function() {
         'www/app/views/footballScore.item.view.js',
         'www/app/views/player.item.view.js',
         'www/app/views/manager.item.view.js',
+        'www/app/views/referee.item.view.js',
         'www/app/views/players.collection.view.js',
     ])
     .pipe(concat('bundle.js'))

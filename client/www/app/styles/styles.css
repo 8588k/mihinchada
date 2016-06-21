@@ -225,11 +225,18 @@ nav .nav-actions-container i {
     margin-top: 55px;
 }
 
-.manager-name {
+.manager-name,
+.referee-name {
     color: rgba(0, 0, 0, .8);
     display: inline-block;
     font-size: 11px;
     font-weight: bold;
+}
+
+.referee {
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
 }
 
 
@@ -793,6 +800,10 @@ input::-webkit-inner-spin-button {
     background-color: #888;
 }
 
+.referee .progress-circular {
+    background-color: #000;
+}
+
 .rect-auto,
 .c100.p51 .slice,
 .c100.p52 .slice,
@@ -1141,6 +1152,10 @@ input::-webkit-inner-spin-button {
     background-color: #888;
 }
 
+.referee .c100 {
+    background-color: #000;
+}
+
 .c100 *,
 .c100 *:before,
 .c100 *:after {
@@ -1203,6 +1218,10 @@ input::-webkit-inner-spin-button {
 
 .football-pitch-out .c100:after {
     background-color: #888;
+}
+
+.referee .c100:after {
+    background-color: #000;
 }
 
 .c100 .slice {
