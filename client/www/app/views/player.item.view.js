@@ -6,13 +6,20 @@ App.module('miHinchada.Views', function (Views, App, Backbone, Marionette, $, _)
 
         template: __templates.mihinchada.player,
 
+        templateHelpers: function() {
+            return {
+                model: this.model,
+                shirtNumber: Math.round(Math.random()*10)
+            };
+        },
+
         ui: {
-            'playerPicture': '[data-js="player-picture"]',
+            'playerProgress': '[data-js="player-progress"]',
             'playerInfo': '[data-js="player-info"]'
         },
 
         events: {
-            'click @ui.playerPicture': 'showPlayerModal',
+            'click @ui.playerProgress': 'showPlayerModal',
             'click @ui.playerInfo': 'showPlayerModal'
         },
 

@@ -1,9 +1,15 @@
-<div class="player-picture" data-js="player-picture">
-	<img src="./app/imgs/messi_50x50.jpg">
+<div class="progress-circular-container">
+    <div class="progress-circular" data-js="player-progress">
+        <div class="c100 p50 big">
+            <span>{{shirtNumber}}</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <a href="#modalPlayer" data-js="player-info">
-    {{!-- <div class="player-number-container">{{shirt_number}}</div> --}}
     <div class="player-name">{{name.last}}</div>
-    {{rating}}
 </a>
